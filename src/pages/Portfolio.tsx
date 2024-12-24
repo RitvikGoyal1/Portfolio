@@ -1,6 +1,5 @@
-import React from "react";
 import { projects } from "../utils/data";
-import { Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
+import { Grid } from "@mui/material"; 
 import PortfolioCard from "../components/PortfolioCard";
 function Portfolio() {
   return (
