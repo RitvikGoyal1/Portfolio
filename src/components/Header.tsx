@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, Box } from "@mui/material";
+import {AppBar, Toolbar, Typography, Button, Box} from "@mui/material";
 import "./Header.css";
 import MaterialUISwitch from "./MaterialUISwitch";
 interface HeaderProps {
