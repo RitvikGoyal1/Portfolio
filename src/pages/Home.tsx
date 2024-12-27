@@ -1,20 +1,19 @@
-import {Container, Typography,Button} from "@mui/material"; 
+import {Container} from "@mui/material"; 
 import HeroSection from "../components/HeroSection";
-
+import Card from "../components/Card"
+const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
 function Home() {
     return(
         <Container maxWidth="md">
             <HeroSection/>
-            <Typography variant="h2" gutterBottom>
-                Hey, I'm Ritvik Goyal!
-            </Typography>
-            <Typography variant="h5" gutterBottom>
-                Software Developer
-            </Typography>
-            <Button variant="contained" color="primary" href="/portfolio">
-                View My Work
-            </Button>
+            <div className="App">
+            {items.map((item, i) => (
+                <Card key={i} text={item} index={i} />
+            ))}
+    </div>
+
         </Container>
+        
     );
 
 }

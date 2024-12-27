@@ -1,5 +1,5 @@
 import React from "react";
-import {AppBar, Toolbar, Typography, Button, Box} from "@mui/material";
+import {AppBar, Toolbar, Box} from "@mui/material";
 import "./Header.css";
 import MaterialUISwitch from "./MaterialUISwitch";
 interface HeaderProps {
@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({setDarkMode,darkMode}) => {
                 <Box className="menu menu-3" sx={{flexGrow:1, display:"flex",justifyContent:"center"}} >
                     <ul>
                         <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
+                        <li><a href="/Experiences">Experiences</a></li>
                         <li><a href="/portfolio">Portfolio</a></li>
                         <li><a href="/contact">Contact</a></li>
                     </ul>
