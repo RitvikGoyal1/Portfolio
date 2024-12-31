@@ -1,4 +1,32 @@
 # React + TypeScript + Vite
+# Portfolio Website
+
+Welcome to my portfolio website! 🚀
+
+## Current Status
+The main structure of the website is almost complete! 🎉 I'm now working on:
+- Adding more information about my **experiences**, **projects**, and other details.
+- Fixing minor issues with **dark mode**.
+
+Deploying the site to GitHub Pages took some effort, but I finally got it working! 😭
+
+## Features
+- **Dark Mode Support** (in progress)
+- **Modern Design**
+- Responsive layout for mobile and desktop users
+
+## Next Steps
+1. Populate the website with content (experiences, projects, etc.).
+2. Fine-tune dark mode for a seamless experience.
+3. Add any finishing touches for polish.
+
+## Deployment
+This project is hosted on **GitHub Pages**. You can check it out [here](INSERT-YOUR-LINK).
+
+---
+
+Feedback and suggestions are always welcome! 😊
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
