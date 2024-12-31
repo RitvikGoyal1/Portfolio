@@ -25,10 +25,12 @@ const App: React.FC = () => {
         <Header setDarkMode={setDarkMode} darkMode={darkMode} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Experiences" element={<Experiences />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="experiences" element={<Experiences />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="portfolio" element={<Portfolio />} />
         </Routes>
+
+
         <Footer />
       </Router>
     </ThemeProvider>
