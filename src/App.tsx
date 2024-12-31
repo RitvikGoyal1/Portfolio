@@ -21,7 +21,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router basename="/my-vite-app"> {/* Set basename to your repo name */}
+      <Router basename="/Portfolio">
         <Header setDarkMode={setDarkMode} darkMode={darkMode} />
         <Routes>
           <Route path="/" element={<Home />} />
