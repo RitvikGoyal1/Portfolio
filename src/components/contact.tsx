@@ -34,8 +34,12 @@ export default function Contact() {
           <Input id="email" placeholder="tyler@example.com" type="email" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
-          <Label htmlFor="password">Message</Label>
-          <textarea id="message" placeholder="Write your message here..." className="rounded-md p-2 border border-neutral-600 dark:bg-zinc-900  w-full h-32"/>
+          <Label htmlFor="message">Message</Label>
+          <textarea
+            id="message"
+            placeholder="Write your message here..."
+            className="rounded-md p-2 border w-full h-32 bg-white dark:bg-black focus:ring-2 focus:ring-blue-500"
+          />
         </LabelInputContainer>
 
         <button

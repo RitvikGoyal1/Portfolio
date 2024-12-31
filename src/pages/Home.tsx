@@ -1,7 +1,7 @@
 import {Container} from "@mui/material"; 
 import HeroSection from "../components/HeroSection";
 import Card from "../components/Card"
-const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
+const items = ["About me 1", "About me 2", "About me 3", "About me 4", "About me 5"];
 function Home() {
     return(
         <Container maxWidth="md">

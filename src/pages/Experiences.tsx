@@ -5,16 +5,16 @@ function Experiences() {
         <Timeline data={[
             {
             title: 'Started the Journey',
-            content: 'Began with a small team of student writers.',}
+            content: 'First programming course.',}
           ,{
-            title: 'Started the Journey',
-            content: 'Began with a small team of student writers.'}
+            title: '2022',
+            content: 'Built a website and participated in a hackathon.'}
             ,{
-              title: 'Started the Journey',
-              content: 'Began with a small team of student writers.'}
+              title: '2023',
+              content: 'Participated in multiple competitive coding competitons.'}
               ,{
-                title: 'Started the Journey',
-                content: 'Began with a small team of student writers.'}]} />
+                title: '2024',
+                content: 'Volunteered as a Software Dev.'}]} />
     );
     
 }
