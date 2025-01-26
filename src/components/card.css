@@ -8,8 +8,12 @@ body {
   }
   
   .card {
-    width: 50vw;
-    height: 50vh;
+    width: 90vw;
+    height: 40vh;
+    @media (min-width: 768px) {
+      width: 60vw;
+      height: 50vh;
+    }
     display: flex;
     align-items: center;
     justify-content: center;

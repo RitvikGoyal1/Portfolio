@@ -13,12 +13,14 @@ function Card({text, index}: CardProps){
             x: index%2 ===0? 50:-50
         }}
         whileInView={{
-            opacity:1,
-            x:0,
-            transition:{
-                duration:1
-            }
-        }}
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.5,
+                delay: index * 0.1
+              }
+            
+          }}          
         viewport={{once:false}}>
             <p className="card-text">{text}</p>
         </motion.div>

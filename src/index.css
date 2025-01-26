@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ... */
-
+* {
+  transition: background-color 0.3s ease, color 0.2s ease;
+}
 :root {
   width:100%;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -20,9 +21,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .card-container{
+  padding-left: 1rem;
+  padding-right: 1rem;
   display:flex;
   justify-content: space-between;
   gap:20px;
+}
+@media (min-width:1024px) {
+  card-container{
+    padding-left: 2rem;
+    padding-right: 2rem
+  }
+}
+
+.dark .text-neutral-600{
+  color:#e0e0e0;
+}
+.dark .text-neutral-300{
+  color:#b0b0b0;
 }
 .card-container > div{
   flex:1;

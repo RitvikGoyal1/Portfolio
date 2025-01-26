@@ -18,7 +18,9 @@
   font-size: 16px;
   text-transform: uppercase;
   text-decoration: none;
-  color: #A8E6CF;
+  color: #76E0B2;
+  text-shadow: 0 0 5px rgba(118, 224, 178, 0.7);
+
   position: relative;
   padding: 4px 0;
   transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;

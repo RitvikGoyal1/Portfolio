@@ -1,7 +1,13 @@
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Switch from "@mui/material/Switch";
 
-const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+interface MaterialUISwitchProps {
+  darkMode: boolean;
+}
+
+const MaterialUISwitch = styled(Switch, {
+  shouldForwardProp: (prop) => prop !== 'darkMode',
+})<MaterialUISwitchProps>(({ theme, darkMode }) => ({
   width: 62,
   height: 34,
   padding: 7,
@@ -24,7 +30,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     },
   },
   "& .MuiSwitch-thumb": {
-    backgroundColor: theme.palette.mode === "dark" ? "#003892" : "#001e3c",
+    backgroundColor: darkMode ? theme.palette.primary.main : theme.palette.secondary.main,
     width: 32,
     height: 32,
     "&:before": {

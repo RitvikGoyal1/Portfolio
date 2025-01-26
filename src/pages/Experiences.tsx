@@ -1,4 +1,4 @@
-import {Timeline} from "@/components/timeline";
+import Timeline from "@/components/timeline";
 
 function Experiences() {
     return(

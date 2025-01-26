@@ -3,7 +3,7 @@ import {Box,Typography,Link} from "@mui/material";
 
 const Footer: React.FC = () => {
     return (
-        <Box sx={{bgcolor:"primary.mail",color:"white", p:2, mt:4, textAlign:"center"}}
+        <Box sx={{bgcolor:"primary.main",color:"white", p:2, mt:4, textAlign:"center"}}
         >
             <Typography variant="body2">
                 © {new Date().getFullYear()} My Portfolio. All rights reserved.

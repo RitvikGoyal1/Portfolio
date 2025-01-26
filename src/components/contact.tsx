@@ -10,8 +10,8 @@ export default function Contact() {
     console.log("Form submitted");
   };
   return (
-    <div className="max-w-md w-full mx-auto rounded md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
-      <h2 className="font-bold text-xl text-center text-neutral-800 ">
+    <div className="max-w-md w-full mx-auto rounded md:rounded-2xl p-4 md:p-8 shadow-input bg-background dark:bg-backgroundDark">
+      <h2 className="font-bold text-xl text-center text-primary dark:text-primary ">
         Contact Me!
       </h2>
       <p className="text-neutral-600 text-center text-sm max-w-sm mt-2 ">
@@ -31,7 +31,7 @@ export default function Contact() {
         </div>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
-          <Input id="email" placeholder="tyler@example.com" type="email" />
+          <Input id="email" aria-label="Email address" placeholder="tyler@example.com" type="email" />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="message">Message</Label>

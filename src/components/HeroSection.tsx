@@ -5,7 +5,7 @@ const Herosection: React.FC = () => {
     const [text, setText] = useState("Welcome!");
     useEffect(() => {
         const interval = setInterval(() => {
-            setText((prevText) => (prevText==="Welcome!"?"Bienvenu!":"Welcome!"));
+            setText((prevText) => (prevText==="Welcome!"?"Bienvenue!":"Welcome!"));
         }, 2000);
         return () => clearInterval(interval);
         },[]);
@@ -24,18 +24,24 @@ const Herosection: React.FC = () => {
         
         <Box
             sx={{
-                height: "90vh",
+                height: "55vh",
                 display: "flex",
                 flexDirection: "column",
                 marginTop:"5%",
                 alignItems: "center",
                 textAlign: "center",
-                bgcolor: "backgroud.default",
+                bgcolor: "background.default",
             }}
         >
-                <Typography variant="h2" gutterBottom>
-                    I am Ritvik Goyal!
-                </Typography>
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    >
+                    <Typography variant="h2" gutterBottom>
+                        I am Ritvik Goyal!
+                    </Typography>
+                </motion.div>
                 <Typography variant="h5" color="text.secondary" gutterBottom>
                     A passionate Software Developer in Toronto!
                 </Typography>
