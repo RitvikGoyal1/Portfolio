@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { ReactNode } from "react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
@@ -67,7 +67,7 @@ const LabelInputContainer = ({
   children,
   className,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }) => {
   return (

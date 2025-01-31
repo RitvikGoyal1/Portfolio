@@ -10,6 +10,13 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "dist",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          animation: ['framer-motion']
+        }
+      }
+    }
   },
 });

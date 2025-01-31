@@ -30,7 +30,7 @@ const MaterialUISwitch = styled(Switch, {
     },
   },
   "& .MuiSwitch-thumb": {
-    backgroundColor: darkMode ? theme.palette.primary.main : theme.palette.secondary.main,
+    backgroundColor: darkMode ? theme.palette.primary.dark : theme.palette.secondary.light,
     width: 32,
     height: 32,
     "&:before": {

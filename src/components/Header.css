@@ -19,6 +19,10 @@
   text-transform: uppercase;
   text-decoration: none;
   color: #76E0B2;
+  color: #76E0B2;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+
   text-shadow: 0 0 5px rgba(118, 224, 178, 0.7);
 
   position: relative;
