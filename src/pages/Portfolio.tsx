@@ -3,31 +3,47 @@ import { ThreeDCardDemo } from "../components/ProjCard";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "Full-stack online shopping solution",
+    title: "Panther Press Website",
+    description: "School News Website",
     imgUrl: "/projects/ecommerce.jpg",
-    date: "2023",
-    demoLink: "https://example.com"
+    date: "2024",
+    demoLink: "https://pantherpress.ca"
   },
   {
-    title: "Social Media App",
-    description: "Real-time messaging platform",
+    title: "Robotics Website",
+    description: "School's FRC Robotic's team website",
     imgUrl: "/projects/social-media.jpg",
     date: "2024",
-    demoLink: "https://example.com"
+    demoLink: "https://vicparkrobotics.ca/"
   },
   {
-    title: "Task Manager",
-    description: "Productivity workflow system",
+    title: "Build-A-Budget",
+    description: "Ignition Hacks Hackathon Project",
     imgUrl: "/projects/task-manager.jpg", 
     date: "2024",
-    demoLink: "https://example.com"
+    demoLink: "https://sassy33893.github.io/Budgeting-Fun/pages/index.html"
+  },
+  {
+    title: "Child Trafficking Aid",
+    description: "AmberHacks Hackathon Project",
+    imgUrl: "/projects/task-manager.jpg", 
+    date: "2023",
+    demoLink: "https://ritvikgoyal1.github.io/Child-Trafficking-Aid/"
   }
+  ,
+  {
+    title: "To-Do List",
+    description: "A simple to-do list tracker",
+    imgUrl: "/projects/task-manager.jpg", 
+    date: "2022",
+    demoLink: "https://ritvikgoyal1.github.io/todolist/"
+  }
+
 ];
 
 function Portfolio() {
   return (
-    <div className="card-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 min-h-[80vh] max-w-full mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 min-h-[80vh] max-w-full mx-auto">
       {projects.map((project, i) => (
         <ThreeDCardDemo
           key={i}

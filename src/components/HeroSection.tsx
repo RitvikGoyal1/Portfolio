@@ -10,51 +10,52 @@ const Herosection: React.FC = () => {
         return () => clearInterval(interval);
         },[]);
     return(
-        <>
-        
-        <center><motion.div
-            key={text}
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-        >
-            <Typography variant="h2" sx={{marginTop:"15%"}}> {text}</Typography>
-        </motion.div>
-        </center>
         
         <Box
             sx={{
-                height: "55vh",
+                minHeight: "90vh",
                 display: "flex",
                 flexDirection: "column",
-                marginTop:"5%",
+                justifyContent: "center",
                 alignItems: "center",
                 textAlign: "center",
-                bgcolor: "background.default",
+                gap: 4,
+                p: { xs: 2, md: 4 },
             }}
-        >
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                    >
-                    <Typography variant="h2" gutterBottom>
-                        I am Ritvik Goyal!
-                    </Typography>
-                </motion.div>
-                <Typography variant="h5" color="text.secondary" gutterBottom>
-                    A passionate Software Developer in Toronto!
+            >
+            <motion.div
+                key={text}
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+            >
+                <Typography variant="h2" sx={{ mt: "15%" }}>
+                {text}
                 </Typography>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    href="/portfolio"
-                >
-                    See My Work
-                </Button>
-            </Box></>
+            </motion.div>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}
+            >
+                <Typography variant="h1" component="h1" gutterBottom>
+                I am Ritvik Goyal!
+                </Typography>
+                <Typography variant="h4" color="text.secondary" gutterBottom>
+                A passionate Software Developer in Toronto!
+            </Typography>
+            </motion.div>
             
-    );
-};
+            <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                href="/portfolio"
+            >
+                See My Work
+            </Button>
+            </Box>
+                        
+                );
+            };
 export default Herosection;

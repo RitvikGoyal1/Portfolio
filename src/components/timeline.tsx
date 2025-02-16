@@ -60,9 +60,11 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-background dark:bg-backgroundDark flex items-center justify-center">
                 <div className="h-4 w-4 rounded-full border-2 border-primary dark:border-secondary bg-primary/20 dark:bg-secondary/20 p-2" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold backgroundColor: theme.palette.background.default,
-        color: theme.palette.text.primary">
-                {item.title}
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold" style={{
+                  backgroundColor: theme.palette.background.default,
+                  color: theme.palette.text.primary
+                }}>
+                  {item.title}
               </h3>
             </div>
 

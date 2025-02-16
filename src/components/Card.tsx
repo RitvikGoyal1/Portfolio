@@ -1,29 +1,53 @@
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import "./card.css";
+
 interface CardProps {
     text: string;
     index: number;
+    title: string;
+    icon: string;
 }
-function Card({text, index}: CardProps){
-    return(
+
+function Card({ text, index, title, icon }: CardProps) {
+    const isEven = index % 2 === 0;
+    
+    return (
         <motion.div
-        className="card"
-        initial={{
-            opacity:0,
-            x: index%2 ===0? 50:-50
-        }}
-        whileInView={{
-            opacity: 1,
-            x: 0,
-            transition: {
-                duration: 0.5,
-                delay: index * 0.1
-              }
-            
-          }}          
-        viewport={{once:false}}>
-            <p className="card-text">{text}</p>
+            initial={{ 
+                opacity: 0, 
+                y: 50,
+                x: isEven ? -50 : 50 
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                x: 0,
+                transition: {
+                    type: "spring",
+                    damping: 20,
+                    stiffness: 100,
+                    delay: index * 0.2
+                }
+            }}
+            whileHover={{
+                scale: 1.02,
+                x: isEven ? -10 : 10,
+                transition: {
+                    type: "spring",
+                    damping: 7,
+                    stiffness: 400
+                }
+            }}
+            viewport={{ once: true, margin: "-100px" }}
+            className={`card-container ${isEven ? 'card-right' : 'card-left'}`}
+        >
+            <div className="card-content">
+                <div className="icon-wrapper">{icon}</div>
+                <h2 className="card-title">{title}</h2>
+                <p className="card-description">{text}</p>
+            </div>
         </motion.div>
     );
 }
+
 export default Card;

@@ -22,22 +22,26 @@ const App: React.FC = () => {
 
   const theme = createTheme({
     palette: {
-      mode: darkMode ? 'dark' : 'light',
+      mode: darkMode ? "dark" : "light",
       primary: {
-        main: '#4CAF50',
-        contrastText: '#fff',
+        main: darkMode ? "#82b1ff" : "#2962ff",
+        light: darkMode ? "#b3e5fc" : "#768fff",
+        dark: darkMode ? "#448aff" : "#0039cb",
+        contrastText: darkMode ? "#000" : "#fff",
       },
       secondary: {
-        main: '#FFC107', 
-        contrastText: '#000',
+        main: darkMode ? "#ffab40" : "#ff9100",
+        light: darkMode ? "#ffd180" : "#ffc947",
+        dark: darkMode ? "#c66900" : "#c41c00",
+        contrastText: darkMode ? "#000" : "#fff",
       },
       background: {
-        default: darkMode ? '#121212' : '#ffffff',
-        paper: darkMode ? '#1E1E1E' : '#f5f5f5',
+        default: darkMode ? "#121212" : "#fafafa",
+        paper: darkMode ? "#1e1e1e" : "#ffffff",
       },
       text: {
-        primary: darkMode ? '#e0e0e0' : '#121212', // Brighter in dark mode
-        secondary: darkMode ? '#9e9e9e' : '#4a4a4a', // Better contrast
+        primary: darkMode ? "#e0e0e0" : "#212121",
+        secondary: darkMode ? "#bdbdbd" : "#616161",
       },
     },
   });

@@ -24,7 +24,9 @@ export function ThreeDCardDemo({
         >
           {description}
         </CardItem>
-        <CardItem translateZ="100" className="w-full mt-4">
+        <CardItem
+          translateZ="100"
+          className="w-full mt-4 transition-transform duration-300 hover:scale-105">
           <img
             src={imgUrl}
             height="400"
@@ -32,6 +34,9 @@ export function ThreeDCardDemo({
             className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
             alt={title}
             loading="lazy"
+            onError={(e) => {
+              e.currentTarget.src = '/fallback-image.jpg';
+            }}
           />
         </CardItem>
         <div className="flex justify-between items-center mt-6 sm:mt-8">

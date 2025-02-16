@@ -10,7 +10,7 @@ export default function Contact() {
     console.log("Form submitted");
   };
   return (
-    <div className="max-w-md w-full mx-auto rounded md:rounded-2xl p-4 md:p-8 shadow-input bg-background dark:bg-backgroundDark">
+    <div className="max-w-md w-full mx-auto rounded-2xl p-8 shadow-lg bg-gradient-to-br from-primary-light/10 to-secondary-light/10">
       <h2 className="font-bold text-xl text-center text-primary dark:text-primary ">
         Contact Me!
       </h2>
@@ -43,7 +43,7 @@ export default function Contact() {
         </LabelInputContainer>
 
         <button
-          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+          className="w-full px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white rounded-lg hover:shadow-lg transition-all duration-300"
           type="submit"
         >
           Send Message &rarr;

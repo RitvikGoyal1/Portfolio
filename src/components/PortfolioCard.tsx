@@ -10,7 +10,12 @@ interface PortfolioCardProps {
 
 const PortfolioCard: React.FC<PortfolioCardProps> = ({title,description,image,link}) =>{
     return(
-        <Card>
+        <Card sx={{
+            transition: 'transform 0.3s ease-in-out',
+            '&:hover': {
+              transform: 'scale(1.05)',
+            },
+          }}>
             <CardMedia component="img" height="140" image={image} alt={title} />
             <CardContent>
                 <Typography variant="h5">
