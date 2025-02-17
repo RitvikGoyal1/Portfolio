@@ -15,12 +15,12 @@ const items = [
   },
   {
     title: "UI & Design Skills",
-    text: "Extensive experience with Tailwind, Material-UI, Bootstrap, and Aceternity UI. Focus on creating beautiful, user-friendly interfaces.",
+    text: "Extensive experience with Tailwind, Material-UI, Bootstrap, Shadcn and Aceternity UI. Focus on creating beautiful, user-friendly interfaces.",
     icon: "✨"
   },
   {
     title: "Backend & Infrastructure",
-    text: "Proficient in backend development using Flask and Firebase. Experience with cloud deployment using Cloudflare.",
+    text: "Proficient in backend development using Flask and Firebase. Experience with cloud deployment using Cloudflare and basic api calls.",
     icon: "🔧"
   },
   {

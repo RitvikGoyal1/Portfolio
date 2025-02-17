@@ -4,7 +4,7 @@ function Experiences() {
     return(
         <Timeline data={[
             {
-            title: 'Started the Journey',
+            title: 'Started',
             content: 'First programming course.',}
           ,{
             title: '2022',

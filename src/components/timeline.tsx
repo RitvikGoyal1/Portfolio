@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useLayoutEffect, useState } from 'react';
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useTheme } from "@mui/material/styles";
 
@@ -14,7 +14,7 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [timelineHeight, setTimelineHeight] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (timelineRef.current) {
       setTimelineHeight(timelineRef.current.getBoundingClientRect().height);
     }
@@ -57,8 +57,8 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-background dark:bg-backgroundDark flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full border-2 border-primary dark:border-secondary bg-primary/20 dark:bg-secondary/20 p-2" />
+              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <div className="h-4 w-4 rounded-full border-2 border-primary dark:border-secondary bg-primary/20 dark:bg-secondary/20" />
               </div>
               <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold" style={{
                   backgroundColor: theme.palette.background.default,
@@ -79,10 +79,10 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
           </motion.div>
         ))}
 
-        <div
-          style={{ height: `${timelineHeight}px` }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-neutral-300 dark:via-neutral-600 to-transparent"
-        >
+          <div
+            style={{ height: `${timelineHeight}px` }}
+            className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-neutral-300 dark:via-neutral-600 to-transparent"
+          >
           <motion.div
             style={{
               height: heightTransform,

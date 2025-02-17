@@ -1,78 +1,141 @@
-"use client";
-import React, { ReactNode } from "react";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
-import { cn } from "@/lib/utils";
+import * as React from 'react';
+import { useTheme } from '@mui/material/styles';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import EmailIcon from '@mui/icons-material/Email';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
-export default function Contact() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted");
-  };
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+function CustomTabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
   return (
-    <div className="max-w-md w-full mx-auto rounded-2xl p-8 shadow-lg bg-gradient-to-br from-primary-light/10 to-secondary-light/10">
-      <h2 className="font-bold text-xl text-center text-primary dark:text-primary ">
-        Contact Me!
-      </h2>
-      <p className="text-neutral-600 text-center text-sm max-w-sm mt-2 ">
-        Send me a message, and I'll get back to you as soon as possible.
-      </p>
-
-      <form className="my-8" onSubmit={handleSubmit}>
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-          <LabelInputContainer>
-            <Label htmlFor="firstname">First name</Label>
-            <Input id="firstname" placeholder="Tyler" type="text" />
-          </LabelInputContainer>
-          <LabelInputContainer>
-            <Label htmlFor="lastname">Last name</Label>
-            <Input id="lastname" placeholder="Durden" type="text" />
-          </LabelInputContainer>
-        </div>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="email">Email Address</Label>
-          <Input id="email" aria-label="Email address" placeholder="tyler@example.com" type="email" />
-        </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="message">Message</Label>
-          <textarea
-            id="message"
-            placeholder="Write your message here..."
-            className="rounded-md p-2 border w-full h-32 bg-white dark:bg-black focus:ring-2 focus:ring-blue-500"
-          />
-        </LabelInputContainer>
-
-        <button
-          className="w-full px-6 py-3 bg-gradient-to-r from-primary to-primary-dark text-white rounded-lg hover:shadow-lg transition-all duration-300"
-          type="submit"
-        >
-          Send Message &rarr;
-          <BottomGradient />
-        </button>
-      </form>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Card 
+            elevation={3}
+            sx={{
+              transition: '0.3s',
+              '&:hover': {
+                transform: 'translateY(-5px)',
+                boxShadow: 6,
+              },
+            }}
+          >
+            <CardContent sx={{ textAlign: 'center', py: 4 }}>
+              {children}
+            </CardContent>
+          </Card>
+        </Box>
+      )}
     </div>
   );
 }
 
-const BottomGradient = () => {
-  return (
-    <>
-      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
-      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-    </>
-  );
-};
+export default function Contact() {
+  const theme = useTheme();
+  const [value, setValue] = React.useState(0);
 
-const LabelInputContainer = ({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  const linkStyle = {
+    color: theme.palette.primary.main,
+    textDecoration: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px',
+    fontSize: '1.2rem',
+    transition: '0.3s',
+    '&:hover': {
+      color: theme.palette.primary.dark,
+    },
+  };
+
   return (
-    <div className={cn("flex flex-col space-y-2 w-full", className)}>
-      {children}
-    </div>
+    <Box sx={{ py: 6, px: 3 }}>
+      <Typography 
+        variant="h2" 
+        component="h1" 
+        sx={{ 
+          textAlign: 'center', 
+          mb: 2,
+          fontWeight: 'bold',
+          background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}
+      >
+        Contact Me
+      </Typography>
+      <Typography 
+        variant="h6" 
+        sx={{ 
+          textAlign: 'center', 
+          mb: 6,
+          maxWidth: '600px',
+          mx: 'auto',
+          color: theme.palette.text.secondary,
+        }}
+      >
+        Feel free to reach out! Want to collaborate on a project? Have a question? Just want to chat? 
+        I'm open to opportunities and new connections!
+      </Typography>
+      
+      <Box sx={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
+          <Tabs 
+            value={value} 
+            onChange={handleChange} 
+            aria-label="contact tabs" 
+            centered
+            sx={{
+              '& .MuiTab-root': {
+                fontSize: '1.1rem',
+                textTransform: 'none',
+              },
+            }}
+          >
+            <Tab icon={<EmailIcon />} label="Email" />
+            <Tab icon={<LinkedInIcon />} label="LinkedIn" />
+            <Tab icon={<GitHubIcon />} label="Github" />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={value} index={0}>
+          <Box component="a" href="mailto:ritvik.goyal1234@gmail.com" sx={linkStyle}>
+            <EmailIcon /> ritvik.goyal1234@gmail.com
+          </Box>
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <Box component="a" href="https://www.linkedin.com/in/ritvikgoyal1/" target="_blank" rel="noopener noreferrer" sx={linkStyle}>
+            <LinkedInIcon /> Visit my LinkedIn Profile
+          </Box>
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          <Box component="a" href="https://www.github.com/RitvikGoyal1" target="_blank" rel="noopener noreferrer" sx={linkStyle}>
+            <GitHubIcon /> Visit my GitHub Profile
+          </Box>
+        </CustomTabPanel>
+      </Box>
+    </Box>
   );
-};
+}
