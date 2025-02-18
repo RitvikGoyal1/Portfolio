@@ -5,7 +5,7 @@ import { useTheme } from "@mui/material/styles";
 
 interface TimelineEntry {
   title: string;
-  content: React.ReactNode;
+  content: string; // Changed to string to use HTML markup safely
 }
 
 const Timeline = ({ data }: { data: TimelineEntry[] }) => {
@@ -72,9 +72,10 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-primary dark:text-secondary">
                 {item.title}
               </h3>
-              <p className={`${theme.palette.mode === 'dark' ? "text-neutral-400" : "text-neutral-600"}`}>
-                {item.content}
-              </p>
+              <div 
+                className={`${theme.palette.mode === 'dark' ? "text-neutral-400" : "text-neutral-600"}`}
+                dangerouslySetInnerHTML={{ __html: item.content }}
+              />
             </div>
           </motion.div>
         ))}

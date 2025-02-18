@@ -127,7 +127,7 @@ export default function Contact() {
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
           <Box component="a" href="https://www.linkedin.com/in/ritvikgoyal1/" target="_blank" rel="noopener noreferrer" sx={linkStyle}>
-            <LinkedInIcon /> Visit my LinkedIn Profile
+            <LinkedInIcon /> Connect with me on my LinkedIn Profile
           </Box>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>

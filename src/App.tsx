@@ -10,10 +10,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    const storedPreference = localStorage.getItem("darkMode");
-    return storedPreference === "true";
-  });
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     localStorage.setItem("darkMode", String(darkMode));
@@ -24,6 +21,7 @@ const App: React.FC = () => {
       document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
+
 
   const theme = darkMode ? darkTheme : lightTheme;
 
