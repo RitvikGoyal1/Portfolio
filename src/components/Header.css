@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700");
 
 .menu-3 ul {
   list-style: none;
@@ -14,12 +14,12 @@
 }
 
 .menu-3 a {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
   font-size: 16px;
   text-transform: uppercase;
   text-decoration: none;
-  color: #76E0B2;
-  color: #76E0B2;
+  color: #76e0b2;
+  color: #76e0b2;
   outline: 2px solid transparent;
   outline-offset: 2px;
 
@@ -27,13 +27,23 @@
 
   position: relative;
   padding: 4px 0;
-  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
-  text-shadow: 0 0 5px rgba(168, 230, 207, 0.7), 0 0 10px rgba(168, 230, 207, 0.7), 0 0 15px rgba(168, 230, 207, 0.7);  /* Glowing effect */
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease,
+    transform 0.3s ease;
+  text-shadow:
+    0 0 5px rgba(168, 230, 207, 0.7),
+    0 0 10px rgba(168, 230, 207, 0.7),
+    0 0 15px rgba(168, 230, 207, 0.7);
 }
 
 .menu-3 a:hover {
-  color: #56C596;
-  text-shadow: 0 0 10px rgba(86, 197, 150, 0.8), 0 0 15px rgba(86, 197, 150, 0.8), 0 0 20px rgba(86, 197, 150, 0.8), 0 0 25px rgba(86, 197, 150, 0.8);  /* Stronger glow on hover */
+  color: #56c596;
+  text-shadow:
+    0 0 10px rgba(86, 197, 150, 0.8),
+    0 0 15px rgba(86, 197, 150, 0.8),
+    0 0 20px rgba(86, 197, 150, 0.8),
+    0 0 25px rgba(86, 197, 150, 0.8);
 }
 
 .menu-3 a::before {
@@ -43,7 +53,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  background: #56C596;
+  background: #56c596;
   transition: 0.5s transform ease;
   transform: scale3d(0, 1, 1);
   transform-origin: 50% 50%;
@@ -51,7 +61,10 @@
 
 .menu-3 a:hover::before {
   transform: scale3d(1, 1, 1);
-  box-shadow: 0 0 10px rgba(86, 197, 150, 0.8), 0 0 15px rgba(86, 197, 150, 0.8), 0 0 20px rgba(86, 197, 150, 0.8);  /* Glow around the underline */
+  box-shadow:
+    0 0 10px rgba(86, 197, 150, 0.8),
+    0 0 15px rgba(86, 197, 150, 0.8),
+    0 0 20px rgba(86, 197, 150, 0.8);
 }
 
 .MuiSwitch-root {

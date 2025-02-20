@@ -1,11 +1,11 @@
 "use client";
-import React, { useRef, useLayoutEffect, useState } from 'react';
+import React, { useRef, useLayoutEffect, useState } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useTheme } from "@mui/material/styles";
 
 interface TimelineEntry {
   title: string;
-  content: string; // Changed to string to use HTML markup safely
+  content: string;
 }
 
 const Timeline = ({ data }: { data: TimelineEntry[] }) => {
@@ -22,10 +22,14 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start center", "end center"]
+    offset: ["start center", "end center"],
   });
 
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, timelineHeight]);
+  const heightTransform = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, timelineHeight]
+  );
   const opacityTransform = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
 
   return (
@@ -34,15 +38,15 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       className="w-full font-sans md:px-10"
       style={{
         backgroundColor: theme.palette.background.default,
-        color: theme.palette.text.primary
+        color: theme.palette.text.primary,
       }}
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-4xl mb-4 max-w-4xl">
-          Ritvik's Journey
-        </h2>
-        <p className={`${theme.palette.mode === 'dark' ? "text-neutral-400" : "text-neutral-600"} text-sm md:text-base max-w-sm`}>
-          I've come a long way!
+        <h2 className="text-lg md:text-4xl mb-4 max-w-4xl">Ritvik's Journey</h2>
+        <p
+          className={`${theme.palette.mode === "dark" ? "text-neutral-400" : "text-neutral-600"} text-sm md:text-base max-w-sm`}
+        >
+          Key moments of my computer science journey year by year! 🚀
         </p>
       </div>
 
@@ -60,30 +64,38 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                 <div className="h-4 w-4 rounded-full border-2 border-primary dark:border-secondary bg-primary/20 dark:bg-secondary/20" />
               </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold" style={{
+              <h3
+                className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold"
+                style={{
                   backgroundColor: theme.palette.background.default,
-                  color: theme.palette.text.primary
-                }}>
-                  {item.title}
+                  color: theme.palette.text.primary,
+                }}
+              >
+                {item.title}
               </h3>
             </div>
 
             <div className="relative pl-20 pr-4 md:pl-4 w-full pb-12 md:pb-20">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-primary dark:text-secondary">
+              <h3
+                className="md:hidden block text-2xl mb-4 text-left font-bold"
+                style={{
+                  color: theme.palette.text.primary,
+                }}
+              >
                 {item.title}
               </h3>
-              <div 
-                className={`${theme.palette.mode === 'dark' ? "text-neutral-400" : "text-neutral-600"}`}
+              <div
+                className={`${theme.palette.mode === "dark" ? "text-neutral-400" : "text-neutral-600"}`}
                 dangerouslySetInnerHTML={{ __html: item.content }}
               />
             </div>
           </motion.div>
         ))}
 
-          <div
-            style={{ height: `${timelineHeight}px` }}
-            className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-neutral-300 dark:via-neutral-600 to-transparent"
-          >
+        <div
+          style={{ height: `${timelineHeight}px` }}
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-transparent via-neutral-300 dark:via-neutral-600 to-transparent"
+        >
           <motion.div
             style={{
               height: heightTransform,

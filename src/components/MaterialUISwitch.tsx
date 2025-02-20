@@ -6,7 +6,7 @@ interface MaterialUISwitchProps {
 }
 
 const MaterialUISwitch = styled(Switch, {
-  shouldForwardProp: (prop) => prop !== 'darkMode',
+  shouldForwardProp: (prop) => prop !== "darkMode",
 })<MaterialUISwitchProps>(({ theme, darkMode }) => ({
   width: 62,
   height: 34,
@@ -38,7 +38,9 @@ const MaterialUISwitch = styled(Switch, {
     },
   },
   "& .MuiSwitch-thumb": {
-    backgroundColor: darkMode ? theme.palette.primary.dark : theme.palette.secondary.light,
+    backgroundColor: darkMode
+      ? theme.palette.primary.dark
+      : theme.palette.secondary.light,
     width: 32,
     height: 32,
     "&:before": {

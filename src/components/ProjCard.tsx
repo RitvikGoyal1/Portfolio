@@ -6,7 +6,7 @@ export function ThreeDCardDemo({
   description = "Project description",
   imgUrl = "/default-project.jpg",
   date = "2024",
-  demoLink = "#"
+  demoLink = "#",
 }) {
   return (
     <CardContainer className="inter-var">
@@ -26,7 +26,8 @@ export function ThreeDCardDemo({
         </CardItem>
         <CardItem
           translateZ="100"
-          className="w-full mt-4 transition-transform duration-300 hover:scale-105">
+          className="w-full mt-4 transition-transform duration-300 hover:scale-105"
+        >
           <img
             src={imgUrl}
             height="400"
@@ -35,7 +36,7 @@ export function ThreeDCardDemo({
             alt={title}
             loading="lazy"
             onError={(e) => {
-              e.currentTarget.src = '/fallback-image.jpg';
+              e.currentTarget.src = "/fallback-image.jpg";
             }}
           />
         </CardItem>
