@@ -117,7 +117,7 @@ export default function Contact() {
             rel="noopener noreferrer"
             sx={linkStyle}
           >
-            <LinkedInIcon /> Connect with me on my LinkedIn Profile
+            <LinkedInIcon /> Connect on my LinkedIn Profile
           </Box>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
