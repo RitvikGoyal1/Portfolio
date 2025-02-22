@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Herosection: React.FC = () => {
   const [text, setText] = useState("Welcome!");
@@ -71,10 +72,11 @@ const Herosection: React.FC = () => {
       </motion.div>
 
       <Button
+        component={Link}
+        to="/portfolio"
         variant="contained"
         color="primary"
         size="large"
-        href="/portfolio"
       >
         See My Work
       </Button>
