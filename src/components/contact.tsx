@@ -74,7 +74,7 @@ export default function Contact() {
   };
 
   return (
-    <Box sx={{ py: 6, px: 3 }}>
+    <Box>
       <PageHeader
         title="Contact Me"
         subtitle="Feel free to reach out! Want to collaborate on a project? Have a question? Just want to chat? I'm open to opportunities and new connections!"
@@ -117,7 +117,7 @@ export default function Contact() {
             rel="noopener noreferrer"
             sx={linkStyle}
           >
-            <LinkedInIcon /> Connect on my LinkedIn Profile
+            <LinkedInIcon /> Connect with me on my LinkedIn Profile
           </Box>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
