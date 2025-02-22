@@ -1,4 +1,5 @@
 "use client";
+import { Box, Container } from "@mui/material"; // Add this import
 import { ThreeDCardDemo } from "../components/ProjCard";
 import PageHeader from "../components/PageHeader";
 import WorkIcon from "@mui/icons-material/Work";
@@ -48,25 +49,53 @@ const projects = [
 
 function Portfolio() {
   return (
-    <>
-      <PageHeader
-        title="My Portfolio"
-        subtitle="Explore my latest projects and creative works"
-        icon={<WorkIcon sx={{ fontSize: 40 }} />}
-      />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 min-h-[80vh] max-w-full mx-auto">
-        {projects.map((project, i) => (
-          <ThreeDCardDemo
-            key={i}
-            title={project.title}
-            description={project.description}
-            imgUrl={project.imgUrl}
-            date={project.date}
-            demoLink={project.demoLink}
-          />
-        ))}
-      </div>
-    </>
+    <Box sx={{ width: "100%", bgcolor: "background.default" }}>
+      <Container
+        maxWidth="xl"
+        sx={{
+          minHeight: "100vh",
+          bgcolor: "background.default",
+          py: 4,
+          px: { xs: 2, sm: 3, md: 4 },
+        }}
+      >
+        <PageHeader
+          title="My Portfolio"
+          subtitle="Explore my latest projects and creative works"
+          icon={<WorkIcon sx={{ fontSize: 40 }} />}
+        />
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(auto-fit, minmax(300px, 1fr))",
+              lg: "repeat(3, minmax(300px, 1fr))",
+            },
+            gap: { xs: 3, sm: 4 },
+            py: 4,
+            width: "100%",
+            mx: "auto",
+            "& > *": {
+              width: "100%",
+              maxWidth: "450px",
+              margin: "0 auto",
+            },
+          }}
+        >
+          {projects.map((project, i) => (
+            <ThreeDCardDemo
+              key={i}
+              title={project.title}
+              description={project.description}
+              imgUrl={project.imgUrl}
+              date={project.date}
+              demoLink={project.demoLink}
+            />
+          ))}
+        </Box>
+      </Container>
+    </Box>
   );
 }
 
