@@ -9,6 +9,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Experiences = lazy(() => import("./pages/Experiences"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Resume = lazy(() => import("./pages/Resume"));
 
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -46,6 +47,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/experiences" element={<Experiences />} />
+            <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/portfolio" element={<Portfolio />} />
           </Routes>

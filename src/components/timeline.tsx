@@ -41,14 +41,6 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         color: theme.palette.text.primary,
       }}
     >
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-4xl mb-4 max-w-4xl">My Journey!</h2>
-        <p
-          className={`${theme.palette.mode === "dark" ? "text-neutral-400" : "text-neutral-600"} text-sm md:text-base max-w-sm`}
-        >
-          Key moments of my computer science journey year by year! 🚀
-        </p>
-      </div>
 
       <div ref={timelineRef} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (

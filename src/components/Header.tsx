@@ -32,6 +32,9 @@ const Header: React.FC<HeaderProps> = ({ setDarkMode, darkMode }) => {
               <Link to="/experiences">Experiences</Link>
             </li>
             <li>
+              <Link to="/resume">Resume</Link>
+            </li>
+            <li>
               <Link to="/portfolio">Portfolio</Link>
             </li>
             <li>

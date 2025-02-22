@@ -37,7 +37,7 @@ const Herosection: React.FC = () => {
           variant="h2"
           sx={{
             mt: "15%",
-            fontSize: { xs: "2rem", sm: "3rem", md: "3.75rem" },
+            fontSize: { xs: "3rem", sm: "4.5rem", md: "5.5rem" },
           }}
         >
           {text}

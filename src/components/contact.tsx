@@ -9,6 +9,8 @@ import CardContent from "@mui/material/CardContent";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
+import PageHeader from "@/components/PageHeader";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -73,34 +75,11 @@ export default function Contact() {
 
   return (
     <Box sx={{ py: 6, px: 3 }}>
-      <Typography
-        variant="h2"
-        component="h1"
-        sx={{
-          textAlign: "center",
-          mb: 2,
-          fontWeight: "bold",
-          background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }}
-      >
-        Contact Me
-      </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "center",
-          mb: 6,
-          maxWidth: "600px",
-          mx: "auto",
-          color: theme.palette.text.secondary,
-        }}
-      >
-        Feel free to reach out! Want to collaborate on a project? Have a
-        question? Just want to chat? I'm open to opportunities and new
-        connections!
-      </Typography>
+      <PageHeader
+        title="Contact Me"
+        subtitle="Feel free to reach out! Want to collaborate on a project? Have a question? Just want to chat? I'm open to opportunities and new connections!"
+        icon={<ContactMailIcon sx={{ fontSize: 40 }} />}
+      />
 
       <Box sx={{ width: "100%", maxWidth: "800px", margin: "0 auto" }}>
         <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 2 }}>

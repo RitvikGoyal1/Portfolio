@@ -1,5 +1,7 @@
 "use client";
 import { ThreeDCardDemo } from "../components/ProjCard";
+import PageHeader from "../components/PageHeader";
+import WorkIcon from "@mui/icons-material/Work";
 
 const projects = [
   {
@@ -46,18 +48,25 @@ const projects = [
 
 function Portfolio() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 min-h-[80vh] max-w-full mx-auto">
-      {projects.map((project, i) => (
-        <ThreeDCardDemo
-          key={i}
-          title={project.title}
-          description={project.description}
-          imgUrl={project.imgUrl}
-          date={project.date}
-          demoLink={project.demoLink}
-        />
-      ))}
-    </div>
+    <>
+      <PageHeader
+        title="My Portfolio"
+        subtitle="Explore my latest projects and creative works"
+        icon={<WorkIcon sx={{ fontSize: 40 }} />}
+      />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 min-h-[80vh] max-w-full mx-auto">
+        {projects.map((project, i) => (
+          <ThreeDCardDemo
+            key={i}
+            title={project.title}
+            description={project.description}
+            imgUrl={project.imgUrl}
+            date={project.date}
+            demoLink={project.demoLink}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 
