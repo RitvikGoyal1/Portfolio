@@ -15,16 +15,13 @@
 
 .menu-3 a {
   font-family: "Open Sans Condensed", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   text-transform: uppercase;
   text-decoration: none;
   color: #76e0b2;
-  color: #76e0b2;
   outline: 2px solid transparent;
   outline-offset: 2px;
-
   text-shadow: 0 0 5px rgba(118, 224, 178, 0.7);
-
   position: relative;
   padding: 4px 0;
   transition:
@@ -69,4 +66,25 @@
 
 .MuiSwitch-root {
   margin-left: auto;
+}
+
+.mobile-link {
+  font-family: "Open Sans Condensed", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #76e0b2;
+  padding: 8px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.mobile-link:hover {
+  color: #56c596;
+  text-shadow:
+    0 0 5px rgba(86, 197, 150, 0.5),
+    0 0 10px rgba(86, 197, 150, 0.5);
+  background-color: rgba(86, 197, 150, 0.1);
 }

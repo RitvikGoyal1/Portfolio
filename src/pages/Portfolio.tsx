@@ -1,12 +1,13 @@
 "use client";
-import { Box, Container } from "@mui/material"; // Add this import
+import { Box, Container } from "@mui/material";
 import { ThreeDCardDemo } from "../components/ProjCard";
 import PageHeader from "../components/PageHeader";
 import WorkIcon from "@mui/icons-material/Work";
+import ThemedBackground from "../components/ThemedBackground";
 
 const projects = [
   {
-    title: "Panther Press Website",
+    title: "Panther Press",
     description: "School News Website",
     imgUrl:
       "https://cdn.hack.pet/slackcdn/01f43dd98ef044d832ffdc3784f79e23.png",
@@ -14,12 +15,20 @@ const projects = [
     demoLink: "https://pantherpress.ca",
   },
   {
-    title: "Robotics Website",
+    title: "Robotics",
     description: "School's FRC Robotic's team website",
     imgUrl:
       "https://cdn.hackclubber.dev/slackcdn/961714d89d5952ddd19b708cde7be192.png",
     date: "2024",
     demoLink: "https://vicparkrobotics.ca/",
+  },
+  {
+    title: "Scrapyard | Toronto",
+    description: "Local hackathon website",
+    imgUrl:
+      "https://hc-cdn.hel1.your-objectstorage.com/s/v3/851dccf54239ff145a0b9d323897ad55a0692de5_image.png",
+    date: "2025",
+    demoLink: "https://scrapyard.hackclub.com/toronto",
   },
   {
     title: "Build-A-Budget",
@@ -49,38 +58,32 @@ const projects = [
 
 function Portfolio() {
   return (
-    <Box sx={{ width: "100%", bgcolor: "background.default" }}>
+    <ThemedBackground>
+      <PageHeader
+        title="My Portfolio"
+        subtitle="Explore my latest projects and creative works"
+        icon={<WorkIcon sx={{ fontSize: 40 }} />}
+      />
       <Container
         maxWidth="xl"
         sx={{
-          minHeight: "100vh",
-          bgcolor: "background.default",
-          py: 4,
+          bgcolor: "transparent",
+          py: 2,
           px: { xs: 2, sm: 3, md: 4 },
         }}
       >
-        <PageHeader
-          title="My Portfolio"
-          subtitle="Explore my latest projects and creative works"
-          icon={<WorkIcon sx={{ fontSize: 40 }} />}
-        />
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: {
               xs: "1fr",
-              sm: "repeat(auto-fit, minmax(300px, 1fr))",
-              lg: "repeat(3, minmax(300px, 1fr))",
+              sm: "repeat(auto-fit, minmax(280px, 1fr))",
+              md: "repeat(2, 1fr)",
+              lg: "repeat(3, 1fr)",
             },
-            gap: { xs: 3, sm: 4 },
-            py: 4,
+            gap: 3,
+            py: 2,
             width: "100%",
-            mx: "auto",
-            "& > *": {
-              width: "100%",
-              maxWidth: "450px",
-              margin: "0 auto",
-            },
           }}
         >
           {projects.map((project, i) => (
@@ -95,7 +98,7 @@ function Portfolio() {
           ))}
         </Box>
       </Container>
-    </Box>
+    </ThemedBackground>
   );
 }
 

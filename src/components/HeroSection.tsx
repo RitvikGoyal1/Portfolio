@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ScrollIndicator from "./ScrollIndicator";
 
-const Herosection: React.FC = () => {
+const HeroSection: React.FC = () => {
   const [text, setText] = useState("Welcome!");
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const Herosection: React.FC = () => {
         textAlign: "center",
         gap: 4,
         p: { xs: 2, md: 4 },
+        position: "relative",
       }}
     >
       <motion.div
@@ -70,7 +72,6 @@ const Herosection: React.FC = () => {
           A passionate Software Developer in Toronto!
         </Typography>
       </motion.div>
-
       <Button
         component={Link}
         to="/portfolio"
@@ -80,8 +81,9 @@ const Herosection: React.FC = () => {
       >
         See My Work
       </Button>
+      <ScrollIndicator />
     </Box>
   );
 };
 
-export default Herosection;
+export default HeroSection;

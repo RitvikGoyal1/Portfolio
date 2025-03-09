@@ -1,23 +1,26 @@
-import Timeline from "@/components/timeline";
-import PageHeader from "@/components/PageHeader";
+import Box from "@mui/material/Box";
+import PageHeader from "../components/PageHeader";
 import TimelineIcon from "@mui/icons-material/Timeline";
+import Timeline from "@/components/timeline";
+import ThemedBackground from "../components/ThemedBackground";
 
 function Experiences() {
   return (
-    <>
+    <ThemedBackground>
       <PageHeader
         title="My Journey"
         subtitle="Key moments of my computer science journey year by year! 🚀"
         icon={<TimelineIcon sx={{ fontSize: 40 }} />}
       />
+
       <Timeline
         data={[
           {
             title: "Started",
             content: `<ul>
-                          <li>➣ Discovered a passion for programming during 6th-7th grade.</li>
-                          <li>➣ Learned Scratch through summer library workshops.</li>
-                        </ul>`,
+                        <li>➣ Discovered a passion for programming in grade school.</li>
+                        <li>➣ Learned Scratch during summer workshops.</li>
+                      </ul>`,
           },
           {
             title: "2022",
@@ -51,7 +54,7 @@ function Experiences() {
           },
         ]}
       />
-    </>
+    </ThemedBackground>
   );
 }
 

@@ -37,11 +37,9 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
       ref={containerRef}
       className="w-full font-sans md:px-10"
       style={{
-        backgroundColor: theme.palette.background.default,
         color: theme.palette.text.primary,
       }}
     >
-
       <div ref={timelineRef} className="relative max-w-7xl mx-auto pb-20">
         {data.map((item, index) => (
           <motion.div
@@ -59,7 +57,6 @@ const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <h3
                 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold"
                 style={{
-                  backgroundColor: theme.palette.background.default,
                   color: theme.palette.text.primary,
                 }}
               >

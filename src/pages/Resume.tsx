@@ -4,13 +4,14 @@ import { motion } from "framer-motion";
 import DownloadIcon from "@mui/icons-material/Download";
 import DescriptionIcon from "@mui/icons-material/Description";
 import PageHeader from "@/components/PageHeader";
+import ThemedBackground from "../components/ThemedBackground";
 
 const Resume = () => {
   return (
-    <Box sx={{ width: "100%", bgcolor: "background.default" }}>
+    <ThemedBackground>
       <Container
         maxWidth="lg"
-        sx={{ minHeight: "100vh", bgcolor: "background.default" }}
+        sx={{ minHeight: "100vh", bgcolor: "transparent" }}
       >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -117,7 +118,7 @@ const Resume = () => {
           </Box>
         </motion.div>
       </Container>
-    </Box>
+    </ThemedBackground>
   );
 };
 

@@ -43,6 +43,8 @@ const MaterialUISwitch = styled(Switch, {
       : theme.palette.secondary.light,
     width: 32,
     height: 32,
+    transition:
+      "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s",
     "&:before": {
       content: "''",
       position: "absolute",
