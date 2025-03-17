@@ -66,8 +66,12 @@ const skillCategories = [
       },
       {
         name: "Aceternity UI",
-        icon: "https://ui.aceternity.com/_next/image?url=%2Flogo-dark.png&w=128&q=75",
+        icon: "https://th.bing.com/th/id/OIP.k7bUWvQbXDQSgUXyJQbWeAAAAA?rs=1&pid=ImgDetMain",
       },
+      {
+        name: "shadcn/ui",
+        icon: "https://cdn.hack.pet/U084RT5K678/Screenshot 2025-03-17 152859.png",
+      }
     ],
   },
   {
