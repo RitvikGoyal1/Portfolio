@@ -11,8 +11,8 @@ interface SEOProps {
 
 const SEO: React.FC<SEOProps> = ({
   title = "Ritvik Goyal - Software Developer",
-  description = "Personal portfolio of Ritvik Goyal, a software developer specializing in web development and modern JavaScript frameworks.",
-  keywords = "ritvik goyal, software developer, web developer, react, typescript",
+  description = "Explore the personal portfolio of Ritvik Goyal, a passionate software developer based in Toronto, specializing in creating modern web applications using React, TypeScript, and other cutting-edge technologies.", // Made default description longer
+  keywords = "ritvik goyal, software developer, web developer, react, typescript, portfolio, toronto", // Added toronto
   image = "https://cdn.hack.pet/slackcdn/8dc629a933313d44753d58ee864bbee0.png",
   url = "https://ritvikgoyal.com",
   siteName = "Ritvik Goyal Portfolio",
@@ -30,6 +30,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content={siteName} />
+      <meta property="og:locale" content="en_US" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={url} />
