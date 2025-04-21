@@ -95,9 +95,6 @@ function Portfolio() {
             px: { xs: 2, sm: 3, md: 4 },
           }}
         >
-          <Typography variant="body1" sx={{ mb: 4, textAlign: 'center', maxWidth: '800px', mx: 'auto' }}>
-            Here you can find a curated selection of projects I've worked on. These range from hackathon challenges to personal applications and websites I've developed. Each card provides a glimpse into the project, and you can click "View Demo" to explore further.
-          </Typography>
           <Box
             sx={{
               display: "grid",
