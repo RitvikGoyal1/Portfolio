@@ -4,8 +4,26 @@ import { ThreeDCardDemo } from "../components/ProjCard";
 import PageHeader from "../components/PageHeader";
 import WorkIcon from "@mui/icons-material/Work";
 import ThemedBackground from "../components/ThemedBackground";
+import SEO from "@/components/SEO";
 
 const projects = [
+  {
+    title: "mapSTEM",
+    description: "STEM Events Map",
+    imgUrl:
+      "https://hc-cdn.hel1.your-objectstorage.com/s/v3/5f0a47b1fc3e7252fcd733a29639e7b96d7f3f51_befunky-collage__1_.jpg",
+    date: "2025",
+    demoLink: "https://apps.apple.com/us/app/mapstem/id6504693720",
+  },
+  {
+    title: "Note Sage App",
+    description: "AI Note Making and Quizes App for Students",
+    imgUrl:
+      "https://hc-cdn.hel1.your-objectstorage.com/s/v3/8b15d4d6039446dc3b894f6e8823a60634686d5d_image.png",
+    date: "2025",
+    demoLink:
+      "https://www.figma.com/proto/zRiY1AQkOvauA9fqb9nkSc/App7?node-id=3563-1507&p=f&t=zWa2wGtB0jjhq1UQ-0",
+  },
   {
     title: "Panther Press",
     description: "School News Website",
@@ -59,45 +77,51 @@ const projects = [
 function Portfolio() {
   return (
     <ThemedBackground>
+      <SEO
+        title="My Portfolio - Ritvik Goyal"
+        description="Browse through my collection of web development projects, including hackathon submissions, personal apps, and websites, showcasing my skills in React, TypeScript, and more."
+      />
       <PageHeader
         title="My Portfolio"
-        subtitle="Explore my latest projects and creative works"
+        subtitle="Explore a selection of my latest projects, hackathon creations, and personal works demonstrating my passion for software development and design."
         icon={<WorkIcon sx={{ fontSize: 40 }} />}
       />
-      <Container
-        maxWidth="xl"
-        sx={{
-          bgcolor: "transparent",
-          py: 2,
-          px: { xs: 2, sm: 3, md: 4 },
-        }}
-      >
-        <Box
+      <main>
+        <Container
+          maxWidth="xl"
           sx={{
-            display: "grid",
-            gridTemplateColumns: {
-              xs: "1fr",
-              sm: "repeat(auto-fit, minmax(280px, 1fr))",
-              md: "repeat(2, 1fr)",
-              lg: "repeat(3, 1fr)",
-            },
-            gap: 3,
+            bgcolor: "transparent",
             py: 2,
-            width: "100%",
+            px: { xs: 2, sm: 3, md: 4 },
           }}
         >
-          {projects.map((project, i) => (
-            <ThreeDCardDemo
-              key={i}
-              title={project.title}
-              description={project.description}
-              imgUrl={project.imgUrl}
-              date={project.date}
-              demoLink={project.demoLink}
-            />
-          ))}
-        </Box>
-      </Container>
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "repeat(auto-fit, minmax(280px, 1fr))",
+                md: "repeat(2, 1fr)",
+                lg: "repeat(3, 1fr)",
+              },
+              gap: 3,
+              py: 2,
+              width: "100%",
+            }}
+          >
+            {projects.map((project, i) => (
+              <ThreeDCardDemo
+                key={i}
+                title={project.title}
+                description={project.description}
+                imgUrl={project.imgUrl}
+                date={project.date}
+                demoLink={project.demoLink}
+              />
+            ))}
+          </Box>
+        </Container>
+      </main>
     </ThemedBackground>
   );
 }

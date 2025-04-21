@@ -13,7 +13,7 @@ export function ThreeDCardDemo({
 
   return (
     <CardContainer className="inter-var">
-      <CardBody className="bg-gray-50 relative group/card hover:bg-gray-100 dark:bg-gray-800/90 dark:hover:bg-gray-700/95 dark:border-white/[0.2] border-black/[0.1] border-2 rounded-xl p-6 w-full h-auto shadow-lg hover:shadow-2xl transition-all duration-300">
+      <CardBody className="bg-gray-50 relative group/card hover:bg-gray-100 dark:bg-gray-800/90 dark:hover:bg-gray-700/95 dark:border-white/[0.2] border-black/[0.1] border-2 rounded-xl p-6 w-full h-full flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300">
         <CardItem
           translateZ="50"
           className="text-xl font-bold text-neutral-600 dark:text-white"
@@ -29,7 +29,7 @@ export function ThreeDCardDemo({
         </CardItem>
         <CardItem
           translateZ="100"
-          className="w-full mt-4 transition-transform duration-300 hover:scale-105 relative"
+          className="w-full mt-4 transition-transform duration-300 hover:scale-105 relative flex-grow rounded-xl overflow-hidden"
         >
           {!imageLoaded && (
             <div className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700 rounded-xl">
@@ -57,9 +57,7 @@ export function ThreeDCardDemo({
           )}
           <img
             src={imgUrl}
-            height="400"
-            width="800"
-            className={`h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`h-60 w-full object-cover group-hover/card:shadow-xl ${imageLoaded ? "opacity-100" : "opacity-0"}`} // Changed object-contain to object-cover
             alt={title}
             loading="lazy"
             onLoad={() => setImageLoaded(true)}

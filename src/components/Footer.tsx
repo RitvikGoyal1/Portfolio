@@ -1,9 +1,11 @@
 import React from "react";
 import { Box, Typography, Link } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
 const Footer: React.FC = () => {
   return (
     <Box
+      component="footer"
       sx={{
         bgcolor: "primary.main",
         color: "white",
@@ -15,13 +17,19 @@ const Footer: React.FC = () => {
       }}
     >
       <Typography variant="body2">
-        © {new Date().getFullYear()} My Portfolio. All rights reserved.
+        © {new Date().getFullYear()} Ritvik Goyal. All rights reserved.{" "}
       </Typography>
       <Typography variant="body2">
+        <Link component={RouterLink} to="/" color="inherit" aria-label="Home Page">
+          Home
+        </Link>{" "}
+        |{" "}
         <Link
           href="https://github.com/RitvikGoyal1"
           color="inherit"
           aria-label="GitHub Profile"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Github
         </Link>{" "}
@@ -30,6 +38,8 @@ const Footer: React.FC = () => {
           href="https://www.linkedin.com/in/ritvikgoyal1/"
           color="inherit"
           aria-label="LinkedIn Profile"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           LinkedIn
         </Link>

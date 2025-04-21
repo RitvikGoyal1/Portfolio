@@ -20,7 +20,6 @@ import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import BuildIcon from "@mui/icons-material/Build";
 import SchoolIcon from "@mui/icons-material/School";
 
-// Information for each category
 const skillCategories = [
   {
     category: "Languages",
@@ -71,7 +70,8 @@ const skillCategories = [
       {
         name: "shadcn/ui",
         icon: "https://cdn.hack.pet/U084RT5K678/Screenshot 2025-03-17 152859.png",
-      }
+      },
+      { name: "Figma", icon: "https://skillicons.dev/icons?i=figma" },
     ],
   },
   {
@@ -106,7 +106,7 @@ const skillCategories = [
       { name: "Git", icon: "https://skillicons.dev/icons?i=git" },
       { name: "Eclipse", icon: "https://skillicons.dev/icons?i=eclipse" },
       { name: "Vercel", icon: "https://skillicons.dev/icons?i=vercel" },
-      { name: "Netfily", icon: "https://skillicons.dev/icons?i=netlify" },
+      { name: "Netlify", icon: "https://skillicons.dev/icons?i=netlify" },
     ],
   },
   {
@@ -145,7 +145,7 @@ const MergedSkillsSection: React.FC = () => {
   const isDark = theme.palette.mode === "dark";
   const [activeTab, setActiveTab] = useState(0);
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
   };
 

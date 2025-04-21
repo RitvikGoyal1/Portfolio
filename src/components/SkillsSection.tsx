@@ -20,18 +20,12 @@ import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import BuildIcon from "@mui/icons-material/Build";
 import SchoolIcon from "@mui/icons-material/School";
 
-interface SkillProps {
-  name: string;
-  icon: string;
-  color?: string;
-}
-
 const SkillsSection: React.FC = () => {
   const theme = useTheme();
   const [activeTab, setActiveTab] = useState(0);
   const isDark = theme.palette.mode === "dark";
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
   };
 

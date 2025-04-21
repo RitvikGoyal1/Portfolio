@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useLayoutEffect, useState } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useTheme } from "@mui/material/styles";
 

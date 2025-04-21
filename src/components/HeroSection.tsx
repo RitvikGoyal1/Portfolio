@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
   return (
     <Box
       sx={{
-        minHeight: "90vh",
+        minHeight: "75vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -39,7 +39,6 @@ const HeroSection: React.FC = () => {
         <Typography
           variant="h2"
           sx={{
-            mt: "15%",
             fontSize: { xs: "3rem", sm: "4.5rem", md: "5.5rem" },
           }}
         >

@@ -6,6 +6,7 @@ interface SEOProps {
   keywords?: string;
   image?: string;
   url?: string;
+  siteName?: string; // Added siteName prop
 }
 
 const SEO: React.FC<SEOProps> = ({
@@ -14,10 +15,12 @@ const SEO: React.FC<SEOProps> = ({
   keywords = "ritvik goyal, software developer, web developer, react, typescript",
   image = "https://cdn.hack.pet/slackcdn/8dc629a933313d44753d58ee864bbee0.png",
   url = "https://ritvikgoyal.com",
+  siteName = "Ritvik Goyal Portfolio",
 }) => {
   return (
     <Helmet>
       <title>{title}</title>
+      <link rel="canonical" href={url} />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
 
@@ -26,6 +29,7 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      <meta property="og:site_name" content={siteName} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={url} />

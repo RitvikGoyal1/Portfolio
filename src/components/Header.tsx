@@ -8,7 +8,6 @@ import {
   List,
   ListItem,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles"; // Add this import
 import MenuIcon from "@mui/icons-material/Menu";
 import "./Header.css";
 import MaterialUISwitch from "./MaterialUISwitch";
@@ -20,7 +19,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ setDarkMode, darkMode }) => {
-  const theme = useTheme(); // Get the theme
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
