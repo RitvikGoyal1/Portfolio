@@ -57,7 +57,7 @@ export function ThreeDCardDemo({
           )}
           <img
             src={imgUrl}
-            className={`h-60 w-full object-cover group-hover/card:shadow-xl ${imageLoaded ? "opacity-100" : "opacity-0"}`} // Changed object-contain to object-cover
+            className={`h-60 w-full object-cover group-hover/card:shadow-xl ${imageLoaded ? "opacity-100" : "opacity-0"}`}
             alt={title}
             loading="lazy"
             onLoad={() => setImageLoaded(true)}
