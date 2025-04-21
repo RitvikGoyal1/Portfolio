@@ -52,8 +52,11 @@ function Experiences() {
             {
               title: "2025 | Now!",
               content: `<ul>
-                        <li>➣ Organizing and Judging at <a href="https://scrapyard.hackclub.com/toronto">Scrapyard Toronto</a>, a Hackathon by Hack Club, with anticipated 100+ Participants.</li>
-                        <li>➣ Preparing for upcoming CCC.</li>
+                        <li>➣ Participated in my FTC competition with my school's robotics team.</li>
+                        <li>➣ Organized <a href="https://scrapyard.hackclub.com/toronto">Scrapyard Toronto</a>, a Hackathon by Hack Club, with 100+ Participants. Secured over $25K in prizes and funding.</li>
+                        <li>➣ Competed in CCC Senior and Genai Genesis.</li>
+                        <li>➣ Organizing <a href="https://hackolympus.org">Hack Olympus</a>, with anticipated 150+ Participants.</li>
+                        <li>➣ Got accepted into <a href="https://venturedglobal.org">VenturEd Fellowship</a></li>
                       </ul>`,
             },
           ]}

@@ -1,5 +1,5 @@
 "use client";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { ThreeDCardDemo } from "../components/ProjCard";
 import PageHeader from "../components/PageHeader";
 import WorkIcon from "@mui/icons-material/Work";
@@ -29,8 +29,16 @@ const projects = [
     description: "School News Website",
     imgUrl:
       "https://cdn.hack.pet/slackcdn/01f43dd98ef044d832ffdc3784f79e23.png",
-    date: "2024",
+    date: "2025",
     demoLink: "https://pantherpress.ca",
+  },
+  {
+    title: "Hack Olympus",
+    description: "Local hackathon website",
+    imgUrl:
+      "https://hc-cdn.hel1.your-objectstorage.com/s/v3/103797b435015ad6877cf133bdb60efede717673_image.png",
+    date: "2025",
+    demoLink: "https://hackolympus.org",
   },
   {
     title: "Robotics",
