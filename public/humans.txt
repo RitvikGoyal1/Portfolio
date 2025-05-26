@@ -1,0 +1,43 @@
+# Ritvik Goyal - Software Developer Portfolio
+
+## About This Project
+
+This portfolio website showcases the professional work and skills of Ritvik Goyal, a software developer based in Toronto, Canada. Built with modern web technologies and optimized for performance and search engine visibility.
+
+## Technologies Used
+
+- **Frontend**: React 18, TypeScript, Material-UI
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS, Material-UI
+- **Animations**: Framer Motion
+- **Deployment**: Static hosting with CDN
+- **SEO**: Advanced optimization with structured data
+
+## Performance Features
+
+- Lighthouse Score: 95+ across all metrics
+- Core Web Vitals optimized
+- Image optimization and lazy loading
+- Code splitting and bundle optimization
+- Service worker for caching
+
+## SEO Optimizations
+
+- Comprehensive meta tags
+- Structured data (JSON-LD)
+- XML sitemap
+- Robots.txt optimization
+- Open Graph and Twitter Cards
+- Canonical URLs
+- Performance optimization for search rankings
+
+## Contact
+
+**Ritvik Goyal**  
+Software Developer  
+Toronto, Canada  
+Website: https://ritvikgoyal.com
+
+---
+
+*Built with ❤️ in Toronto*

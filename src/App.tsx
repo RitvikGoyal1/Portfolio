@@ -10,6 +10,9 @@ import CustomCursor from "./components/CustomCursor";
 import { motion } from "framer-motion";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { HelmetProvider } from "react-helmet-async";
+import GoogleAnalytics from "./components/GoogleAnalytics";
+import seoConfig from "./config/seoConfig";
+import SEOAudit from "./components/SEOAudit";
 
 const Home = lazy(() => import("./pages/Home"));
 const Experiences = lazy(() => import("./pages/Experiences"));
@@ -49,11 +52,11 @@ const App: React.FC = () => {
     { path: "/contact", element: Contact },
     { path: "/portfolio", element: Portfolio },
   ];
-
   return (
     <HelmetProvider>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <GoogleAnalytics />
         <div
           style={{
             position: "relative",
@@ -110,9 +113,10 @@ const App: React.FC = () => {
               </Suspense>
               <Footer />
             </Router>
-          </div>
+          </div>{" "}
         </div>
         {window.innerWidth > 768 && <CustomCursor />}
+        {seoConfig.features.enableSEOAudit && <SEOAudit />}
       </ThemeProvider>
     </HelmetProvider>
   );
