@@ -78,10 +78,17 @@ const skillCategories = [
     category: "Backend & Cloud",
     icon: <CloudIcon />,
     description: "Server-side technologies and cloud services I work with",
-    skills: [
+    skills:
+      [
+      { name: "Node.js", icon: "https://skillicons.dev/icons?i=nodejs" },
+      { name: "Express", icon: "https://skillicons.dev/icons?i=express" },
       { name: "Flask", icon: "https://skillicons.dev/icons?i=flask" },
       { name: "Firebase", icon: "https://skillicons.dev/icons?i=firebase" },
+      { name: "MongoDB", icon: "https://skillicons.dev/icons?i=mongodb" },
+      { name: "PostgreSQL", icon: "https://skillicons.dev/icons?i=postgresql" },
+      { name: "AWS", icon: "https://skillicons.dev/icons?i=aws" },
       { name: "Cloudflare", icon: "https://skillicons.dev/icons?i=cloudflare" },
+      { name: "Docker", icon: "https://skillicons.dev/icons?i=docker" },
     ],
   },
   {

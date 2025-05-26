@@ -8,77 +8,109 @@ import SEO from "@/components/SEO";
 
 const projects = [
   {
+    title: "Synapse Investments",
+    description: "AI Powered Stock Predictions and Trading App",
+    imgUrl:
+      "https://hc-cdn.hel1.your-objectstorage.com/s/v3/14ef1bcb39c3af9013ed87600ceecb2e17ed4c72_image.png",
+    date: "2025",
+    demoLink: "https://synapseinvests.com",
+    tech: ["React", "Vite", "Python", "AI/ML", "Supabase", "Tailwind CSS"],
+  },
+  {
     title: "mapSTEM",
-    description: "STEM Events Map",
+    description:
+      "Mobile app connecting students with STEM events • Published on App Store • React Native + Firebase",
     imgUrl:
       "https://hc-cdn.hel1.your-objectstorage.com/s/v3/5f0a47b1fc3e7252fcd733a29639e7b96d7f3f51_befunky-collage__1_.jpg",
     date: "2025",
     demoLink: "https://apps.apple.com/us/app/mapstem/id6504693720",
+    tech: [
+      "React Native",
+      "Expo",
+      "Google Maps",
+      "Firebase",
+      "React Navigation",
+    ],
   },
   {
     title: "Note Sage App",
-    description: "AI Note Making and Quizes App for Students",
+    description:
+      "AI-powered study companion • Automated note-taking & quiz generation • Full-stack development",
     imgUrl:
       "https://hc-cdn.hel1.your-objectstorage.com/s/v3/8b15d4d6039446dc3b894f6e8823a60634686d5d_image.png",
     date: "2025",
     demoLink:
       "https://www.figma.com/proto/zRiY1AQkOvauA9fqb9nkSc/App7?node-id=3563-1507&p=f&t=zWa2wGtB0jjhq1UQ-0",
+    tech: ["React Native", "AI/ML", "Node.js", "OpenAI API", "MongoDB"],
   },
   {
     title: "Panther Press",
-    description: "School News Website",
+    description:
+      "Modern school news platform • 500+ monthly readers • SEO optimized • Content management system",
     imgUrl:
       "https://cdn.hack.pet/slackcdn/01f43dd98ef044d832ffdc3784f79e23.png",
     date: "2025",
     demoLink: "https://pantherpress.ca",
+    tech: ["Astro", "React", "Tailwind CSS", "MDX", "Keystatic CMS"],
   },
   {
     title: "Hack Olympus",
-    description: "Local hackathon website",
+    description: "Hackathon Event management website",
     imgUrl:
       "https://hc-cdn.hel1.your-objectstorage.com/s/v3/103797b435015ad6877cf133bdb60efede717673_image.png",
     date: "2025",
     demoLink: "https://hackolympus.org",
+    tech: ["HTML", "CSS", "JavaScript", "Database"],
   },
   {
     title: "Robotics",
-    description: "School's FRC Robotic's team website",
+    description:
+      "School's FRC Robotic's team website • Modern responsive design • Team showcase platform",
     imgUrl:
       "https://cdn.hackclubber.dev/slackcdn/961714d89d5952ddd19b708cde7be192.png",
     date: "2024",
     demoLink: "https://vicparkrobotics.ca/",
+    tech: ["HTML", "CSS", "JavaScript", "Responsive", "Bootstrap"],
   },
   {
     title: "Scrapyard | Toronto",
-    description: "Local hackathon website",
+    description:
+      "Hackathon event website • 100+ participants • Event management & registration system",
     imgUrl:
       "https://hc-cdn.hel1.your-objectstorage.com/s/v3/851dccf54239ff145a0b9d323897ad55a0692de5_image.png",
     date: "2025",
     demoLink: "https://scrapyard.hackclub.com/toronto",
+    tech: ["Next.js", "Tailwind CSS", "MDX", "Leaflet Maps", "Airtable"],
   },
   {
     title: "Build-A-Budget",
-    description: "Ignition Hacks Hackathon Project",
+    description:
+      "Personal finance app • Hackathon winner • Budget tracking & financial planning tools",
     imgUrl:
       "https://cdn.hackclubber.dev/slackcdn/84062b6c51651836ee2ba413be4b67e9.png",
     date: "2024",
     demoLink: "https://sassy33893.github.io/Budgeting-Fun/pages/index.html",
+    tech: ["JavaScript", "Charts.js", "Local Storage", "Bootstrap", "Finance"],
   },
   {
     title: "Child Trafficking Aid",
-    description: "AmberHacks Hackathon Project",
+    description:
+      "Social impact web app • Resource finder for victims • AmberHacks winning project",
     imgUrl:
       "https://cdn.hackclubber.dev/slackcdn/1e30d22c9b1091efaebf47a116cff8c5.png",
     date: "2023",
     demoLink: "https://ritvikgoyal1.github.io/Child-Trafficking-Aid/",
+    tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "Social Impact"],
   },
   {
     title: "To-Do List",
-    description: "A simple to-do list tracker",
+    description:
+      "Task management app • Clean UI design • Local storage implementation",
     imgUrl:
       "https://cdn.hack.pet/slackcdn/285fe75a0db3c54200c3099de724dbb4.png",
     date: "2022",
     demoLink: "https://ritvikgoyal1.github.io/todolist/",
+    tech: ["HTML", "CSS", "JavaScript", "Local Storage", "Vanilla JS"],
   },
 ];
 
@@ -117,6 +149,7 @@ function Portfolio() {
               width: "100%",
             }}
           >
+            {" "}
             {projects.map((project, i) => (
               <ThreeDCardDemo
                 key={i}
@@ -125,6 +158,7 @@ function Portfolio() {
                 imgUrl={project.imgUrl}
                 date={project.date}
                 demoLink={project.demoLink}
+                tech={project.tech}
               />
             ))}
           </Box>
