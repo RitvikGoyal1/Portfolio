@@ -49,7 +49,7 @@ function Experiences() {
         <LocalBusinessSEO page="experiences" />
         <PageHeader
           title="My Journey"
-          subtitle="A timeline highlighting the key moments, learning experiences, and projects throughout my computer science journey year by year! 🚀"
+          subtitle="A timeline highlighting the key moments, learning experiences, and projects throughout my computer science journey year by year!"
           icon={<TimelineIcon sx={{ fontSize: 40 }} />}
         />
         <main>
