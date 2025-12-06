@@ -53,7 +53,7 @@ const projects = [
     description:
       "Modern school news platform • 500+ monthly readers • SEO optimized • Content management system",
     imgUrl:
-      "https://cdn.hack.pet/slackcdn/01f43dd98ef044d832ffdc3784f79e23.png",
+      "https://hc-cdn.hel1.your-objectstorage.com/s/v3/d95ce954bc60a8daeb16a2ff237f6d2194aa8d1e_image.png",
     date: "2025",
     demoLink: "https://panther-press.pages.dev",
     tech: ["Astro", "React", "Tailwind CSS", "MDX", "Keystatic CMS"],
