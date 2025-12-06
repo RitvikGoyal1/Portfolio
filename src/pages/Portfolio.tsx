@@ -55,7 +55,7 @@ const projects = [
     imgUrl:
       "https://cdn.hack.pet/slackcdn/01f43dd98ef044d832ffdc3784f79e23.png",
     date: "2025",
-    demoLink: "https://pantherpress.ca",
+    demoLink: "https://panther-press.pages.dev",
     tech: ["Astro", "React", "Tailwind CSS", "MDX", "Keystatic CMS"],
   },
   {
