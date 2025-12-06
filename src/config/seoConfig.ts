@@ -2,10 +2,10 @@
 const seoConfig = {
   // Google Analytics
   googleAnalytics: {
-    measurementId: process.env.REACT_APP_GA_MEASUREMENT_ID || "G-XXXXXXXXXX",
+    measurementId: import.meta.env.VITE_GA_MEASUREMENT_ID || "G-XXXXXXXXXX",
     enableEnhancedEcommerce: true,
     enableUserTiming: true,
-    enableDebugMode: process.env.NODE_ENV === "development",
+    enableDebugMode: import.meta.env.DEV,
   },
 
   // Site Information
@@ -97,7 +97,7 @@ const seoConfig = {
     enableServiceWorker: process.env.NODE_ENV === "production",
     enableCriticalResourceHints: true,
     enableImageOptimization: true,
-    webVitalsEndpoint: process.env.REACT_APP_WEBVITALS_ENDPOINT || null,
+      webVitalsEndpoint: import.meta.env.VITE_WEBVITALS_ENDPOINT || null,
   },
 
   // Feature Flags
@@ -107,7 +107,7 @@ const seoConfig = {
     enableContact: true,
     enableResume: true,
     enableExperiences: true,
-    enableSEOAudit: process.env.NODE_ENV === "development",
+    enableSEOAudit: import.meta.env.DEV,
   },
 
   // Keywords by page

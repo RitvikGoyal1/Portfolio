@@ -13,7 +13,7 @@ const LocalBusinessSEO: React.FC<LocalBusinessSEOProps> = ({
     "@type": "ProfessionalService",
     name: "Ritvik Goyal - Software Development Services",
     url: "https://ritvikgoyal.com",
-    logo: "https://cdn.hack.pet/slackcdn/8dc629a933313d44753d58ee864bbee0.png",
+    logo: "https://placehold.co/512",
     description:
       "Professional software development services in Toronto. Expert in React, TypeScript, Python, and full-stack web development.",
     address: {

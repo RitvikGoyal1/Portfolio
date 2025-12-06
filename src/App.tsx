@@ -116,7 +116,7 @@ const App: React.FC = () => {
           </div>{" "}
         </div>
         {window.innerWidth > 768 && <CustomCursor />}
-        {seoConfig.features.enableSEOAudit && <SEOAudit />}
+        {/* SEOAudit removed as requested */}
       </ThemeProvider>
     </HelmetProvider>
   );

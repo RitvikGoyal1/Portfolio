@@ -28,9 +28,7 @@ const PerformanceOptimization: React.FC<PerformanceOptimizationProps> = ({
       });
 
       // Preload critical images
-      const criticalImages = [
-        "https://cdn.hack.pet/slackcdn/8dc629a933313d44753d58ee864bbee0.png",
-      ];
+      const criticalImages = ["https://placehold.co/512"];
 
       criticalImages.forEach((src) => {
         const link = document.createElement("link");

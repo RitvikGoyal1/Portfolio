@@ -23,7 +23,7 @@ const STATIC_ASSETS = [
 // Critical external resources
 const EXTERNAL_RESOURCES = [
   "https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap",
-  "https://cdn.hack.pet/slackcdn/8dc629a933313d44753d58ee864bbee0.png",
+  "https://placehold.co/512",
 ];
 
 // Install event - cache static assets

@@ -5,21 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ritvik Goyal - Portfolio</title>
     <base href="/" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://cdn.hack.pet/slackcdn/8dc629a933313d44753d58ee864bbee0.png"
-    />
+    <link rel="icon" type="image/png" href="https://placehold.co/512" />
     <!-- Blocking theme script to prevent flash -->
     <script>
-      (function() {
+      (function () {
         // Read theme preference from localStorage (default to dark)
-        const darkMode = localStorage.getItem('darkMode');
-        const isDark = darkMode === null ? true : darkMode === 'true';
-        
+        const darkMode = localStorage.getItem("darkMode");
+        const isDark = darkMode === null ? true : darkMode === "true";
+
         // Apply dark class immediately
         if (isDark) {
-          document.documentElement.classList.add('dark');
+          document.documentElement.classList.add("dark");
         }
       })();
     </script>
@@ -54,7 +50,8 @@
         pointer-events: none;
       }
       @keyframes gradientAnimation {
-        0%, 100% {
+        0%,
+        100% {
           background-position: 0% 50%;
         }
         50% {
@@ -70,14 +67,16 @@
         animation: spin 1s linear infinite;
       }
       @keyframes spin {
-        to { transform: rotate(360deg); }
+        to {
+          transform: rotate(360deg);
+        }
       }
       /* Light theme overrides */
       html:not(.dark) {
-        background: linear-gradient(-45deg, #ff9a8d, #ff6f61, #4a90e2, #7fb3f0);
+        background: linear-gradient(-45deg, #e2e8f0, #f8fafc, #edf2f7, #ffffff);
       }
       html:not(.dark) #loading-screen {
-        background: linear-gradient(-45deg, #ff9a8d, #ff6f61, #4a90e2, #7fb3f0);
+        background: linear-gradient(-45deg, #e2e8f0, #f8fafc, #edf2f7, #ffffff);
       }
       html:not(.dark) .spinner {
         border-color: rgba(0, 0, 0, 0.1);
