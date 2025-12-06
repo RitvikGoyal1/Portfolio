@@ -22,5 +22,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 );
 
 // Hide loading screen after React has rendered
-// Use a small delay to ensure React has painted to the DOM
-setTimeout(hideLoadingScreen, 100);
+// Use requestAnimationFrame to ensure the browser has painted
+requestAnimationFrame(() => {
+  requestAnimationFrame(hideLoadingScreen);
+});
