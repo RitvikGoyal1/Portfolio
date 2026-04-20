@@ -13,10 +13,27 @@ import SEOErrorBoundary from "../components/SEOErrorBoundary";
 
 const projects = [
   {
+    title: "Mail Automation Dashboard",
+    description:
+      "Automated email operations dashboard featuring campaign orchestration, mailbox health tracking, and real-time activity insights.",
+    imgUrl: "https://cdn.hackclub.com/019daccf-db81-7f69-9764-4130718d5145/image.png",
+    date: "2026",
+    demoLink: "https://automations-dashboard-jyx8.vercel.app/",
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Dashboard",
+      "Auth",
+      "Vercel",
+    ],
+  },
+  {
     title: "Synapse Investments",
     description: "AI Powered Stock Predictions and Trading App",
     imgUrl:
-      "https://hc-cdn.hel1.your-objectstorage.com/s/v3/14ef1bcb39c3af9013ed87600ceecb2e17ed4c72_image.png",
+      "https://cdn.hackclub.com/019dacdf-1bc2-7a80-ad8d-8144ce201524/image.png",
     date: "2025",
     demoLink: "https://synapseinvests.com",
     tech: ["React", "Vite", "Python", "AI/ML", "Supabase", "Tailwind CSS"],
@@ -53,19 +70,10 @@ const projects = [
     description:
       "Modern school news platform • 500+ monthly readers • SEO optimized • Content management system",
     imgUrl:
-      "https://hc-cdn.hel1.your-objectstorage.com/s/v3/d95ce954bc60a8daeb16a2ff237f6d2194aa8d1e_image.png",
+      "https://cdn.hackclub.com/019dacda-ec44-79f4-ac37-f1ae0de9c749/image.png",
     date: "2025",
     demoLink: "https://panther-press.pages.dev",
     tech: ["Astro", "React", "Tailwind CSS", "MDX", "Keystatic CMS"],
-  },
-  {
-    title: "Hack Olympus",
-    description: "Hackathon Event management website",
-    imgUrl:
-      "https://hc-cdn.hel1.your-objectstorage.com/s/v3/103797b435015ad6877cf133bdb60efede717673_image.png",
-    date: "2025",
-    demoLink: "https://hackolympus.org",
-    tech: ["HTML", "CSS", "JavaScript", "Database"],
   },
   {
     title: "Robotics",
@@ -82,7 +90,7 @@ const projects = [
     description:
       "Hackathon event website • 100+ participants • Event management & registration system",
     imgUrl:
-      "https://hc-cdn.hel1.your-objectstorage.com/s/v3/851dccf54239ff145a0b9d323897ad55a0692de5_image.png",
+      "https://cdn.hackclub.com/019dacdb-ff33-7600-bfb2-468c2d589f64/Screenshot%202026-04-20%20174621.png",
     date: "2025",
     demoLink: "https://scrapyard.hackclub.com/toronto",
     tech: ["Next.js", "Tailwind CSS", "MDX", "Leaflet Maps", "Airtable"],
@@ -112,7 +120,7 @@ const projects = [
     description:
       "Task management app • Clean UI design • Local storage implementation",
     imgUrl:
-      "https://cdn.hack.pet/slackcdn/285fe75a0db3c54200c3099de724dbb4.png",
+      "https://cdn.hackclub.com/019dacdc-ba0b-7ea2-8b17-795069891edd/image.png",
     date: "2022",
     demoLink: "https://ritvikgoyal1.github.io/todolist/",
     tech: ["HTML", "CSS", "JavaScript", "Local Storage", "Vanilla JS"],
