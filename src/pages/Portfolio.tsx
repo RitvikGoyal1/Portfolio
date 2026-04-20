@@ -15,7 +15,7 @@ const projects = [
     {
         title: "Mail Automation Dashboard",
         description:
-            "Automated email operations dashboard featuring campaign orchestration, mailbox health tracking, and real-time activity insights.",
+            "AI-powered email management platform • Smart summaries and editable draft replies in the user's writing style • Task prioritization and fast search to reduce communication time",
         imgUrl: "https://cdn.hackclub.com/019daccf-db81-7f69-9764-4130718d5145/image.png",
         date: "2026",
         demoLink: "https://automations-dashboard-jyx8.vercel.app/",
