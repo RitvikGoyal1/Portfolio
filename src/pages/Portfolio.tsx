@@ -30,6 +30,15 @@ const projects = [
         tech: ["React", "Vite", "Python", "AI/ML", "Supabase", "Tailwind CSS"],
     },
     {
+        title: "StudyFlow",
+        description:
+            "Study management platform • Interactive dashboard, Pomodoro timer, goal tracking, session analytics, and calendar integration for focused learning",
+        imgUrl: "https://cdn.hackclub.com/019db763-63c7-7a54-8e1a-3007384a3bdd/image.png",
+        date: "2026",
+        demoLink: "https://dazzling-licorice-53acc6.netlify.app/",
+        tech: ["React", "TypeScript", "Tailwind CSS", "Recharts", "Node.js", "Express"],
+    },
+    {
         title: "mapSTEM",
         description:
             "Mobile app connecting students with STEM events • Published on App Store • React Native + Firebase",
