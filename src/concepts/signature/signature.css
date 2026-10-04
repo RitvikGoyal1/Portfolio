@@ -1,0 +1,2179 @@
+.signature {
+  --sig-bg: #111310;
+  --sig-fg: #eeede5;
+  --sig-muted: #9b9e90;
+  --sig-accent: #c5dbab;
+  --sig-bronze: #b7a181;
+  --sig-line: rgba(223, 226, 207, 0.16);
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: var(--sig-bg);
+  color: var(--sig-fg);
+  font-family: "Manrope", sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+.signature h1,
+.signature h2,
+.signature h3,
+.signature p {
+  margin: 0;
+}
+.signature button,
+.signature a {
+  -webkit-tap-highlight-color: transparent;
+}
+.signature button {
+  color: inherit;
+  border: 0;
+  background: none;
+}
+.signature a {
+  color: inherit;
+}
+.signature em {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+}
+.signature button:focus-visible,
+.signature a:focus-visible {
+  outline: 2px solid var(--sig-accent);
+  outline-offset: 6px;
+}
+.signature ::selection {
+  background: var(--sig-accent);
+  color: #111310;
+}
+.sig-field-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.sig-grain {
+  position: fixed;
+  z-index: 5;
+  inset: 0;
+  opacity: 0.045;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' opacity='.5' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+}
+.sig-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--sig-accent);
+  transform: scaleX(var(--sig-progress, 0));
+  transform-origin: left;
+  z-index: 50;
+}
+.sig-container {
+  padding-left: 6%;
+  padding-right: 6%;
+}
+.sig-mono {
+  font:
+    9px/1.6 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  letter-spacing: 0.13em;
+}
+.sig-cross {
+  color: var(--sig-accent);
+  font-size: 17px;
+  margin-right: 13px;
+}
+.sig-skip {
+  position: fixed;
+  top: -100px;
+  left: 20px;
+  z-index: 300;
+  padding: 14px 20px;
+  background: var(--sig-accent);
+  color: var(--sig-bg) !important;
+}
+.sig-skip:focus {
+  top: 10px;
+}
+.sig-header {
+  height: 98px;
+  margin: 0 4%;
+  border-bottom: 1px solid var(--sig-line);
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  position: relative;
+  z-index: 20;
+}
+.sig-logo {
+  font:
+    italic 54px/0.8 "Instrument Serif",
+    serif;
+  letter-spacing: -9px;
+  position: relative;
+  display: inline-block;
+  width: 51px;
+  padding-bottom: 10px;
+}
+.sig-logo > span {
+  position: relative;
+  top: 9px;
+}
+.sig-logo > i {
+  display: block;
+  width: 5px;
+  height: 5px;
+  background: var(--sig-accent);
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  border-radius: 50%;
+}
+.sig-header-note {
+  font:
+    8px ui-monospace,
+    monospace;
+  letter-spacing: 0.13em;
+  color: var(--sig-muted);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.sig-header-note > span {
+  width: 4px;
+  height: 4px;
+  background: var(--sig-accent);
+  border-radius: 50%;
+}
+.sig-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 35px;
+  align-items: center;
+  font-size: 11px;
+}
+.sig-nav a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.sig-nav a:hover {
+  color: var(--sig-accent);
+}
+.sig-header-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.sig-shortcut {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--sig-line) !important;
+  border-radius: 6px;
+  padding: 9px 11px !important;
+  font-size: 11px;
+}
+.sig-shortcut:hover {
+  background: #ffffff0a;
+}
+.sig-motion {
+  height: 40px;
+  width: 35px;
+  display: grid;
+  place-items: center;
+  color: var(--sig-muted) !important;
+}
+.sig-mobile-toggle {
+  display: none;
+}
+.sig-hero {
+  position: relative;
+  padding: 30px 6% 0;
+  min-height: calc(100svh - 98px);
+  display: flex;
+  flex-direction: column;
+}
+.sig-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sig-hero-top > .sig-mono {
+  font-size: 8px;
+  color: #b4b6a9;
+}
+.sig-hero-coordinates > span {
+  margin-left: 25px;
+  color: var(--sig-muted);
+}
+.sig-hero-name {
+  padding-top: 33px;
+  width: 76%;
+  font-size: clamp(120px, 20.1vw, 330px);
+  font-weight: 450;
+  letter-spacing: -0.079em;
+  line-height: 0.83;
+  position: relative;
+  z-index: 2;
+  transition:
+    opacity 0.8s,
+    filter 0.8s;
+  pointer-events: auto;
+}
+.sig-name-first,
+.sig-name-second {
+  display: block;
+}
+.sig-name-second {
+  padding-left: 16%;
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  letter-spacing: -0.045em;
+  font-size: 1.07em;
+  position: relative;
+  margin-top: 6px;
+}
+.sig-name-star {
+  font:
+    normal 0.11em/1 "Manrope",
+    sans-serif;
+  position: absolute;
+  right: 0;
+  top: 20%;
+  color: var(--sig-accent);
+  animation: sig-turn 35s linear infinite;
+}
+.sig-hero-note {
+  position: absolute;
+  right: 7%;
+  top: 30%;
+  width: 190px;
+  z-index: 2;
+  transition: opacity 0.7s;
+}
+.sig-note-rule {
+  height: 1px;
+  width: 50px;
+  display: block;
+  background: var(--sig-bronze);
+  margin-bottom: 18px;
+}
+.sig-hero-note > p {
+  font-size: 21px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+}
+.sig-hero-note em {
+  font-size: 28px;
+  color: var(--sig-accent);
+}
+.sig-hero-note > .sig-mono {
+  display: block;
+  font-size: 6px;
+  color: var(--sig-muted);
+  margin-top: 24px;
+}
+.sig-hero-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  padding-top: 43px;
+  padding-bottom: 35px;
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.7s;
+}
+.sig-hero-intro > p {
+  font-size: 13px;
+  line-height: 1.85;
+  color: #d3d5c9;
+}
+.sig-hero-intro > p > span {
+  color: var(--sig-muted);
+}
+.sig-round-link {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  font-size: 11px;
+  margin-top: 20px;
+}
+.sig-round-link > span:first-child {
+  border: 1px solid var(--sig-line);
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    transform 0.4s;
+}
+.sig-round-link:hover > span:first-child {
+  background: var(--sig-accent);
+  color: #111310;
+  transform: rotate(-35deg);
+}
+.sig-now {
+  padding-left: 22px;
+  border-left: 1px solid var(--sig-line);
+  min-width: 255px;
+}
+.sig-now .sig-mono {
+  font-size: 7px;
+  color: var(--sig-muted);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.sig-now i {
+  display: block;
+  height: 4px;
+  width: 4px;
+  background: var(--sig-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 15px #c5dbab77;
+}
+.sig-now p {
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  margin-top: 13px;
+}
+.sig-now p > span {
+  color: var(--sig-bronze);
+  margin: 0 10px;
+  font-size: 12px;
+}
+.sig-now small {
+  font-size: 10px;
+  color: var(--sig-muted);
+  display: block;
+  margin-top: 5px;
+}
+.sig-now > a {
+  font-size: 9px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 17px;
+  color: #bbc2ae;
+}
+.sig-hero-base {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  border-top: 1px solid var(--sig-line);
+  gap: 20px;
+  color: #8d9283;
+}
+.sig-hero-base .sig-mono {
+  font-size: 7px;
+}
+.sig-hero-base > a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.sig-hero-base > a > svg {
+  color: var(--sig-accent);
+}
+.sig-play-trigger {
+  position: absolute;
+  left: 50%;
+  bottom: 101px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border: 1px solid #c5dbab40 !important;
+  padding: 12px 16px !important;
+  border-radius: 30px;
+  z-index: 4;
+  font-size: 10px;
+  background: #11131085 !important;
+  backdrop-filter: blur(10px);
+  color: #d5dec8 !important;
+  transition:
+    background 0.3s,
+    box-shadow 0.3s;
+}
+.sig-play-trigger > svg {
+  color: var(--sig-accent);
+}
+.sig-play-trigger:hover {
+  background: #283222 !important;
+  box-shadow: 0 0 50px #c5dbab13;
+}
+.sig-trigger-arrow {
+  margin-left: 7px;
+}
+.sig-playground-label {
+  position: absolute;
+  inset: 5% 6% auto;
+  pointer-events: none;
+  z-index: 3;
+  text-align: center;
+}
+.sig-playground-label > p {
+  font-size: 34px;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 18px 0;
+  color: #eeede5;
+}
+.sig-playground-label > p em {
+  font-size: 1.12em;
+  color: var(--sig-accent);
+}
+.sig-playground-label > .sig-mono {
+  font-size: 8px;
+  color: var(--sig-accent);
+}
+.sig-is-playing .sig-hero-name {
+  opacity: 0;
+  filter: blur(3px);
+  pointer-events: none;
+}
+.sig-is-playing .sig-hero-note {
+  opacity: 0;
+}
+.sig-is-playing .sig-hero-bottom {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.sig-is-paused .sig-name-star {
+  animation-play-state: paused;
+}
+.sig-manifesto {
+  padding-top: 140px;
+  padding-bottom: 140px;
+  background: linear-gradient(
+    180deg,
+    #11131005,
+    #111310dd 28%,
+    #111310dd 75%,
+    #11131025
+  );
+  border-top: 1px solid var(--sig-line);
+}
+.sig-manifesto > .sig-mono {
+  font-size: 8px;
+  color: var(--sig-accent);
+}
+.sig-manifesto .sig-manifesto-text {
+  display: block;
+  font-size: clamp(32px, 3.75vw, 61px);
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: -0.045em;
+  max-width: 1110px;
+  margin-top: 43px;
+}
+.sig-manifesto-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 42px;
+}
+.sig-manifesto-foot > span:first-child {
+  font-size: 12px;
+  color: var(--sig-muted);
+}
+.sig-handwritten {
+  font:
+    italic 28px "Instrument Serif",
+    serif;
+  color: var(--sig-bronze);
+}
+.sig-section-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.sig-section-top > .sig-mono {
+  font-size: 8px;
+  color: var(--sig-muted);
+}
+.sig-section-top > .sig-mono:last-child {
+  font-size: 7px;
+}
+.sig-work {
+  padding-top: 90px;
+  padding-bottom: 110px;
+  border-top: 1px solid var(--sig-line);
+  background: #111310ba;
+}
+.sig-work-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 43px 0 54px;
+}
+.sig-work h2,
+.sig-story h2 {
+  font-size: clamp(67px, 8.5vw, 140px);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.93;
+}
+.sig-work h2 em {
+  color: var(--sig-accent);
+  font-size: 1.16em;
+  letter-spacing: -0.055em;
+}
+.sig-work-heading > p {
+  font-size: 12px;
+  line-height: 1.85;
+  color: var(--sig-muted);
+  padding-bottom: 10px;
+}
+.sig-work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.22fr;
+  gap: 65px;
+  align-items: start;
+}
+.sig-work-index > button {
+  width: 100%;
+  text-align: left;
+  padding: 27px 0;
+  border-top: 1px solid var(--sig-line);
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  position: relative;
+  transition:
+    padding 0.4s,
+    color 0.3s;
+}
+.sig-work-index > button:last-of-type {
+  border-bottom: 1px solid var(--sig-line);
+}
+.sig-work-index > button:before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background: var(--sig-accent);
+  transform: scale(0);
+  transition: transform 0.3s;
+}
+.sig-work-index > button.is-active:before {
+  transform: scale(1);
+}
+.sig-work-index > button:hover,
+.sig-work-index > button.is-active {
+  padding-left: 8px;
+  color: var(--sig-accent);
+}
+.sig-work-index > button > svg {
+  margin-left: auto;
+  transition:
+    transform 0.35s,
+    color 0.35s;
+  color: #7f8577;
+}
+.sig-work-index > button:hover > svg {
+  transform: rotate(45deg);
+  color: var(--sig-accent);
+}
+.sig-work-number {
+  font:
+    italic 21px "Instrument Serif",
+    serif;
+  color: #8e9583;
+}
+.sig-work-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: clamp(18px, 2.03vw, 34px);
+  letter-spacing: -0.035em;
+}
+.sig-work-label > .sig-mono {
+  font-size: 6px;
+  letter-spacing: 0.12em;
+  color: var(--sig-muted);
+}
+.sig-github-index {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 10px;
+  margin-top: 32px;
+  color: var(--sig-muted) !important;
+}
+.sig-github-index > svg:last-child {
+  margin-left: auto;
+}
+.sig-project-stage {
+  min-width: 0;
+  perspective: 1500px;
+}
+.sig-project-preview {
+  position: relative;
+  height: 375px;
+  display: block;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--project-accent) 10%, #151b18);
+  border: 1px solid color-mix(in srgb, var(--project-accent) 22%, transparent);
+  transition:
+    background 0.5s,
+    border-color 0.5s;
+}
+.sig-project-preview-label {
+  position: absolute;
+  left: 23px;
+  right: 23px;
+  top: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--project-accent);
+}
+.sig-project-preview-label > .sig-mono {
+  font-size: 7px;
+}
+.sig-project-watermark {
+  position: absolute;
+  left: 10px;
+  bottom: -65px;
+  font:
+    italic 290px/1 "Instrument Serif",
+    serif;
+  color: color-mix(in srgb, var(--project-accent) 9%, transparent);
+  pointer-events: none;
+}
+.sig-preview-orbit {
+  position: absolute;
+  width: 270px;
+  height: 270px;
+  border: 1px solid color-mix(in srgb, var(--project-accent) 13%, transparent);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotateX(65deg);
+}
+.sig-project-window {
+  position: absolute;
+  left: 9%;
+  right: -10%;
+  top: 27%;
+  border: 1px solid #8a908960;
+  box-shadow: 0 20px 45px #0007;
+  transform: perspective(800px) rotateX(calc(7deg + var(--tilt-x, 0deg)))
+    rotateY(calc(-8deg + var(--tilt-y, 0deg))) rotateZ(-4deg);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: sig-window-in 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #161b18;
+}
+.sig-window-chrome {
+  height: 20px;
+  background: #252c27;
+  color: #a8b0a3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9px;
+  font:
+    6px ui-monospace,
+    monospace;
+}
+.sig-window-chrome > span:first-child {
+  display: flex;
+  gap: 4px;
+}
+.sig-window-chrome i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #73796c;
+  display: block;
+}
+.sig-project-window img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.sig-preview-open {
+  position: absolute;
+  right: 18px;
+  bottom: 19px;
+  border: 1px solid #c5dbab44;
+  padding: 10px 15px;
+  border-radius: 30px;
+  font:
+    7px ui-monospace,
+    monospace;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  background: #111310db;
+  backdrop-filter: blur(10px);
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+.sig-project-preview:hover .sig-preview-open {
+  background: var(--project-accent);
+  color: #131810;
+}
+.sig-project-copy {
+  padding-top: 23px;
+  animation: sig-copy-in 0.5s;
+}
+.sig-project-copy > p {
+  font-size: 18px;
+  letter-spacing: -0.03em;
+  line-height: 1.4;
+}
+.sig-project-copy > span {
+  display: block;
+  font-size: 12px;
+  color: var(--sig-muted);
+  line-height: 1.9;
+  max-width: 470px;
+  margin-top: 12px;
+}
+.sig-project-stack {
+  margin-top: 23px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sig-project-stack > span {
+  padding: 5px 10px;
+  font:
+    7px ui-monospace,
+    monospace;
+  border: 1px solid var(--sig-line);
+  border-radius: 25px;
+  color: #b4bca8;
+}
+.sig-project-stack > a {
+  margin-left: auto;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 9px;
+  color: #b4bca8;
+}
+.sig-mobile-project {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  border-block: 1px solid var(--sig-line);
+  padding: 24px 0;
+  margin-top: 65px;
+  transition: padding 0.4s;
+}
+.sig-mobile-project:hover {
+  padding-left: 12px;
+}
+.sig-mobile-project > span:nth-child(2) > .sig-mono {
+  font-size: 6px;
+  color: var(--sig-muted);
+}
+.sig-mobile-project strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 5px;
+  letter-spacing: -0.02em;
+}
+.sig-mobile-project strong > span {
+  font-size: 12px;
+  color: var(--sig-muted);
+  margin-left: 22px;
+  letter-spacing: 0;
+}
+.sig-store-label {
+  margin-left: auto;
+  color: var(--sig-accent);
+  font-size: 7px;
+}
+.sig-mobile-icon {
+  width: 41px;
+  height: 49px;
+  border: 1px solid var(--sig-accent);
+  border-radius: 9px;
+  position: relative;
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-7deg);
+  flex-shrink: 0;
+}
+.sig-mobile-icon:after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  width: 12px;
+  height: 1px;
+  background: var(--sig-accent);
+}
+.sig-mobile-icon > i {
+  height: 3px;
+  width: 3px;
+  background: var(--sig-accent);
+  border-radius: 50%;
+}
+.sig-mobile-icon > i:nth-child(2) {
+  margin-top: -10px;
+}
+.sig-story {
+  padding-top: 95px;
+  padding-bottom: 90px;
+  border-top: 1px solid var(--sig-line);
+  background: linear-gradient(180deg, #111310d9, #111310b8);
+}
+.sig-story-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 55px 0 80px;
+  gap: 40px;
+}
+.sig-story h2 {
+  font-size: clamp(55px, 6.7vw, 106px);
+  line-height: 1.06;
+}
+.sig-story h2 em {
+  color: var(--sig-bronze);
+}
+.sig-portrait {
+  width: 165px;
+  height: 190px;
+  position: relative;
+  margin-right: 2%;
+  transform: rotate(5deg);
+  flex-shrink: 0;
+}
+.sig-portrait:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid #a5b09c70;
+  transform: rotate(-7deg);
+  transition: transform 0.6s;
+}
+.sig-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition:
+    filter 0.8s,
+    transform 0.8s;
+}
+.sig-portrait:hover img {
+  filter: grayscale(0);
+  transform: rotate(-5deg) scale(1.04);
+}
+.sig-portrait:hover:before {
+  transform: rotate(5deg);
+}
+.sig-portrait-caption {
+  font:
+    6px ui-monospace,
+    monospace;
+  letter-spacing: 0.08em;
+  position: absolute;
+  bottom: -23px;
+  white-space: nowrap;
+  color: var(--sig-muted);
+}
+.sig-journey {
+  border-top: 1px solid var(--sig-line);
+}
+.sig-year-selector {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 24px;
+  gap: 20px;
+}
+.sig-year-selector > button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font:
+    11px ui-monospace,
+    monospace;
+  color: var(--sig-muted);
+  padding: 10px 0;
+  text-align: left;
+}
+.sig-year-dot {
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background: #666e5e;
+  transition:
+    background 0.4s,
+    box-shadow 0.4s;
+}
+.sig-year-selector > button[aria-selected="true"] {
+  color: var(--sig-accent);
+}
+.sig-year-selector > button[aria-selected="true"] .sig-year-dot {
+  background: var(--sig-accent);
+  box-shadow:
+    0 0 0 4px #c5dbab12,
+    0 0 20px #c5dbab55;
+}
+.sig-now-tag {
+  font-size: 6px;
+  letter-spacing: 0.08em;
+  margin-left: 6px;
+  opacity: 0.7;
+}
+.sig-chapter-panels {
+  min-height: 315px;
+  position: relative;
+}
+.sig-chapter-panels > article:not([hidden]) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 70px;
+  padding: 42px 0;
+  animation: sig-copy-in 0.6s;
+}
+.sig-story-year {
+  font:
+    400 clamp(110px, 13.2vw, 200px) / 1 "Instrument Serif",
+    serif;
+  letter-spacing: -0.06em;
+  color: #b7bca7;
+  position: relative;
+  white-space: nowrap;
+}
+.sig-story-year > span {
+  font:
+    32px "Manrope",
+    sans-serif;
+  position: absolute;
+  top: 10%;
+  right: 7%;
+  color: var(--sig-accent);
+}
+.sig-chapter-copy > .sig-mono {
+  font-size: 7px;
+  color: var(--sig-accent);
+}
+.sig-chapter-copy > h3 {
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.3;
+  margin-top: 13px;
+  max-width: 380px;
+}
+.sig-chapter-copy > p {
+  font-size: 12px;
+  line-height: 1.85;
+  color: #9ea493;
+  margin-top: 14px;
+  max-width: 420px;
+}
+.sig-chapter-copy > a {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  font-size: 9px;
+  margin-top: 21px;
+  color: #c6ccb9;
+}
+.sig-personal-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  padding: 33px 0;
+  border-block: 1px solid var(--sig-line);
+}
+.sig-personal-facts > a {
+  position: relative;
+  padding-right: 20px;
+}
+.sig-personal-facts > a > .sig-mono {
+  font-size: 6px;
+  display: block;
+  color: var(--sig-muted);
+  margin-bottom: 10px;
+}
+.sig-personal-facts > a > span:nth-child(2) {
+  font-size: 11px;
+  line-height: 1.8;
+  display: block;
+}
+.sig-personal-facts > a > svg {
+  position: absolute;
+  right: 0;
+  bottom: 3px;
+  color: var(--sig-bronze);
+  transition: transform 0.3s;
+}
+.sig-personal-facts > a:hover > svg {
+  transform: translate(2px, -2px);
+}
+.sig-toolkit {
+  margin-top: 60px;
+}
+.sig-toolkit > .sig-mono {
+  font-size: 7px;
+  color: var(--sig-muted);
+}
+.sig-toolkit > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.sig-toolkit > div > span {
+  font-size: 20px;
+  letter-spacing: -0.04em;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.sig-tool-index {
+  font:
+    6px ui-monospace,
+    monospace;
+  color: var(--sig-bronze);
+}
+.sig-contact {
+  padding-top: 90px;
+  padding-bottom: 70px;
+  border-top: 1px solid var(--sig-line);
+  background: #11131079;
+}
+.sig-contact-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 60px 0 50px;
+}
+.sig-contact-title h2 {
+  font-size: clamp(80px, 12.3vw, 200px);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.92;
+}
+.sig-contact-title h2 > span,
+.sig-contact-title h2 > em {
+  display: block;
+}
+.sig-contact-title h2 > em {
+  font-size: 1.16em;
+  color: var(--sig-accent);
+  transition: letter-spacing 0.6s;
+}
+.sig-contact-title:hover h2 > em {
+  letter-spacing: -0.02em;
+}
+.sig-contact-arrow {
+  display: grid;
+  place-items: center;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #c5dbab66;
+  border-radius: 50%;
+  transition:
+    background 0.5s,
+    color 0.5s,
+    transform 0.5s;
+  color: var(--sig-accent);
+}
+.sig-contact-arrow > svg {
+  width: 84px;
+  height: 84px;
+}
+.sig-contact-title:hover .sig-contact-arrow {
+  background: var(--sig-accent);
+  color: #111310;
+  transform: rotate(45deg);
+}
+.sig-contact-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 35px;
+  margin-top: 30px;
+}
+.sig-contact-bottom > p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--sig-muted);
+}
+.sig-contact-bottom > p > span {
+  color: #e3e7d9;
+}
+.sig-contact-email {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+.sig-contact-email > a {
+  font-size: 21px;
+  letter-spacing: -0.03em;
+  border-bottom: 1px solid var(--sig-bronze);
+  padding-bottom: 5px;
+}
+.sig-contact-email > button {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+}
+.sig-contact-email > span {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  font:
+    8px ui-monospace,
+    monospace;
+  color: var(--sig-accent);
+}
+.sig-socials {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  margin-top: 45px;
+}
+.sig-socials a {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 11px;
+}
+.sig-socials a > svg:last-child {
+  margin-left: 17px;
+  color: var(--sig-accent);
+}
+.sig-footer {
+  padding: 33px 6% 120px;
+  border-top: 1px solid var(--sig-line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  background: #111310d9;
+}
+.sig-footer-name {
+  font:
+    italic 30px "Instrument Serif",
+    serif;
+}
+.sig-footer-name > span {
+  display: block;
+  font:
+    6px ui-monospace,
+    monospace;
+  letter-spacing: 0.1em;
+  color: var(--sig-muted);
+  margin-top: 9px;
+}
+.sig-footer > .sig-mono {
+  font-size: 7px;
+  line-height: 2;
+  color: var(--sig-muted);
+  text-align: center;
+}
+.sig-footer-top {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+}
+.sig-footer-top > .sig-mono {
+  font-size: 7px;
+}
+.sig-footer-top > svg {
+  color: var(--sig-accent);
+}
+.sig-chapter-indicator {
+  position: fixed;
+  left: 16px;
+  bottom: 30px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font:
+    7px ui-monospace,
+    monospace;
+  letter-spacing: 0.1em;
+  color: #aab59a;
+  z-index: 9;
+  mix-blend-mode: screen;
+}
+.sig-chapter-indicator > i {
+  width: 1px;
+  height: 30px;
+  background: #626c5666;
+}
+.sig-command {
+  background: transparent;
+  color: var(--sig-fg);
+  border: 0;
+  padding: 0;
+  width: min(580px, calc(100vw - 32px));
+  max-height: 85svh;
+  overflow: visible;
+  font-family: "Manrope", sans-serif;
+}
+.sig-command::backdrop {
+  background: #060a07c9;
+  backdrop-filter: blur(13px);
+}
+.sig-command-inner {
+  background: #191d17;
+  border: 1px solid #a9b39b44;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 100px #0008;
+}
+.sig-command-search {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid var(--sig-line);
+  color: #a2b493;
+}
+.sig-command-search input {
+  background: none;
+  border: 0;
+  outline: none;
+  color: #eeede5;
+  width: 100%;
+  font-size: 17px;
+  min-width: 0;
+}
+.sig-command-search input::placeholder {
+  color: #9ca590;
+}
+.sig-command-search > button {
+  padding: 5px;
+  color: #b2bea6;
+}
+.sig-command-list {
+  padding: 10px;
+  max-height: 55vh;
+  overflow-y: auto;
+}
+.sig-command-list > button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px;
+  border-radius: 7px;
+  text-align: left;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+.sig-command-list > button:hover,
+.sig-command-list > button.is-selected {
+  background: #c5dbab0c;
+  color: #c5dbab;
+}
+.sig-command-list small {
+  display: block;
+  font:
+    7px ui-monospace,
+    monospace;
+  letter-spacing: 0.07em;
+  margin-top: 7px;
+  color: #8b9980;
+}
+.sig-command-list > p {
+  padding: 24px;
+  color: #a9b59f;
+  font-size: 12px;
+}
+.sig-command-foot {
+  padding: 17px 23px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid var(--sig-line);
+  font:
+    6px ui-monospace,
+    monospace;
+  letter-spacing: 0.08em;
+  color: #8c9882;
+}
+@keyframes sig-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes sig-window-in {
+  from {
+    opacity: 0;
+    translate: 20px 15px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+@keyframes sig-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 1650px) {
+  .sig-container,
+  .sig-hero,
+  .sig-footer {
+    padding-left: max(6%, calc((100vw - 1470px) / 2));
+    padding-right: max(6%, calc((100vw - 1470px) / 2));
+  }
+  .sig-hero-name {
+    font-size: 320px;
+    width: 1250px;
+  }
+  .sig-hero-note {
+    right: max(7%, calc((100vw - 1400px) / 2));
+  }
+  .sig-hero-bottom {
+    padding-top: 60px;
+  }
+  .sig-hero {
+    min-height: 1000px;
+  }
+  .sig-project-preview {
+    height: 430px;
+  }
+}
+@media (min-width: 900px) and (max-height: 850px) {
+  .sig-header {
+    height: 78px;
+  }
+  .sig-hero {
+    min-height: calc(100svh - 78px);
+    padding-top: 21px;
+  }
+  .sig-hero-name {
+    font-size: min(18.1vw, 29vh);
+    padding-top: 27px;
+  }
+  .sig-hero-bottom {
+    padding-top: 30px;
+    padding-bottom: 26px;
+  }
+  .sig-hero-intro > p {
+    font-size: 11px;
+  }
+  .sig-hero-note {
+    top: 24%;
+  }
+  .sig-hero-base {
+    height: 54px;
+  }
+  .sig-play-trigger {
+    bottom: 83px;
+  }
+  .sig-now > p {
+    font-size: 13px;
+  }
+  .sig-hero-name {
+    width: 70%;
+  }
+  .sig-round-link {
+    margin-top: 13px;
+  }
+}
+@media (max-width: 1100px) {
+  .sig-header-note {
+    font-size: 6px;
+  }
+  .sig-header {
+    gap: 25px;
+  }
+  .sig-nav {
+    gap: 23px;
+  }
+  .sig-hero-note {
+    width: 150px;
+    right: 6%;
+    top: 31%;
+  }
+  .sig-hero-note > p {
+    font-size: 17px;
+  }
+  .sig-hero-note em {
+    font-size: 24px;
+  }
+  .sig-work-grid {
+    gap: 35px;
+    grid-template-columns: 1fr 1.1fr;
+  }
+  .sig-project-preview {
+    height: 315px;
+  }
+  .sig-work-index > button {
+    padding: 24px 0;
+    gap: 15px;
+  }
+  .sig-work-label {
+    font-size: 21px;
+  }
+  .sig-project-copy > p {
+    font-size: 16px;
+  }
+  .sig-hero-name {
+    font-size: 20vw;
+    width: 78%;
+    padding-top: 55px;
+  }
+  .sig-hero-bottom {
+    padding-top: 60px;
+  }
+  .sig-now {
+    min-width: 230px;
+  }
+  .sig-now > p {
+    font-size: 13px;
+  }
+  .sig-play-trigger {
+    left: 48%;
+    font-size: 9px;
+    padding: 10px 13px !important;
+    gap: 9px;
+  }
+  .sig-personal-facts {
+    gap: 22px;
+  }
+  .sig-now-tag {
+    display: none;
+  }
+  .sig-story-year > span {
+    right: 0;
+  }
+  .sig-contact-arrow {
+    height: 110px;
+    width: 110px;
+  }
+  .sig-contact-arrow > svg {
+    height: 64px;
+    width: 64px;
+  }
+  .sig-toolkit > div > span {
+    font-size: 17px;
+  }
+}
+@media (max-width: 760px) {
+  .sig-header {
+    height: 77px;
+    margin: 0 6%;
+    gap: 15px;
+  }
+  .sig-header-note {
+    display: none;
+  }
+  .sig-logo {
+    font-size: 43px;
+    width: 42px;
+  }
+  .sig-nav {
+    font-size: 10px;
+    gap: 21px;
+  }
+  .sig-header-controls {
+    gap: 2px;
+  }
+  .sig-shortcut {
+    padding: 8px !important;
+    gap: 6px;
+  }
+  .sig-motion {
+    width: 29px;
+  }
+  .sig-header-controls .sig-shortcut > span {
+    display: none;
+  }
+  .sig-hero {
+    padding-top: 27px;
+    min-height: calc(100svh - 77px);
+  }
+  .sig-hero-top > .sig-mono {
+    font-size: 6px;
+    letter-spacing: 0.1em;
+  }
+  .sig-hero-coordinates {
+    display: none;
+  }
+  .sig-hero-name {
+    font-size: 28vw;
+    line-height: 0.88;
+    width: 100%;
+    padding-top: 44px;
+  }
+  .sig-name-second {
+    padding-left: 12%;
+    margin-top: 8px;
+  }
+  .sig-name-star {
+    right: 2%;
+    top: 19%;
+  }
+  .sig-hero-note {
+    position: relative;
+    right: auto;
+    top: auto;
+    align-self: flex-end;
+    margin-top: 27px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .sig-note-rule {
+    width: 22px;
+    margin: 0;
+  }
+  .sig-hero-note > p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .sig-hero-note > p br {
+    display: none;
+  }
+  .sig-hero-note > p em {
+    font-size: 17px;
+    margin-left: 4px;
+  }
+  .sig-hero-note > .sig-mono {
+    display: none;
+  }
+  .sig-hero-bottom {
+    padding-top: 35px;
+    padding-bottom: 92px;
+    gap: 25px;
+  }
+  .sig-hero-intro > p {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+  .sig-now {
+    min-width: 0;
+    border-left: 0;
+    padding-left: 0;
+    max-width: 150px;
+    padding-bottom: 8px;
+  }
+  .sig-now > .sig-mono {
+    font-size: 5px;
+    line-height: 1.8;
+    max-width: 100px;
+    letter-spacing: 0.08em;
+    gap: 5px;
+  }
+  .sig-now p {
+    font-size: 11px;
+    margin-top: 10px;
+    max-width: 150px;
+    line-height: 1.5;
+  }
+  .sig-now p > span {
+    margin: 0 3px;
+    font-size: 9px;
+  }
+  .sig-now small {
+    font-size: 8px;
+    max-width: 125px;
+    line-height: 1.7;
+    margin-top: 8px;
+  }
+  .sig-now > a {
+    font-size: 7px;
+    gap: 5px;
+    max-width: 120px;
+    margin-top: 15px;
+    line-height: 1.7;
+  }
+  .sig-now > a > svg {
+    flex-shrink: 0;
+    width: 10px;
+  }
+  .sig-round-link {
+    font-size: 9px;
+    gap: 11px;
+    margin-top: 19px;
+  }
+  .sig-round-link > span:first-child {
+    height: 32px;
+    width: 32px;
+  }
+  .sig-play-trigger {
+    left: 50%;
+    bottom: 77px;
+    white-space: nowrap;
+    font-size: 10px;
+    gap: 12px;
+    padding: 12px 16px !important;
+  }
+  .sig-hero-base {
+    height: 58px;
+    gap: 8px;
+  }
+  .sig-hero-base .sig-mono {
+    font-size: 5px;
+    letter-spacing: 0.05em;
+  }
+  .sig-live-time {
+    display: none;
+  }
+  .sig-hero-base > a {
+    gap: 8px;
+  }
+  .sig-playground-label {
+    inset: 8% 6% auto;
+  }
+  .sig-playground-label > p {
+    font-size: 26px;
+    line-height: 1.2;
+    margin: 16px 0;
+  }
+  .sig-playground-label > .sig-mono {
+    font-size: 6px;
+    letter-spacing: 0.08em;
+  }
+  .sig-is-playing .sig-hero-note {
+    visibility: hidden;
+  }
+  .sig-manifesto {
+    padding-top: 83px;
+    padding-bottom: 80px;
+  }
+  .sig-manifesto > .sig-mono {
+    font-size: 6px;
+  }
+  .sig-manifesto .sig-manifesto-text {
+    font-size: 30px;
+    line-height: 1.35;
+    letter-spacing: -0.04em;
+    margin-top: 30px;
+  }
+  .sig-manifesto-foot {
+    margin-top: 31px;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .sig-manifesto-foot > span:first-child {
+    font-size: 9px;
+    max-width: 90px;
+    line-height: 1.8;
+  }
+  .sig-handwritten {
+    font-size: 23px;
+    max-width: 170px;
+    text-align: right;
+    line-height: 1.1;
+  }
+  .sig-section-top > .sig-mono {
+    font-size: 6px;
+    letter-spacing: 0.07em;
+  }
+  .sig-section-top > .sig-mono:last-child {
+    display: none;
+  }
+  .sig-cross {
+    font-size: 13px;
+    margin-right: 8px;
+  }
+  .sig-work {
+    padding-top: 65px;
+    padding-bottom: 70px;
+  }
+  .sig-work-heading {
+    margin: 30px 0 35px;
+    gap: 22px;
+  }
+  .sig-work h2 {
+    font-size: 63px;
+    line-height: 1;
+  }
+  .sig-work-heading > p {
+    font-size: 9px;
+    padding: 0;
+    max-width: 117px;
+    line-height: 1.9;
+  }
+  .sig-work-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .sig-work-index > button {
+    padding: 19px 0;
+    gap: 20px;
+  }
+  .sig-work-label {
+    font-size: 23px;
+    gap: 5px;
+  }
+  .sig-work-label > .sig-mono {
+    font-size: 6px;
+  }
+  .sig-work-index > button:before {
+    left: -10px;
+    width: 3px;
+    height: 3px;
+  }
+  .sig-github-index {
+    font-size: 9px;
+    gap: 9px;
+    margin-top: 24px;
+  }
+  .sig-project-preview {
+    height: 300px;
+  }
+  .sig-project-preview-label > .sig-mono {
+    font-size: 6px;
+  }
+  .sig-project-copy {
+    padding-top: 20px;
+  }
+  .sig-project-copy > p {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  .sig-project-copy > span {
+    font-size: 12px;
+    line-height: 1.85;
+  }
+  .sig-project-stack {
+    margin-top: 18px;
+  }
+  .sig-mobile-project {
+    margin-top: 34px;
+    gap: 16px;
+    padding: 23px 0;
+  }
+  .sig-mobile-project > span:nth-child(2) > .sig-mono {
+    font-size: 5px;
+    letter-spacing: 0.07em;
+  }
+  .sig-mobile-project strong {
+    font-size: 21px;
+  }
+  .sig-mobile-project strong > span {
+    display: block;
+    margin: 5px 0 0;
+    font-size: 9px;
+  }
+  .sig-mobile-project > .sig-store-label {
+    display: none;
+  }
+  .sig-mobile-project > svg {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .sig-mobile-icon {
+    height: 45px;
+    width: 35px;
+  }
+  .sig-story {
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+  .sig-story-heading {
+    margin: 35px 0 55px;
+    gap: 15px;
+    align-items: flex-end;
+  }
+  .sig-story h2 {
+    font-size: clamp(37px, 7.3vw, 55px);
+    line-height: 1.15;
+    max-width: 65%;
+  }
+  .sig-story h2 em {
+    display: block;
+    font-size: 1.12em;
+  }
+  .sig-portrait {
+    width: 92px;
+    height: 110px;
+    margin-right: 1%;
+    margin-bottom: 7px;
+  }
+  .sig-portrait-caption {
+    font-size: 4px;
+    letter-spacing: 0.01em;
+    bottom: -15px;
+    right: 0;
+  }
+  .sig-year-selector {
+    padding-top: 15px;
+    gap: 12px;
+  }
+  .sig-year-selector > button {
+    font-size: 8px;
+    gap: 7px;
+    min-height: 44px;
+  }
+  .sig-year-dot {
+    height: 4px;
+    width: 4px;
+  }
+  .sig-chapter-panels {
+    min-height: 355px;
+  }
+  .sig-chapter-panels > article:not([hidden]) {
+    display: block;
+    padding: 25px 0 30px;
+  }
+  .sig-story-year {
+    font-size: 95px;
+    display: block;
+    line-height: 0.9;
+    margin-bottom: 25px;
+    max-width: 270px;
+  }
+  .sig-story-year > span {
+    font-size: 23px;
+    top: 18%;
+    right: 7%;
+  }
+  .sig-chapter-copy > h3 {
+    font-size: 23px;
+    max-width: none;
+    margin-top: 10px;
+  }
+  .sig-chapter-copy > .sig-mono {
+    font-size: 6px;
+  }
+  .sig-chapter-copy > p {
+    font-size: 12px;
+  }
+  .sig-chapter-copy > a {
+    font-size: 9px;
+  }
+  .sig-personal-facts {
+    grid-template-columns: 1fr 1fr;
+    padding: 29px 0;
+    gap: 28px 20px;
+  }
+  .sig-personal-facts > a > .sig-mono {
+    font-size: 5px;
+    margin-bottom: 9px;
+  }
+  .sig-personal-facts > a > span:nth-child(2) {
+    font-size: 10px;
+    line-height: 1.8;
+  }
+  .sig-personal-facts > a > svg {
+    width: 12px;
+  }
+  .sig-toolkit {
+    margin-top: 39px;
+  }
+  .sig-toolkit > .sig-mono {
+    font-size: 6px;
+  }
+  .sig-toolkit > div {
+    justify-content: flex-start;
+    gap: 18px 21px;
+    margin-top: 23px;
+  }
+  .sig-toolkit > div > span {
+    font-size: 19px;
+  }
+  .sig-tool-index {
+    font-size: 5px;
+  }
+  .sig-contact {
+    padding-top: 59px;
+    padding-bottom: 45px;
+  }
+  .sig-contact-title {
+    padding: 39px 0 25px;
+    gap: 15px;
+    align-items: flex-end;
+  }
+  .sig-contact-title h2 {
+    font-size: clamp(54px, 12.9vw, 90px);
+    line-height: 1.05;
+  }
+  .sig-contact-arrow {
+    height: 55px;
+    width: 55px;
+    flex-shrink: 0;
+    margin-bottom: 4px;
+  }
+  .sig-contact-arrow > svg {
+    height: 32px;
+    width: 32px;
+  }
+  .sig-contact-bottom {
+    display: block;
+    margin-top: 23px;
+  }
+  .sig-contact-bottom > p {
+    font-size: 11px;
+    line-height: 1.9;
+  }
+  .sig-contact-email {
+    gap: 7px;
+    margin-top: 28px;
+  }
+  .sig-contact-email > a {
+    font-size: clamp(14px, 4.4vw, 23px);
+  }
+  .sig-contact-email > button {
+    height: 40px;
+    width: 37px;
+  }
+  .sig-contact-email > span {
+    font-size: 7px;
+  }
+  .sig-socials {
+    justify-content: flex-start;
+    gap: 37px;
+    margin-top: 37px;
+  }
+  .sig-socials a {
+    font-size: 10px;
+    gap: 9px;
+  }
+  .sig-socials a > svg:last-child {
+    margin-left: 7px;
+  }
+  .sig-footer {
+    flex-wrap: wrap;
+    padding-top: 30px;
+    gap: 30px;
+    padding-bottom: 110px;
+  }
+  .sig-footer-name {
+    font-size: 27px;
+  }
+  .sig-footer-name > span {
+    font-size: 5px;
+    letter-spacing: 0.06em;
+  }
+  .sig-footer > .sig-mono {
+    text-align: right;
+    font-size: 5px;
+  }
+  .sig-footer-top {
+    width: 100%;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  .sig-footer-top > .sig-mono {
+    font-size: 6px;
+  }
+  .sig-chapter-indicator {
+    display: none;
+  }
+  .sig-command-search {
+    padding: 19px;
+    gap: 12px;
+  }
+  .sig-command-search > input {
+    font-size: 15px;
+  }
+  .sig-command-list > button {
+    padding: 15px 12px;
+    font-size: 12px;
+  }
+  .sig-command-list small {
+    font-size: 6px;
+  }
+  .sig-command-foot {
+    padding: 15px;
+    font-size: 5px;
+    gap: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .sig-nav {
+    position: absolute;
+    top: calc(100% + 1px);
+    left: -7%;
+    right: -7%;
+    background: #171d14f5;
+    backdrop-filter: blur(18px);
+    padding: 20px 8%;
+    display: none;
+    border-bottom: 1px solid var(--sig-line);
+    gap: 28px;
+    z-index: 20;
+  }
+  .sig-nav.is-open {
+    display: flex;
+  }
+  .sig-header-controls {
+    margin-left: auto;
+    gap: 5px;
+  }
+  .sig-mobile-toggle {
+    display: grid;
+    place-items: center;
+    width: 35px;
+    height: 40px;
+  }
+  .sig-mobile-toggle > span {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .sig-mobile-toggle i {
+    display: block;
+    height: 1px;
+    width: 17px;
+    background: #d4dacb;
+  }
+  .sig-header .sig-shortcut {
+    padding: 10px !important;
+  }
+  .sig-header-controls .sig-shortcut > span {
+    display: block;
+    font-size: 9px;
+  }
+  .sig-header:after {
+    content: "RITVIK GOYAL";
+    font:
+      7px ui-monospace,
+      monospace;
+    color: #a1a997;
+    letter-spacing: 0.12em;
+    position: absolute;
+    left: 60px;
+    top: 36px;
+  }
+  .sig-hero-note {
+    margin-top: 22px;
+  }
+  .sig-hero-bottom {
+    padding-top: 35px;
+  }
+  .sig-hero-name {
+    padding-top: 44px;
+  }
+  .sig-play-trigger {
+    bottom: 79px;
+  }
+  .sig-now {
+    max-width: 130px;
+  }
+  .sig-manifesto .sig-manifesto-text {
+    font-size: 28px;
+  }
+}
+@media (max-width: 359px) {
+  .sig-hero-bottom {
+    gap: 15px;
+  }
+  .sig-hero-intro > p {
+    font-size: 10px;
+  }
+  .sig-now {
+    max-width: 114px;
+  }
+  .sig-now > p {
+    font-size: 10px;
+  }
+  .sig-hero-name {
+    font-size: 28vw;
+    padding-top: 44px;
+  }
+  .sig-hero-note > p {
+    font-size: 10px;
+  }
+  .sig-hero-note > p em {
+    font-size: 15px;
+  }
+  .sig-work h2 {
+    font-size: 55px;
+  }
+  .sig-work-heading > p {
+    font-size: 8px;
+    max-width: 95px;
+  }
+  .sig-work-label {
+    font-size: 21px;
+  }
+  .sig-project-preview {
+    height: 260px;
+  }
+  .sig-story h2 {
+    font-size: 32px;
+  }
+  .sig-portrait {
+    width: 80px;
+    height: 95px;
+  }
+  .sig-portrait-caption {
+    display: none;
+  }
+  .sig-year-selector > button {
+    font-size: 7px;
+    gap: 5px;
+  }
+  .sig-personal-facts {
+    gap: 24px 16px;
+  }
+  .sig-contact-title h2 {
+    font-size: 51px;
+  }
+  .sig-contact-arrow {
+    width: 46px;
+    height: 46px;
+  }
+  .sig-contact-email > a {
+    font-size: 15px;
+  }
+  .sig-footer > .sig-mono {
+    max-width: 95px;
+  }
+  .sig-github-index {
+    font-size: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signature *,
+  .signature *:before,
+  .signature *:after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .sig-project-window {
+    transform: none;
+  }
+  .sig-contact-title:hover h2 > em {
+    letter-spacing: inherit;
+  }
+}

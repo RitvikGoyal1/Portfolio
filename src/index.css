@@ -1,199 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@font-face { font-family: 'Manrope'; font-style: normal; font-weight: 200 800; font-display: swap; src: url('@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url('@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap; src: url('@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2') format('woff2'); }
+:root { font-family: 'Manrope', sans-serif; font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color-scheme: dark; color: #f0eee7; background: #10100f; }
+:root[data-design='atelier'] { color-scheme: light; color: #292824; background: #f5f2eb; }
+:root[data-design='signal'] { background: #0b1319; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+body { margin: 0; min-width: 320px; }
+button, input, textarea, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+button:disabled { cursor: default; }
+img, svg { vertical-align: middle; }
+img { max-width: 100%; }
+::selection { background: #a9cba0; color: #121511; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+.concept-loading { min-height: 100svh; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; padding: 32px; text-align: center; }
+.concept-loading > span { font: 400 clamp(52px, 9vw, 90px)/1 'Instrument Serif', serif; }
+.concept-loading p { font-size: 12px; color: #999; }
+.loading-dot { color: #b79065; }
+.concept-loading button { border: 1px solid currentColor; padding: 12px 24px; color: inherit; background: transparent; }
+.concept-loading a { font-size: 12px; text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-@keyframes gradientAnimation {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-body {
-  animation: gradientAnimation 15s ease infinite;
-  background: linear-gradient(-45deg, #e2e8f0, #f8fafc, #edf2f7, #ffffff);
-  background-size: 400% 400%;
-}
-
-.dark body {
-  animation: gradientAnimation 15s ease infinite;
-  background: linear-gradient(-45deg, #001f3f, #123456, #0a192f, #003366);
-  background-size: 400% 400%;
-}
-
-* {
-  transition:
-    background-color 0.5s ease,
-    color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
-}
-:root {
-  width: 100%;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.card-container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-@media (min-width: 1024px) {
-  card-container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
-
-.dark .text-neutral-600 {
-  color: #e0e0e0;
-}
-.dark .text-neutral-300 {
-  color: #b0b0b0;
-}
-.card-container > div {
-  flex: 1;
-}
-html,
-body,
-#root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-html {
-  width: 100%;
-}
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-height: 100vh;
-  width: 100%;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-  }
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+:root[data-design='signature']{background:#111310;color-scheme:dark;}

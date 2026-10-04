@@ -1,0 +1,118 @@
+.sig-motion-accessible {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.sig-kinetic-name {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  white-space: nowrap;
+  isolation: isolate;
+}
+.sig-kinetic-visual {
+  display: inline;
+  white-space: pre;
+}
+.sig-kinetic-cell {
+  display: inline-block;
+  vertical-align: baseline;
+  transform-origin: 50% 85%;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotateX(0);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.65, 0.2, 1),
+    transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--sig-letter, 0) * 45ms);
+}
+.sig-kinetic-name[data-kinetic-state="waiting"] .sig-kinetic-cell {
+  opacity: 0;
+  transform: translate3d(0, 0.48em, 0) rotateX(18deg);
+}
+.sig-kinetic-letter {
+  display: inline-block;
+  transform: translate3d(var(--sig-move-x, 0px), var(--sig-move-y, 0px), 0)
+    rotate(var(--sig-move-r, 0deg));
+  transform-origin: 50% 75%;
+  backface-visibility: hidden;
+}
+.sig-scramble {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  white-space: pre;
+  line-height: inherit;
+  max-width: 100%;
+}
+.sig-scramble-measure {
+  opacity: 0;
+  pointer-events: none;
+}
+.sig-scramble-output {
+  position: absolute;
+  inset: 0;
+  white-space: pre;
+  pointer-events: none;
+}
+.sig-magnetic {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  max-width: 100%;
+}
+.sig-magnetic-surface {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translate3d(var(--sig-move-x, 0px), var(--sig-move-y, 0px), 0);
+  backface-visibility: hidden;
+}
+.sig-reveal-text {
+  position: relative;
+  display: inline;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+.sig-reveal-word {
+  display: inline-block;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+  transition:
+    opacity 0.7s ease,
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.7s ease;
+  transition-delay: calc(var(--sig-word, 0) * 38ms);
+}
+.sig-reveal-text[data-reveal-state="waiting"] .sig-reveal-word {
+  opacity: 0;
+  transform: translate3d(0, 0.32em, 0);
+  filter: blur(3px);
+}
+@media (hover: none), (pointer: coarse) {
+  .sig-kinetic-letter,
+  .sig-magnetic-surface {
+    transform: none !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sig-kinetic-cell,
+  .sig-kinetic-letter,
+  .sig-reveal-word,
+  .sig-magnetic-surface {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}

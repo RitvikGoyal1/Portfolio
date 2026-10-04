@@ -1,0 +1,300 @@
+.resume-page {
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse at 90% 0, #26332250, transparent 48%), #111310;
+  color: #eeece2;
+  padding: 0 6%;
+  font-family: "Manrope", sans-serif;
+}
+.resume-header,
+.resume-page main,
+.resume-footer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.resume-header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d1d8bd26;
+  gap: 30px;
+}
+.resume-logo {
+  font:
+    italic 48px/1 "Instrument Serif",
+    serif;
+  letter-spacing: -0.06em;
+}
+.resume-header nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-size: 12px;
+}
+.resume-header nav a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #abb49f;
+}
+.resume-header nav a:hover,
+.resume-header nav a[aria-current] {
+  color: #d0e1b5;
+}
+.resume-header nav a[aria-current] {
+  box-shadow: 0 1px #d0e1b5;
+}
+.resume-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 35px;
+  padding: 80px 0 48px;
+}
+.resume-eyebrow {
+  font:
+    10px/1.6 ui-monospace,
+    monospace;
+  letter-spacing: 0.12em;
+  color: #a8b09d;
+}
+.resume-intro h1 {
+  font-size: clamp(62px, 7.5vw, 110px);
+  font-weight: 450;
+  letter-spacing: -0.065em;
+  line-height: 1.1;
+  margin: 22px 0;
+}
+.resume-intro h1 em {
+  font-family: "Instrument Serif", serif;
+  font-weight: 400;
+  color: #baa98c;
+}
+.resume-intro p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #abb49f;
+  margin: 0;
+}
+.resume-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 17px 23px;
+  background: #d0e1b5;
+  color: #192315;
+  border: 1px solid #d0e1b5;
+  border-radius: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.resume-download:hover {
+  background: #e5eed5;
+}
+.resume-document {
+  border: 1px solid #d1d8bd30;
+  border-radius: 5px;
+  overflow: hidden;
+  background: #1c211b;
+  scroll-margin-top: 30px;
+}
+.resume-document-bar {
+  padding: 17px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  background: #20291f;
+}
+.resume-document-bar > span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font:
+    9px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.06em;
+  color: #bec7b1;
+}
+.resume-document-bar > a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  font-size: 12px;
+}
+.resume-document object {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: 900px;
+  max-height: 85svh;
+  min-height: 500px;
+  background: #292929;
+}
+.resume-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 500px;
+  padding: 45px 24px;
+  text-align: center;
+  color: #d8dfcf;
+  background: #1a2219;
+}
+.resume-fallback h2 {
+  font-weight: 400;
+  font-size: 25px;
+  letter-spacing: -0.03em;
+  margin: 22px 0 10px;
+}
+.resume-fallback p {
+  max-width: 400px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #aab5a0;
+  margin: 0 0 22px;
+}
+.resume-fallback a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  border-bottom: 1px solid #b0c798;
+  padding: 12px 0;
+}
+.resume-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 30px 0 75px;
+  font-size: 12px;
+  color: #b9c5ad;
+}
+.resume-bottom a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+}
+.resume-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  border-top: 1px solid #d1d8bd26;
+  padding: 28px 0 40px;
+}
+.resume-footer > span:first-child {
+  font:
+    30px "Instrument Serif",
+    serif;
+}
+.resume-footer > span:last-child {
+  font:
+    9px/1.7 ui-monospace,
+    monospace;
+  color: #a4ad98;
+  letter-spacing: 0.06em;
+}
+.resume-skip {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  padding: 12px 18px;
+  background: #d0e1b5;
+  color: #192315;
+  transform: translateY(-150%);
+  z-index: 20;
+  font-size: 13px;
+}
+.resume-skip:focus {
+  transform: none;
+}
+@media (max-width: 650px) {
+  .resume-header {
+    height: 85px;
+    gap: 20px;
+  }
+  .resume-logo {
+    font-size: 38px;
+  }
+  .resume-header nav {
+    gap: 18px;
+    font-size: 11px;
+  }
+  .resume-intro {
+    display: block;
+    padding: 50px 0 30px;
+  }
+  .resume-intro h1 {
+    margin: 17px 0;
+  }
+  .resume-intro p {
+    font-size: 13px;
+  }
+  .resume-download {
+    width: fit-content;
+    margin-top: 26px;
+    padding: 14px 18px;
+  }
+  .resume-document-bar {
+    padding: 10px 13px;
+    gap: 10px;
+  }
+  .resume-document-bar > span {
+    font-size: 7px;
+    gap: 7px;
+  }
+  .resume-document-bar > a {
+    font-size: 11px;
+  }
+  .resume-document object {
+    height: 680px;
+    min-height: 460px;
+  }
+  .resume-bottom {
+    font-size: 11px;
+    padding-bottom: 45px;
+  }
+  .resume-footer > span:first-child {
+    font-size: 26px;
+  }
+  .resume-footer > span:last-child {
+    font-size: 7px;
+    text-align: right;
+  }
+  .resume-eyebrow {
+    font-size: 8px;
+  }
+}
+@media (max-width: 359px) {
+  .resume-header nav {
+    gap: 12px;
+    font-size: 10px;
+  }
+  .resume-header nav svg {
+    display: none;
+  }
+  .resume-header {
+    gap: 14px;
+  }
+  .resume-intro h1 {
+    font-size: 60px;
+  }
+  .resume-document-bar > span {
+    letter-spacing: 0;
+    font-size: 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .resume-download {
+    transition: none;
+  }
+}

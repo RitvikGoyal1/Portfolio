@@ -1,0 +1,66 @@
+.signature-personal-field {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  isolation: isolate;
+  contain: strict;
+}
+
+.signature-personal-field > canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.96;
+  transition: opacity 700ms ease;
+}
+
+.signature-field-atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 83% 28%, #5477690c, transparent 37%),
+    radial-gradient(ellipse at 68% 70%, #9e68430c, transparent 42%);
+}
+
+.signature-field-fallback {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  transition: opacity 500ms ease;
+}
+
+.signature-personal-field.is-rendered .signature-field-fallback {
+  opacity: 0;
+}
+
+.signature-personal-field.is-fallback > canvas {
+  opacity: 0;
+}
+
+.signature-field-fallback.is-monogram {
+  width: 80%;
+  left: 10%;
+  transform: translateY(5vh);
+}
+
+@media (max-width: 767px) {
+  .signature-field-fallback.is-monogram {
+    width: 88%;
+    left: 6%;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signature-personal-field > canvas,
+  .signature-field-fallback {
+    transition: none;
+  }
+}

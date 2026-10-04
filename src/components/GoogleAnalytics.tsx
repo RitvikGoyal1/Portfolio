@@ -4,8 +4,8 @@ import seoConfig from "../config/seoConfig";
 // Extend Window interface for gtag
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
   }
 }
 
@@ -35,12 +35,12 @@ const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({
 
     // Initialize gtag
     window.dataLayer = window.dataLayer || [];
-    function gtag(...args: any[]) {
+    function gtag(...args: unknown[]) {
       window.dataLayer.push(args);
     }
 
     // Make gtag globally available
-    (window as any).gtag = gtag;
+    window.gtag = gtag;
 
     gtag("js", new Date());
     gtag("config", measurementId, {
@@ -213,7 +213,7 @@ const GoogleAnalytics: React.FC<GoogleAnalyticsProps> = ({
 };
 
 // Utility functions for manual tracking
-export const trackEvent = (eventName: string, parameters: any = {}) => {
+export const trackEvent = (eventName: string, parameters: Record<string, unknown> = {}) => {
   if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
     window.gtag("event", eventName, parameters);
   }
@@ -228,7 +228,7 @@ export const trackPageView = (pagePath: string, pageTitle?: string) => {
   }
 };
 
-export const setUserProperties = (properties: any) => {
+export const setUserProperties = (properties: Record<string, unknown>) => {
   if (typeof window !== "undefined" && typeof window.gtag !== "undefined") {
     window.gtag("config", seoConfig.googleAnalytics.measurementId, {
       user_properties: properties,
@@ -249,7 +249,7 @@ export const trackProjectView = (
   });
 };
 
-export const trackContactFormSubmission = (formData: any) => {
+export const trackContactFormSubmission = (formData: { message?: unknown }) => {
   trackEvent("contact_form_submit", {
     event_category: "Lead Generation",
     event_label: "Contact Form",

@@ -1,54 +1,60 @@
-React + TypeScript + Vite
-Portfolio Website
-Hey there! Welcome to my portfolio site! 🚀 This is my little website, built to showcase who I am, what I’ve done, and what I’m all about. It’s still a work in progress, but I’m getting there, one bug at a time.
+# Ritvik Goyal — Signature & three portfolio explorations
 
-## Deployment
+Signature is a personal, interactive portfolio developed from the Obsidian and Signal directions. Three Astra agents contributed the procedural artwork, kinetic typography, and researched personal history. The three original explorations remain available for comparison.
 
-This project is hosted on ritvikgoyal.com.
+| Design | Preview | Character |
+| --- | --- | --- |
+| **Signature** | `/` or `/?design=signature` | Shaded bronze/mint silk, scroll typography, an editorial work gallery, and a personal journey |
+| Obsidian | `/?design=obsidian` | Oversized typography, warm black, interactive bronze sculpture |
+| Atelier | `/?design=atelier` | Ivory, vermillion, editorial type, an architectural ribbon |
+| Signal | `/?design=signal` | Navy and mint, an orbital particle instrument, filterable work |
 
----
+Use “Compare designs” to open the floating switcher in development or with an explicit `?design=` URL. The production homepage presents Signature without comparison controls. The active design lives in the URL and supports browser history. Only the selected design is loaded.
 
-Feedback and suggestions are always welcome! 😊
+## Try Signature
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Move over the name to bend the lettering; hover links and project titles to decode them.
+- Select **Break the pattern** to transform the particle silk into RG. Move the pointer through it; Escape restores the scene.
+- Scroll through “Curiosity becomes possibility” to illuminate the type; scroll back to reverse the progression.
+- The 3D silk changes through orbit, constellation, and open arcs across the page.
+- Select projects to reveal their own color, large interface preview, implementation notes, and live/source links.
+- Open **Build notes**, or use the previous/next controls to explore all four projects.
+- Explore the timeline with its year tabs or arrow keys.
+- Use **⌘K / Ctrl+K** for searchable navigation and the hidden signature.
+- Open **Resume** from navigation, contact links, or shortcuts to view `/resume`, open the existing PDF in a separate tab, or download it.
+- Pause ambient motion from the header. Reduced-motion preferences and a no-WebGL fallback are supported.
 
-Currently, two official plugins are available:
+The content includes a cinematic duotone treatment of Ritvik’s portrait, Toronto local time, Dealify’s Hack the North award, a complete 2022–2026 timeline, community work, and publicly verified Shopify Dev Degree / York University details.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Development
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+```sh
+npm install
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Verification
 
-```js
-import react from "eslint-plugin-react";
-
-export default tseslint.config({
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    react,
-  },
-  rules: {
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
+```sh
+npm run typecheck
+npm run lint
+npm run build
+npx playwright install chromium
+npm run test:e2e
 ```
+
+The suite uses a dedicated Playwright test browser. Browser checks cover mobile/tablet/desktop, actual 3D controls, image loading, section navigation, project filters, browser history, Signature keyboard navigation, shortcut search, clipboard, reduced motion, and the fallback when WebGL is unavailable.
+
+Legacy components remain in `src/components` and `src/pages` as reference. The restored `src/pages/Resume.tsx` is actively routed; other legacy pages are not imported by the new app. ESLint reports existing warnings in those legacy components; the active application passes without warnings.
+
+## Implementation
+
+- React 18, TypeScript, Vite with SWC.
+- Three.js with custom procedural geometry, materials, and particle shaders.
+- Self-hosted Manrope and Instrument Serif fonts.
+- Local optimized WebP screenshots; no remote image dependency in the active designs.
+- Keyboard controls, motion preferences, scene cleanup, and responsive layouts.
+- Confirmed Shopify Dev Degree / York University details; see [content sources and research](docs/DESIGN-NOTES.md).
+- The second Signature iteration applies [2026 design and motion research](docs/2026-DESIGN-RESEARCH.md).
+
+Production builds include a static `resume/index.html` entry so `/resume` and `/resume/` work on static hosting, as well as the existing `_redirects` fallback. The resume uses the repository's original `public/RG.pdf` without changing its contents. Publishing source to `main` and deploying the live host are separate operations unless hosting is configured to deploy automatically.

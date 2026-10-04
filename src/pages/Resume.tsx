@@ -1,181 +1,95 @@
-import { Box, Button, Container, Paper, Typography } from "@mui/material";
-import { motion } from "framer-motion";
-import DownloadIcon from "@mui/icons-material/Download";
-import DescriptionIcon from "@mui/icons-material/Description";
-import PageHeader from "@/components/PageHeader";
-import ThemedBackground from "../components/ThemedBackground";
-import SEO from "@/components/SEO";
-import LocalBusinessSEO from "../components/LocalBusinessSEO";
-import PerformanceOptimization from "../components/PerformanceOptimization";
+import {
+  ArrowDownToLine,
+  ArrowLeft,
+  ArrowUpRight,
+  FileText,
+} from "lucide-react";
+import "./Resume.css";
 
-const Resume = () => {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: "Resume - Ritvik Goyal Software Developer",
-    description:
-      "Professional resume of Ritvik Goyal, expert software developer and full-stack engineer. Download PDF resume showcasing technical skills, project experience, education, and professional qualifications.",
-    url: "https://ritvikgoyal.com/resume",
-    author: {
-      "@type": "Person",
-      name: "Ritvik Goyal",
-    },
-    mainEntity: {
-      "@type": "Person",
-      name: "Ritvik Goyal",
-      jobTitle: "Software Developer",
-      hasCredential: {
-        "@type": "EducationalOccupationalCredential",
-        name: "Computer Science Education",
-        credentialCategory: "High School Education",
-      },
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Home",
-          item: "https://ritvikgoyal.com/",
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Resume",
-          item: "https://ritvikgoyal.com/resume",
-        },
-      ],
-    },
-  };
+export default function Resume() {
   return (
-    <PerformanceOptimization>
-      <ThemedBackground>
-        <SEO
-          title="Resume - Ritvik Goyal | Software Developer CV & Professional Experience"
-          description="Download Ritvik Goyal's professional resume showcasing expertise in software development, full-stack engineering, React, TypeScript, Python, and modern web technologies. View technical skills, project experience, education, certifications, and professional qualifications."
-          keywords="ritvik goyal resume, software developer cv, download resume, professional experience, technical skills, react developer resume, full stack engineer cv, toronto developer resume, software development qualifications"
-          url="https://ritvikgoyal.com/resume"
-          structuredData={structuredData}
-        />
-        <LocalBusinessSEO page="resume" />
-        <Container
-          maxWidth="lg"
-          sx={{ minHeight: "100vh", bgcolor: "transparent" }}
-        >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+    <div className="resume-page">
+      <a className="resume-skip" href="#resume-document">
+        Skip to resume
+      </a>
+      <header className="resume-header">
+        <a className="resume-logo" href="/" aria-label="Ritvik Goyal, home">
+          rg.
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="/#sig-work">Work</a>
+          <a href="/#sig-story">About</a>
+          <a href="/resume" aria-current="page">
+            Resume
+          </a>
+          <a href="/#sig-contact">
+            Contact <ArrowUpRight size={13} />
+          </a>
+        </nav>
+      </header>
+      <main id="resume-main">
+        <div className="resume-intro">
+          <div>
+            <span className="resume-eyebrow">RITVIK GOYAL / THE DETAILS</span>
+            <h1>
+              My <em>resume.</em>
+            </h1>
+            <p>Experience, projects, and education. All in one place.</p>
+          </div>
+          <a
+            className="resume-download"
+            href="/RG.pdf"
+            download="Ritvik-Goyal-Resume.pdf"
           >
-            <PageHeader
-              title="My Resume"
-              subtitle="Below you can view my professional experience, technical skills, and qualifications. You can also download a PDF version for your convenience."
-              icon={<DescriptionIcon sx={{ fontSize: 40 }} />}
-            />
-            <main>
-              <Box
-                sx={{
-                  py: 6,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 4,
-                }}
-              >
-                <Paper
-                  elevation={3}
-                  sx={{
-                    width: "100%",
-                    height: "800px",
-                    overflow: "hidden",
-                    borderRadius: 2,
-                    position: "relative",
-                  }}
-                >
-                  <object
-                    data="/RG.pdf"
-                    type="application/pdf"
-                    width="100%"
-                    height="100%"
-                    style={{ border: "none" }}
-                  >
-                    <Box
-                      sx={{
-                        p: 6,
-                        textAlign: "center",
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        gap: 3,
-                        bgcolor: "background.paper",
-                      }}
-                    >
-                      <Typography
-                        variant="h6"
-                        gutterBottom
-                        color="text.secondary"
-                      >
-                        Unable to display PDF file
-                      </Typography>
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          href="/RG.pdf"
-                          download
-                          size="large"
-                          startIcon={<DownloadIcon />}
-                          sx={{
-                            px: 4,
-                            py: 1.5,
-                            borderRadius: 2,
-                            textTransform: "none",
-                            fontSize: "1.1rem",
-                          }}
-                        >
-                          Download Resume
-                        </Button>
-                      </motion.div>
-                    </Box>
-                  </object>
-                </Paper>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <Button
-                    variant="outlined"
-                    color="primary"
-                    href="/RG.pdf"
-                    download
-                    startIcon={<DownloadIcon />}
-                    sx={{
-                      mt: 3,
-                      px: 4,
-                      py: 1.5,
-                      borderRadius: 2,
-                      textTransform: "none",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    Download PDF Version
-                  </Button>
-                </motion.div>
-              </Box>
-            </main>
-          </motion.div>{" "}
-        </Container>
-      </ThemedBackground>
-    </PerformanceOptimization>
+            Download resume <ArrowDownToLine size={17} />
+          </a>
+        </div>
+        <section
+          id="resume-document"
+          aria-label="Resume document"
+          className="resume-document"
+        >
+          <div className="resume-document-bar">
+            <span>
+              <FileText size={16} /> RITVIK GOYAL · PDF
+            </span>
+            <a href="/RG.pdf" target="_blank" rel="noreferrer">
+              Open PDF <ArrowUpRight size={15} />
+            </a>
+          </div>
+          <object
+            data="/RG.pdf#view=FitH"
+            type="application/pdf"
+            title="Ritvik Goyal's resume"
+            width="100%"
+            height="900"
+          >
+            <div className="resume-fallback">
+              <FileText size={32} strokeWidth={1} />
+              <h2>Your copy is one click away.</h2>
+              <p>
+                If your browser cannot preview the PDF here, open it in a new
+                tab or save a copy.
+              </p>
+              <a href="/RG.pdf" target="_blank" rel="noreferrer">
+                Open the resume PDF <ArrowUpRight size={16} />
+              </a>
+            </div>
+          </object>
+        </section>
+        <div className="resume-bottom">
+          <a href="/">
+            <ArrowLeft size={15} /> Back to the portfolio
+          </a>
+          <a href="mailto:connect@ritvikgoyal.com">
+            Let’s talk <ArrowUpRight size={15} />
+          </a>
+        </div>
+      </main>
+      <footer className="resume-footer">
+        <span>Ritvik Goyal</span>
+        <span>TORONTO, CANADA · {new Date().getFullYear()}</span>
+      </footer>
+    </div>
   );
-};
-
-export default Resume;
+}

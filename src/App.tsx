@@ -1,125 +1,101 @@
-import { useState, useEffect, lazy, Suspense } from "react";
-import { ThemeProvider, CssBaseline, CircularProgress } from "@mui/material";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { lightTheme, darkTheme } from "./styles/theme";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import InteractiveBackground from "./components/InteractiveBackground";
-import { AnimatePresence } from "framer-motion";
-import CustomCursor from "./components/CustomCursor";
-import { motion } from "framer-motion";
-import ErrorBoundary from "./components/ErrorBoundary";
-import { HelmetProvider } from "react-helmet-async";
-import GoogleAnalytics from "./components/GoogleAnalytics";
-import seoConfig from "./config/seoConfig";
-import SEOAudit from "./components/SEOAudit";
+import { lazy, Suspense, useEffect, useState } from "react";
+import ConceptSwitcher, { type ConceptId } from "./components/ConceptSwitcher";
+import ConceptBoundary from "./components/ConceptBoundary";
 
-const Home = lazy(() => import("./pages/Home"));
-const Experiences = lazy(() => import("./pages/Experiences"));
-const Portfolio = lazy(() => import("./pages/Portfolio"));
-const Contact = lazy(() => import("./pages/Contact"));
+const concepts = {
+  signature: lazy(() => import("./concepts/signature/Signature")),
+  obsidian: lazy(() => import("./concepts/obsidian/Obsidian")),
+  atelier: lazy(() => import("./concepts/atelier/Atelier")),
+  signal: lazy(() => import("./concepts/signal/Signal")),
+};
 const Resume = lazy(() => import("./pages/Resume"));
+const readIsResume = () =>
+  window.location.pathname.replace(/\/+$/, "") === "/resume";
 
-const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    const stored = localStorage.getItem("darkMode");
-    return stored ? stored === "true" : true;
-  });
+function readConcept(): ConceptId {
+  const requested = new URLSearchParams(window.location.search).get("design");
+  return requested === "atelier" ||
+    requested === "signal" ||
+    requested === "obsidian"
+    ? requested
+    : "signature";
+}
+
+export default function App() {
+  const [concept, setConcept] = useState<ConceptId>(readConcept);
+  const [isResume, setIsResume] = useState(readIsResume);
+  const Design = concepts[concept];
 
   useEffect(() => {
-    localStorage.setItem("darkMode", String(darkMode));
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
+    const onPopState = () => {
+      setConcept(readConcept());
+      setIsResume(readIsResume());
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
-  const theme = darkMode ? darkTheme : lightTheme;
+  useEffect(() => {
+    document.documentElement.dataset.design = isResume ? "signature" : concept;
+    document.title = `Ritvik Goyal — ${isResume ? "Resume" : concept === "signature" ? "Software Developer" : concept.charAt(0).toUpperCase() + concept.slice(1)}`;
+    const canonical = `https://ritvikgoyal.com/${isResume ? "resume" : ""}`;
+    document
+      .querySelector('link[rel="canonical"]')
+      ?.setAttribute("href", canonical);
+    document
+      .querySelector('meta[property="og:url"]')
+      ?.setAttribute("content", canonical);
+    document
+      .querySelector('meta[property="og:title"]')
+      ?.setAttribute("content", document.title);
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute(
+        "content",
+        isResume
+          ? "#111310"
+          : concept === "atelier"
+            ? "#f5f2eb"
+            : concept === "signal"
+              ? "#0b1319"
+              : concept === "signature"
+                ? "#111310"
+                : "#10100f",
+      );
+  }, [concept, isResume]);
 
-  const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    in: { opacity: 1, y: 0 },
-    out: { opacity: 0, y: -20 },
+  const selectConcept = (next: ConceptId) => {
+    if (next === concept) return;
+    const url = new URL(window.location.href);
+    url.searchParams.set("design", next);
+    url.hash = "";
+    window.history.pushState({}, "", url);
+    document.documentElement.dataset.design = next;
+    window.scrollTo({ top: 0, behavior: "instant" });
+    setConcept(next);
   };
 
-  const pageTransition = { duration: 0.4 };
-
-  const routes = [
-    { path: "/", element: Home },
-    { path: "/experiences", element: Experiences },
-    { path: "/resume", element: Resume },
-    { path: "/contact", element: Contact },
-    { path: "/portfolio", element: Portfolio },
-  ];
   return (
-    <HelmetProvider>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <GoogleAnalytics />
-        <div
-          style={{
-            position: "relative",
-            zIndex: 1,
-            backgroundColor: darkMode
-              ? "rgba(18, 18, 18, 0.7)"
-              : "rgba(255, 255, 255, 0.85)",
-          }}
+    <>
+      <ConceptBoundary key={isResume ? "resume" : concept}>
+        <Suspense
+          fallback={
+            <div className="concept-loading" role="status">
+              <span>
+                RG<span className="loading-dot">.</span>
+              </span>
+              <p>Setting the scene</p>
+            </div>
+          }
         >
-          <InteractiveBackground />
-          <div style={{ padding: "2rem" }}>
-            <Router basename="/">
-              <Header setDarkMode={setDarkMode} darkMode={darkMode} />
-              <Suspense
-                fallback={
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      height: "100vh",
-                    }}
-                  >
-                    <CircularProgress />
-                  </div>
-                }
-              >
-                <ErrorBoundary>
-                  <div id="main-content">
-                    {" "}
-                    <AnimatePresence mode="wait">
-                      <Routes>
-                        {routes.map(({ path, element: Element }) => (
-                          <Route
-                            key={path}
-                            path={path}
-                            element={
-                              <motion.div
-                                initial="initial"
-                                animate="in"
-                                exit="out"
-                                variants={pageVariants}
-                                transition={pageTransition}
-                              >
-                                <Element />
-                              </motion.div>
-                            }
-                          />
-                        ))}
-                      </Routes>
-                    </AnimatePresence>
-                  </div>
-                </ErrorBoundary>
-              </Suspense>
-              <Footer />
-            </Router>
-          </div>{" "}
-        </div>
-        {window.innerWidth > 768 && <CustomCursor />}
-        {/* SEOAudit removed as requested */}
-      </ThemeProvider>
-    </HelmetProvider>
+          {isResume ? <Resume /> : <Design />}
+        </Suspense>
+      </ConceptBoundary>
+      {!isResume &&
+        (import.meta.env.DEV ||
+          new URLSearchParams(window.location.search).has("design")) && (
+          <ConceptSwitcher current={concept} onSelect={selectConcept} />
+        )}
+    </>
   );
-};
-
-export default App;
+}

@@ -24,7 +24,7 @@ const WebVitalsReporter: React.FC<WebVitalsReporterProps> = ({
   debug = false,
 }) => {
   useEffect(() => {
-    const handleMetric = (metric: any) => {
+    const handleMetric = (metric: Metric) => {
       // Normalize the metric to our interface
       const normalizedMetric: Metric = {
         name: metric.name,
@@ -208,10 +208,9 @@ function measureCustomMetrics(handleMetric: (metric: Metric) => void) {
   // Memory usage (if available)
   const measureMemoryUsage = () => {
     try {
-      // @ts-ignore - performance.memory is non-standard but widely supported
-      if (performance.memory) {
-        // @ts-ignore
-        const memoryUsage = performance.memory.usedJSHeapSize;
+      const memory = (performance as Performance & { memory?: { usedJSHeapSize: number } }).memory;
+      if (memory) {
+        const memoryUsage = memory.usedJSHeapSize;
         handleMetric({
           name: "Memory_Usage",
           value: memoryUsage,

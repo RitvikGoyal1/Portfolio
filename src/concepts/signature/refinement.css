@@ -1,0 +1,728 @@
+/* Shared pacing and readable hierarchy for the second Signature iteration. */
+.signature {
+  --sig-muted: #abb09e;
+  --sig-accent: #d0e1b5;
+  --sig-line: rgba(223, 226, 207, 0.2);
+}
+.sig-grain {
+  opacity: 0.023;
+}
+.sig-header {
+  height: 90px;
+}
+.sig-header-note {
+  font-size: 9px;
+}
+.sig-nav {
+  font-size: 12px;
+  gap: 32px;
+}
+.sig-nav a {
+  min-height: 42px;
+}
+.sig-header-controls {
+  gap: 8px;
+}
+.sig-logo {
+  font-size: 49px;
+}
+.sig-hero {
+  min-height: calc(100svh - 90px);
+  padding-top: 29px;
+}
+.sig-hero-top > .sig-mono {
+  font-size: 9px;
+}
+.sig-hero-name {
+  padding-top: 37px;
+  font-size: clamp(130px, 19.7vw, 330px);
+  width: 77%;
+  line-height: 0.8;
+}
+.sig-name-first {
+  transform: translateX(calc(var(--sig-hero-drift, 0px) * -0.6));
+  will-change: transform;
+}
+.sig-name-second {
+  transform: translateX(var(--sig-hero-drift, 0px));
+  will-change: transform;
+  padding-left: 18%;
+  margin-top: 13px;
+}
+.sig-name-star {
+  right: -1%;
+  font-size: 0.085em;
+}
+.sig-hero-note {
+  right: 6.2%;
+  top: 32%;
+  width: 195px;
+}
+.sig-hero-note > p {
+  font-size: 20px;
+  line-height: 1.55;
+}
+.sig-hero-note > p em {
+  font-size: 29px;
+}
+.sig-hero-note > .sig-mono {
+  font-size: 8px;
+  margin-top: 23px;
+}
+.sig-hero-bottom {
+  padding-top: 45px;
+  padding-bottom: 53px;
+  align-items: flex-end;
+}
+.sig-hero-intro > p {
+  font-size: 17px;
+  line-height: 1.7;
+  letter-spacing: -0.025em;
+}
+.sig-hero-intro > p > span {
+  font-size: 15px;
+}
+.sig-round-link {
+  font-size: 12px;
+  margin-top: 25px;
+  gap: 14px;
+}
+.sig-round-link > span:first-child {
+  width: 44px;
+  height: 44px;
+  background: #d0e1b5;
+  color: #192315;
+  border-color: #d0e1b5;
+}
+.sig-round-link:hover > span:first-child {
+  transform: translateY(3px);
+  background: #edf4de;
+}
+.sig-now {
+  min-width: 286px;
+  border-left: 1px solid #c5dbab55;
+  padding-left: 25px;
+  padding-bottom: 5px;
+}
+.sig-now > .sig-mono {
+  font-size: 8px;
+  letter-spacing: 0.07em;
+}
+.sig-now p {
+  font-size: 19px;
+  margin-top: 14px;
+}
+.sig-now small {
+  font-size: 12px;
+  margin-top: 7px;
+}
+.sig-now > a {
+  font-size: 11px;
+  margin-top: 15px;
+}
+.sig-hero-base {
+  height: 63px;
+}
+.sig-hero-base .sig-mono {
+  font-size: 8px;
+}
+.sig-play-trigger {
+  bottom: 101px;
+  padding: 14px 18px !important;
+  font-size: 11px;
+  gap: 10px;
+}
+.sig-play-trigger .sig-trigger-arrow {
+  margin-left: 3px;
+}
+.sig-section-top > .sig-mono {
+  font-size: 10px !important;
+}
+.sig-section-top > .sig-mono:last-child {
+  font-size: 8px !important;
+}
+.sig-story {
+  padding-top: 105px;
+  padding-bottom: 105px;
+  background: linear-gradient(180deg, #111310fa, #111310b3);
+}
+.sig-story-heading {
+  margin-top: 58px;
+  margin-bottom: 75px;
+}
+.sig-story h2 {
+  font-size: clamp(58px, 6.6vw, 110px);
+  max-width: 75%;
+}
+.sig-portrait {
+  width: 180px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  transform: none;
+}
+.sig-portrait:before {
+  display: none;
+}
+.sig-portrait img {
+  display: block;
+  object-fit: cover;
+  filter: none;
+  border: 1px solid #9cafaa30;
+  border-radius: 3px;
+  box-shadow: 0 12px 35px #0003;
+}
+.sig-portrait:hover img {
+  filter: none;
+  transform: translateY(-3px);
+}
+.sig-portrait-caption {
+  font-size: 7px;
+  bottom: -27px;
+  left: 0;
+  right: auto;
+  width: 100%;
+  text-align: center;
+}
+.sig-year-selector {
+  padding-top: 24px;
+}
+.sig-year-selector > button {
+  font-size: 13px;
+  min-height: 48px;
+}
+.sig-now-tag {
+  font-size: 8px;
+}
+.sig-chapter-panels {
+  min-height: 330px;
+}
+.sig-chapter-copy > .sig-mono {
+  font-size: 9px;
+}
+.sig-chapter-copy > h3 {
+  font-size: 29px;
+  max-width: 420px;
+}
+.sig-chapter-copy > p {
+  font-size: 14px;
+  line-height: 1.85;
+  max-width: 460px;
+}
+.sig-chapter-copy > a {
+  font-size: 11px;
+  min-height: 36px;
+  margin-top: 16px;
+}
+.sig-personal-facts {
+  padding: 37px 0;
+  gap: 32px;
+}
+.sig-personal-facts > a > .sig-mono {
+  font-size: 8px;
+  line-height: 1.7;
+}
+.sig-personal-facts > a > span:nth-child(2) {
+  font-size: 13px;
+}
+.sig-toolkit > .sig-mono {
+  font-size: 9px;
+}
+.sig-toolkit > div {
+  margin-top: 30px;
+}
+.sig-toolkit > div > span {
+  font-size: 22px;
+}
+.sig-tool-index {
+  font-size: 8px;
+}
+.sig-contact {
+  padding-top: 100px;
+  background: #11131068;
+}
+.sig-contact-title {
+  padding-top: 65px;
+}
+.sig-contact-bottom > p {
+  font-size: 14px;
+}
+.sig-contact-email > a {
+  font-size: 25px;
+}
+.sig-socials a {
+  font-size: 13px;
+}
+.sig-socials {
+  flex-wrap: wrap;
+}
+.sig-footer {
+  padding-bottom: 65px;
+}
+.sig-footer > .sig-mono,
+.sig-footer-top > .sig-mono {
+  font-size: 9px;
+}
+.sig-footer-name > span {
+  font-size: 8px;
+  line-height: 1.5;
+}
+.sig-footer-name {
+  font-size: 35px;
+}
+.sig-chapter-indicator {
+  font-size: 8px;
+  left: 18px;
+  bottom: 40px;
+}
+.sig-floating-nav {
+  visibility: hidden;
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translate(-50%, -90px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 45;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px;
+  background: #1c251aeb;
+  border: 1px solid #b9c7a73a;
+  border-radius: 50px;
+  box-shadow: 0 8px 35px #0002;
+  backdrop-filter: blur(20px);
+  transition:
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s;
+}
+.sig-floating-nav.is-visible {
+  visibility: visible;
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.sig-floating-nav > a {
+  padding: 10px 15px;
+  font-size: 11px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  transition:
+    background 0.25s,
+    color 0.25s;
+}
+.sig-floating-nav > a[aria-current="location"] {
+  background: #d0e1b5;
+  color: #182116;
+}
+.sig-floating-nav > a:hover {
+  background: #d0e1b520;
+}
+.sig-floating-nav > a[aria-current="location"]:hover {
+  background: #d0e1b5;
+}
+.sig-floating-nav .sig-floating-logo {
+  font:
+    italic 29px/0.7 "Instrument Serif",
+    serif;
+  padding: 9px 14px 13px;
+}
+.sig-floating-nav > button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-left: 1px solid #c5dbab30;
+  padding: 10px 13px;
+  font-size: 9px;
+}
+.signature [data-sig-reveal] {
+  transition:
+    opacity 0.9s ease,
+    translate 1s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  translate: 0 0;
+}
+.signature [data-sig-reveal]:not(.is-revealed) {
+  opacity: 0;
+  translate: 0 35px;
+}
+@media (max-width: 1100px) and (min-width: 761px) {
+  .sig-hero-note {
+    width: 150px;
+    right: 5%;
+  }
+  .sig-hero-note > p {
+    font-size: 16px;
+  }
+  .sig-hero-intro > p {
+    font-size: 14px;
+  }
+  .sig-hero-intro > p > span {
+    font-size: 12px;
+  }
+  .sig-now {
+    min-width: 230px;
+  }
+  .sig-now p {
+    font-size: 16px;
+  }
+  .sig-play-trigger {
+    bottom: 87px;
+    font-size: 10px;
+  }
+  .sig-hero-bottom {
+    padding-bottom: 75px;
+  }
+  .sig-personal-facts {
+    gap: 22px;
+  }
+  .sig-portrait {
+    width: 140px;
+    height: auto;
+  }
+  .sig-story-heading {
+    gap: 35px;
+  }
+  .sig-now-tag {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .sig-header {
+    height: 78px;
+    gap: 15px;
+  }
+  .sig-hero {
+    min-height: calc(100svh - 78px);
+    padding-top: 24px;
+  }
+  .sig-hero-top > .sig-mono {
+    font-size: 7px;
+  }
+  .sig-hero-name {
+    font-size: 28vw;
+    padding-top: 41px;
+    width: 100%;
+    line-height: 0.88;
+  }
+  .sig-name-second {
+    padding-left: 12%;
+    margin-top: 8px;
+  }
+  .sig-name-star {
+    right: 2%;
+  }
+  .sig-hero-note {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: auto;
+    margin-top: 24px;
+  }
+  .sig-hero-note > p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .sig-hero-note > p em {
+    font-size: 18px;
+  }
+  .sig-hero-note > .sig-mono {
+    display: none;
+  }
+  .sig-hero-bottom {
+    padding-top: 35px;
+    padding-bottom: 95px;
+    gap: 22px;
+    align-items: flex-start;
+  }
+  .sig-hero-intro {
+    max-width: 54%;
+  }
+  .sig-hero-intro > p {
+    font-size: 13px;
+    line-height: 1.8;
+    letter-spacing: -0.02em;
+  }
+  .sig-hero-intro > p > span {
+    font-size: 11px;
+    line-height: 1.8;
+    display: inline-block;
+    margin-top: 4px;
+  }
+  .sig-round-link {
+    font-size: 9px;
+    gap: 9px;
+    margin-top: 20px;
+    white-space: nowrap;
+  }
+  .sig-round-link > span:first-child {
+    height: 32px;
+    width: 32px;
+  }
+  .sig-now {
+    border-left: 0;
+    padding-left: 0;
+    min-width: 0;
+    max-width: 42%;
+    padding-top: 5px;
+  }
+  .sig-now > .sig-mono {
+    font-size: 6px;
+    line-height: 1.8;
+    max-width: 135px;
+    letter-spacing: 0.05em;
+  }
+  .sig-now p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 12px;
+    max-width: 145px;
+  }
+  .sig-now small {
+    font-size: 9px;
+    line-height: 1.7;
+    max-width: 130px;
+    margin-top: 8px;
+  }
+  .sig-now > a {
+    font-size: 8px;
+    line-height: 1.7;
+    margin-top: 14px;
+    max-width: 140px;
+  }
+  .sig-play-trigger {
+    bottom: 79px;
+    font-size: 10px;
+    padding: 12px 16px !important;
+  }
+  .sig-hero-base {
+    height: 58px;
+  }
+  .sig-hero-base .sig-mono {
+    font-size: 6px;
+  }
+  .sig-hero-base > a {
+    max-width: 130px;
+    text-align: right;
+  }
+  .sig-section-top > .sig-mono {
+    font-size: 8px !important;
+  }
+  .sig-story {
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+  .sig-story-heading {
+    margin: 35px 0 58px;
+    gap: 20px;
+    align-items: center;
+  }
+  .sig-story h2 {
+    font-size: clamp(36px, 7.5vw, 56px);
+    max-width: 65%;
+    line-height: 1.05;
+  }
+  .sig-portrait {
+    width: 93px;
+    height: auto;
+  }
+  .sig-portrait-caption {
+    font-size: 4px;
+    bottom: -16px;
+  }
+  .sig-year-selector {
+    padding-top: 15px;
+    gap: 4px;
+  }
+  .sig-year-selector > button {
+    font-size: 11px;
+    min-height: 44px;
+    gap: 5px;
+    white-space: nowrap;
+    justify-content: center;
+    flex: 1;
+  }
+  .sig-now-tag {
+    display: none;
+  }
+  .sig-year-suffix {
+    display: none;
+  }
+  .sig-chapter-panels {
+    min-height: 370px;
+  }
+  .sig-chapter-copy > h3 {
+    font-size: 25px;
+  }
+  .sig-chapter-copy > p {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+  .sig-chapter-copy > .sig-mono {
+    font-size: 8px;
+  }
+  .sig-chapter-copy > a {
+    font-size: 10px;
+    margin-top: 13px;
+  }
+  .sig-personal-facts {
+    padding: 29px 0;
+    gap: 30px 22px;
+  }
+  .sig-personal-facts > a > .sig-mono {
+    font-size: 7px;
+  }
+  .sig-personal-facts > a > span:nth-child(2) {
+    font-size: 12px;
+  }
+  .sig-toolkit > .sig-mono {
+    font-size: 8px;
+  }
+  .sig-toolkit > div {
+    margin-top: 25px;
+    gap: 20px 24px;
+  }
+  .sig-toolkit > div > span {
+    font-size: 20px;
+  }
+  .sig-tool-index {
+    font-size: 7px;
+  }
+  .sig-contact {
+    padding-top: 65px;
+  }
+  .sig-contact-title {
+    padding-top: 40px;
+  }
+  .sig-contact-bottom > p {
+    font-size: 13px;
+  }
+  .sig-contact-email > a {
+    font-size: clamp(16px, 4.5vw, 24px);
+  }
+  .sig-socials a {
+    font-size: 12px;
+  }
+  .sig-socials {
+    gap: 22px 28px;
+  }
+  .sig-footer {
+    padding-bottom: 90px;
+    gap: 25px;
+  }
+  .sig-footer-name {
+    font-size: 29px;
+  }
+  .sig-footer-name > span {
+    font-size: 6px;
+  }
+  .sig-footer > .sig-mono,
+  .sig-footer-top > .sig-mono {
+    font-size: 7px;
+  }
+  .sig-floating-nav {
+    top: 12px;
+    padding: 5px;
+    gap: 2px;
+  }
+  .sig-floating-nav > a {
+    padding: 10px 12px;
+    font-size: 10px;
+  }
+  .sig-floating-nav .sig-floating-logo {
+    display: none;
+  }
+  .sig-floating-nav > button {
+    padding: 10px;
+    font-size: 8px;
+  }
+}
+@media (max-width: 480px) {
+  .sig-nav.is-open {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 24px;
+  }
+}
+@media (max-width: 359px) {
+  .sig-hero-intro > p {
+    font-size: 11px;
+  }
+  .sig-hero-intro > p > span {
+    font-size: 10px;
+  }
+  .sig-round-link {
+    font-size: 8px;
+    gap: 8px;
+  }
+  .sig-round-link > span:first-child {
+    width: 29px;
+    height: 29px;
+  }
+  .sig-hero-bottom {
+    gap: 14px;
+  }
+  .sig-now p {
+    font-size: 11px;
+  }
+  .sig-now > .sig-mono {
+    font-size: 5px;
+  }
+  .sig-now small {
+    font-size: 8px;
+  }
+  .sig-now > a {
+    font-size: 7px;
+  }
+  .sig-hero-note > p {
+    font-size: 10px;
+  }
+  .sig-hero-note > p em {
+    font-size: 16px;
+  }
+  .sig-story h2 {
+    font-size: 31px;
+  }
+  .sig-portrait {
+    width: 79px;
+    height: auto;
+  }
+  .sig-year-selector > button {
+    font-size: 11px;
+    gap: 4px;
+  }
+  .sig-personal-facts > a > .sig-mono {
+    font-size: 6px;
+  }
+  .sig-personal-facts > a > span:nth-child(2) {
+    font-size: 11px;
+  }
+  .sig-floating-nav > a {
+    padding: 10px;
+    font-size: 9px;
+  }
+  .sig-floating-nav > button > span {
+    display: none;
+  }
+  .sig-footer > .sig-mono {
+    font-size: 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sig-portrait:hover img {
+    transform: none;
+  }
+  .sig-name-first,
+  .sig-name-second {
+    transform: none !important;
+  }
+  .signature [data-sig-reveal] {
+    opacity: 1 !important;
+    translate: none !important;
+  }
+  .sig-floating-nav {
+    transition: none;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@mui/material/styles";
 
@@ -27,7 +27,7 @@ const CustomCursor = () => {
       }
     };
 
-    const handleMouseLeaveLink = (e: Event) => {
+    const handleMouseLeaveLink = () => {
       setLinkHovered(false);
     };
 
