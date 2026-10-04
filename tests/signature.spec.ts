@@ -37,11 +37,8 @@ for (const width of [320, 390, 768, 1440]) {
         )
         .toBeGreaterThan(0);
     }
-    await expect(
-      page.getByRole("img", {
-        name: "Cinematic duotone portrait of Ritvik Goyal",
-      }),
-    ).toHaveAttribute("src", "/ritvik-duotone.webp");
+    await expect(page.locator(".sig-story-mark")).toHaveText(/rg\./);
+    await expect(page.locator("#sig-story img")).toHaveCount(0);
     const yearsFit = await page.getByRole("tab").evaluateAll((tabs) =>
       tabs.every((tab) => {
         const bounds = tab.getBoundingClientRect();

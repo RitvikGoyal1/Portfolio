@@ -856,48 +856,6 @@
 .sig-story h2 em {
   color: var(--sig-bronze);
 }
-.sig-portrait {
-  width: 165px;
-  height: 190px;
-  position: relative;
-  margin-right: 2%;
-  transform: rotate(5deg);
-  flex-shrink: 0;
-}
-.sig-portrait:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px solid #a5b09c70;
-  transform: rotate(-7deg);
-  transition: transform 0.6s;
-}
-.sig-portrait img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(1);
-  transition:
-    filter 0.8s,
-    transform 0.8s;
-}
-.sig-portrait:hover img {
-  filter: grayscale(0);
-  transform: rotate(-5deg) scale(1.04);
-}
-.sig-portrait:hover:before {
-  transform: rotate(5deg);
-}
-.sig-portrait-caption {
-  font:
-    6px ui-monospace,
-    monospace;
-  letter-spacing: 0.08em;
-  position: absolute;
-  bottom: -23px;
-  white-space: nowrap;
-  color: var(--sig-muted);
-}
 .sig-journey {
   border-top: 1px solid var(--sig-line);
 }
@@ -1821,18 +1779,6 @@
     display: block;
     font-size: 1.12em;
   }
-  .sig-portrait {
-    width: 92px;
-    height: 110px;
-    margin-right: 1%;
-    margin-bottom: 7px;
-  }
-  .sig-portrait-caption {
-    font-size: 4px;
-    letter-spacing: 0.01em;
-    bottom: -15px;
-    right: 0;
-  }
   .sig-year-selector {
     padding-top: 15px;
     gap: 12px;
@@ -2130,13 +2076,6 @@
   }
   .sig-story h2 {
     font-size: 32px;
-  }
-  .sig-portrait {
-    width: 80px;
-    height: 95px;
-  }
-  .sig-portrait-caption {
-    display: none;
   }
   .sig-year-selector > button {
     font-size: 7px;

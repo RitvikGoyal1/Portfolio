@@ -521,16 +521,30 @@ export default function Signature() {
               <br />
               <em>the commit history.</em>
             </h2>
-            <div className="sig-portrait">
-              <img
-                src="/ritvik-duotone.webp"
-                alt="Cinematic duotone portrait of Ritvik Goyal"
-                width="720"
-                height="900"
-                loading="lazy"
-                decoding="async"
-              />
-              <span className="sig-portrait-caption">
+            <div className="sig-story-mark" aria-hidden="true">
+              <div className="sig-story-seal">
+                <svg viewBox="0 0 200 200" fill="none">
+                  <circle cx="100" cy="100" r="83" />
+                  <ellipse
+                    cx="100"
+                    cy="100"
+                    rx="94"
+                    ry="57"
+                    transform="rotate(-35 100 100)"
+                  />
+                  <path d="M100 10v8M100 182v8M10 100h8M182 100h8" />
+                  <circle
+                    className="sig-story-satellite"
+                    cx="168"
+                    cy="52"
+                    r="3"
+                  />
+                </svg>
+                <span className="sig-story-initials">
+                  rg<span>.</span>
+                </span>
+              </div>
+              <span className="sig-story-mark-caption">
                 RITVIK GOYAL / TORONTO
               </span>
             </div>

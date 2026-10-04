@@ -154,34 +154,93 @@
   font-size: clamp(58px, 6.6vw, 110px);
   max-width: 75%;
 }
-.sig-portrait {
+.sig-story-mark {
   width: 180px;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  transform: none;
-}
-.sig-portrait:before {
-  display: none;
-}
-.sig-portrait img {
-  display: block;
-  object-fit: cover;
-  filter: none;
-  border: 1px solid #9cafaa30;
-  border-radius: 3px;
-  box-shadow: 0 12px 35px #0003;
-}
-.sig-portrait:hover img {
-  filter: none;
-  transform: translateY(-3px);
-}
-.sig-portrait-caption {
-  font-size: 7px;
-  bottom: -27px;
-  left: 0;
-  right: auto;
-  width: 100%;
+  flex-shrink: 0;
+  margin-right: 2%;
+  color: var(--sig-bronze);
   text-align: center;
+}
+.sig-story-seal {
+  position: relative;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+.sig-story-seal svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 0.65;
+  stroke-opacity: 0.4;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sig-story-satellite {
+  fill: #c5d9c6;
+  stroke: none;
+}
+.sig-story-initials {
+  padding-bottom: 14%;
+  padding-right: 8%;
+  font:
+    italic 100px/1 "Instrument Serif",
+    serif;
+  letter-spacing: -0.07em;
+}
+.sig-story-initials > span {
+  color: #c5d9c6;
+}
+.sig-story-mark-caption {
+  display: block;
+  margin-top: 18px;
+  font:
+    7px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.12em;
+  color: var(--sig-muted);
+  white-space: nowrap;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .sig-story-mark:hover svg {
+    transform: rotate(18deg);
+  }
+}
+@media (max-width: 1100px) {
+  .sig-story-mark {
+    width: 140px;
+  }
+  .sig-story-initials {
+    font-size: 78px;
+  }
+  .sig-story-mark-caption {
+    font-size: 6px;
+  }
+}
+@media (max-width: 760px) {
+  .sig-story-mark {
+    width: 93px;
+    margin-right: 0;
+  }
+  .sig-story-initials {
+    font-size: 52px;
+  }
+  .sig-story-mark-caption {
+    font-size: 4px;
+    margin-top: 12px;
+  }
+}
+@media (max-width: 360px) {
+  .sig-story-mark {
+    width: 79px;
+  }
+  .sig-story-initials {
+    font-size: 44px;
+  }
+  .sig-story-mark-caption {
+    font-size: 3.5px;
+  }
 }
 .sig-year-selector {
   padding-top: 24px;
@@ -378,10 +437,6 @@
   .sig-personal-facts {
     gap: 22px;
   }
-  .sig-portrait {
-    width: 140px;
-    height: auto;
-  }
   .sig-story-heading {
     gap: 35px;
   }
@@ -523,14 +578,6 @@
     font-size: clamp(36px, 7.5vw, 56px);
     max-width: 65%;
     line-height: 1.05;
-  }
-  .sig-portrait {
-    width: 93px;
-    height: auto;
-  }
-  .sig-portrait-caption {
-    font-size: 4px;
-    bottom: -16px;
   }
   .sig-year-selector {
     padding-top: 15px;
@@ -685,10 +732,6 @@
   .sig-story h2 {
     font-size: 31px;
   }
-  .sig-portrait {
-    width: 79px;
-    height: auto;
-  }
   .sig-year-selector > button {
     font-size: 11px;
     gap: 4px;
@@ -711,9 +754,6 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sig-portrait:hover img {
-    transform: none;
-  }
   .sig-name-first,
   .sig-name-second {
     transform: none !important;

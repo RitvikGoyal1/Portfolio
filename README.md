@@ -24,7 +24,7 @@ Use “Compare designs” to open the floating switcher in development or with a
 - Open **Resume** from navigation, contact links, or shortcuts to view `/resume`, open the existing PDF in a separate tab, or download it.
 - Pause ambient motion from the header. Reduced-motion preferences and a no-WebGL fallback are supported.
 
-The content includes a cinematic duotone treatment of Ritvik’s portrait, Toronto local time, Dealify’s Hack the North award, a complete 2022–2026 timeline, community work, and publicly verified Shopify Dev Degree / York University details.
+The content includes a custom typographic “rg.” monogram, Toronto local time, Dealify’s Hack the North award, a complete 2022–2026 timeline, community work, and publicly verified Shopify Dev Degree / York University details.
 
 ## Development
 
