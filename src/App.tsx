@@ -11,7 +11,8 @@ const concepts = {
 };
 const Resume = lazy(() => import("./pages/Resume"));
 const readIsResume = () =>
-  window.location.pathname.replace(/\/+$/, "") === "/resume";
+  window.location.pathname.replace(/\/+$/, "").replace(/\.html$/, "") ===
+  "/resume";
 
 function readConcept(): ConceptId {
   const requested = new URLSearchParams(window.location.search).get("design");

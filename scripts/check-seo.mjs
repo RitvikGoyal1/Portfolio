@@ -22,7 +22,7 @@ function meta(html, key) {
 
 for (const [file, route, title] of [
   ["index.html", "/", "Ritvik Goyal — Software Developer"],
-  ["resume/index.html", "/resume", "Ritvik Goyal — Resume"],
+  ["resume.html", "/resume", "Ritvik Goyal — Resume"],
 ]) {
   const html = await read(file);
   const url = `${origin}${route}`;

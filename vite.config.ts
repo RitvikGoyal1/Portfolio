@@ -1,5 +1,5 @@
 import path from "node:path";
-import { readFile, mkdir, writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import react from "@vitejs/plugin-react-swc";
 import { createServer, defineConfig } from "vite";
 import { pageMetadata, structuredData } from "./src/seo";
@@ -99,9 +99,10 @@ export default defineConfig({
                 "</head>",
                 `${fonts.map((file) => `<link rel="preload" href="/${file}" as="font" type="font/woff2" crossorigin />`).join("\n")}\n${css.map((file) => `<link rel="stylesheet" href="/${file}" />`).join("\n")}\n<style>html[data-prerendered] [data-sig-reveal]{opacity:1;translate:none;transform:none}html[data-prerendered] .sig-kinetic-letter,html[data-prerendered] .sig-reveal-word{opacity:1;transform:none}</style>\n</head>`,
               );
-            const directory = path.resolve(isResume ? "dist/resume" : "dist");
-            await mkdir(directory, { recursive: true });
-            await writeFile(path.join(directory, "index.html"), html);
+            await writeFile(
+              path.resolve(isResume ? "dist/resume.html" : "dist/index.html"),
+              html,
+            );
           }
         } finally {
           await renderer.close();

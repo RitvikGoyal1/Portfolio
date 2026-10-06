@@ -9,7 +9,9 @@ async function start() {
     document.documentElement.dataset.prerendered &&
     !new URLSearchParams(location.search).has("design")
   ) {
-    if (location.pathname.replace(/\/+$/, "") === "/resume")
+    if (
+      location.pathname.replace(/\/+$/, "").replace(/\.html$/, "") === "/resume"
+    )
       await import("./pages/Resume");
     else await import("./concepts/signature/Signature");
   }

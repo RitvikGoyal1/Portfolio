@@ -57,7 +57,7 @@ Legacy components remain in `src/components` and `src/pages` as reference. The r
 - Confirmed Shopify Dev Degree / York University details; see [content sources and research](docs/DESIGN-NOTES.md).
 - The second Signature iteration applies [2026 design and motion research](docs/2026-DESIGN-RESEARCH.md).
 
-Production builds render the actual Signature homepage and resume into HTML with route-specific metadata and styles. JavaScript adds the interactive controls; content and native links are available before it loads. Legacy paths redirect to their matching sections, and unknown paths use a real 404 page. The resume uses the repository's original `public/RG.pdf` without changing its contents. Publishing source to `main` and deploying the live host are separate operations unless hosting is configured to deploy automatically.
+Production builds render the actual Signature homepage and resume into HTML with route-specific metadata and styles. `resume.html` uses Cloudflare Pages’ clean URL handling to serve `/resume` directly; `/resume/` redirects to that canonical URL. JavaScript adds the interactive controls; content and native links are available before it loads. Legacy paths redirect to their matching sections, and unknown paths use a real 404 page. The resume uses the repository's original `public/RG.pdf` without changing its contents. Publishing source to `main` and deploying the live host are separate operations unless hosting is configured to deploy automatically.
 
 ## Contact form
 
