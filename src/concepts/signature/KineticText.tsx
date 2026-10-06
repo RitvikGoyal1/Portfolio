@@ -6,6 +6,8 @@ import {
   useRef,
 } from "react";
 import "./kinetic.css";
+const useClientLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 type TextProps = { text: string; className?: string };
 type MotionStyle = CSSProperties & {
@@ -72,7 +74,7 @@ function paintSpring(element: HTMLElement, point: SpringPoint) {
 export function KineticName({ text, className }: TextProps) {
   const root = useRef<HTMLSpanElement>(null);
 
-  useLayoutEffect(() => {
+  useClientLayoutEffect(() => {
     const element = root.current;
     if (!element) return;
     const letters = Array.from(
@@ -187,11 +189,7 @@ export function KineticName({ text, className }: TextProps) {
   }, [text]);
 
   return (
-    <span
-      ref={root}
-      className={joinClass("sig-kinetic-name", className)}
-      aria-label={text}
-    >
+    <span ref={root} className={joinClass("sig-kinetic-name", className)}>
       <span className="sig-motion-accessible">{text}</span>
       <span className="sig-kinetic-visual" aria-hidden="true">
         {Array.from(text).map((character, index) => (
@@ -394,7 +392,7 @@ export function Magnetic({
 export function RevealText({ text, className }: TextProps) {
   const root = useRef<HTMLSpanElement>(null);
 
-  useLayoutEffect(() => {
+  useClientLayoutEffect(() => {
     const element = root.current;
     if (!element) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -427,11 +425,7 @@ export function RevealText({ text, className }: TextProps) {
 
   let wordIndex = 0;
   return (
-    <span
-      ref={root}
-      className={joinClass("sig-reveal-text", className)}
-      aria-label={text}
-    >
+    <span ref={root} className={joinClass("sig-reveal-text", className)}>
       <span className="sig-motion-accessible">{text}</span>
       <span aria-hidden="true">
         {text.split(/(\s+)/).map((part, index) =>

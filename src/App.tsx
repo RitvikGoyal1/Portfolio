@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import ConceptSwitcher, { type ConceptId } from "./components/ConceptSwitcher";
 import ConceptBoundary from "./components/ConceptBoundary";
+import { pageMetadata } from "./seo";
 
 const concepts = {
   signature: lazy(() => import("./concepts/signature/Signature")),
@@ -37,6 +38,21 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.dataset.design = isResume ? "signature" : concept;
+    const metadata = pageMetadata(isResume);
+    for (const selector of [
+      'meta[name="description"]',
+      'meta[property="og:description"]',
+      'meta[name="twitter:description"]',
+    ]) {
+      document
+        .querySelector(selector)
+        ?.setAttribute("content", metadata.description);
+    }
+    document
+      .querySelector('meta[name="twitter:title"]')
+      ?.setAttribute("content", metadata.title);
+    delete document.documentElement.dataset.prerendered;
+
     document.title = `Ritvik Goyal — ${isResume ? "Resume" : concept === "signature" ? "Software Developer" : concept.charAt(0).toUpperCase() + concept.slice(1)}`;
     const canonical = `https://ritvikgoyal.com/${isResume ? "resume" : ""}`;
     document

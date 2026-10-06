@@ -20,7 +20,7 @@ Use “Compare designs” to open the floating switcher in development or with a
 - Select projects to reveal their own color, large interface preview, implementation notes, and live/source links.
 - Open **Build notes**, or use the previous/next controls to explore all four projects.
 - Explore the timeline with its year tabs or arrow keys.
-- Use **⌘K / Ctrl+K** for searchable navigation and the hidden signature.
+- Use **⌘K on Apple devices / Ctrl+K on Windows and Linux** for searchable navigation and the hidden signature. On small touch layouts, use the search icon.
 - Open **Resume** from navigation, contact links, or shortcuts to view `/resume`, open the existing PDF in a separate tab, or download it.
 - Pause ambient motion from the header. Reduced-motion preferences and a no-WebGL fallback are supported.
 
@@ -57,7 +57,7 @@ Legacy components remain in `src/components` and `src/pages` as reference. The r
 - Confirmed Shopify Dev Degree / York University details; see [content sources and research](docs/DESIGN-NOTES.md).
 - The second Signature iteration applies [2026 design and motion research](docs/2026-DESIGN-RESEARCH.md).
 
-Production builds include a static `resume/index.html` entry so `/resume` and `/resume/` work on static hosting, as well as the existing `_redirects` fallback. The resume uses the repository's original `public/RG.pdf` without changing its contents. Publishing source to `main` and deploying the live host are separate operations unless hosting is configured to deploy automatically.
+Production builds render the actual Signature homepage and resume into HTML with route-specific metadata and styles. JavaScript adds the interactive controls; content and native links are available before it loads. Legacy paths redirect to their matching sections, and unknown paths use a real 404 page. The resume uses the repository's original `public/RG.pdf` without changing its contents. Publishing source to `main` and deploying the live host are separate operations unless hosting is configured to deploy automatically.
 
 ## Contact form
 
@@ -68,3 +68,13 @@ Signature includes an optional name, required reply email, and message form alon
 The form validates fields, includes a honeypot, disables duplicate submissions while sending, and retains drafts on errors or a 20-second timeout. FormSubmit’s spam filtering remains enabled; no CAPTCHA-disabling option is set. Requests are accepted only when both the HTTP response and provider `success` value indicate success. Visitors see a link to the provider’s privacy policy. FormSubmit documents 30-day submission retention; the app does not persist drafts or messages in browser storage.
 
 Run `npx playwright test tests/contact.spec.ts` for isolated browser checks. They intercept all email requests and never send real messages.
+
+## Search and quality checks
+
+- Build-time React rendering exposes project descriptions, timeline, contact links, and the resume without requiring JavaScript. The native project directory exposes all four project links.
+- Root and resume have distinct descriptions, canonical URLs, Open Graph/Twitter metadata, and a connected Person/website/page structured-data graph. No invented reviews, keyword lists, addresses, or ratings are added.
+- `public/social-card.png` is a 1200×630 branded sharing image. Regenerate with `node scripts/create-social-card.mjs` after installing Playwright Chromium.
+- Sitemap contains only the homepage and resume, with manually maintained factual modification dates. Legacy route redirects and a 404 document avoid duplicate/soft-404 pages.
+- An updated `sw.js` retires the previous site's persistent caches. Fonts are self-hosted/preloaded; hashed assets use long-lived caching.
+- Run `node scripts/check-seo.mjs` after a production build. For cross-browser checks install `npx playwright install chromium firefox webkit`, then run `npx playwright test`. The mobile matrix can also run with `npx playwright test tests/mobile-audit.spec.ts --browser=all`.
+- See [October quality review](docs/QUALITY-REVIEW.md) for measured coverage and remaining external SEO work. Search ranking depends on indexing, competition, content, and links; the implementation does not guarantee rank.

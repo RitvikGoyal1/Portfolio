@@ -3,7 +3,6 @@ import {
   ArrowDown,
   ArrowUpRight,
   Check,
-  Command,
   Copy,
   FileText,
   Github,
@@ -12,7 +11,6 @@ import {
   Pause,
   Play,
   Search,
-  Sparkles,
   X,
 } from "lucide-react";
 import PersonalField from "./PersonalField";
@@ -24,6 +22,7 @@ import ContactForm from "./ContactForm";
 import "./signature.css";
 import "./refinement.css";
 import "./contact-form.css";
+import "./touch.css";
 
 const chapterNames = [
   "An introduction",
@@ -40,7 +39,9 @@ const torontoTime = () =>
 
 function useMotionPreference() {
   const [reduced, setReduced] = useState(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -136,7 +137,10 @@ function CommandMenu({
       ref={dialog}
       className="sig-command"
       aria-label="Find your way around"
-      onCancel={onClose}
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
@@ -210,6 +214,11 @@ export default function Signature() {
   const [story, setStory] = useState(storyChapters.length - 1);
   const [copied, setCopied] = useState(false);
   const [commandOpen, setCommandOpen] = useState(false);
+  const [isApple, setIsApple] = useState(false);
+  useEffect(() => {
+    setIsApple(/Mac|iPhone|iPad|iPod/.test(navigator.platform));
+  }, []);
+  const shortcut = isApple ? "⌘ K" : "Ctrl K";
   const [time, setTime] = useState(torontoTime);
   const [mobileMenu, setMobileMenu] = useState(false);
   const reducedMotion = useMotionPreference();
@@ -363,11 +372,20 @@ export default function Signature() {
         <div className="sig-header-controls">
           <button
             className="sig-shortcut"
-            onClick={() => setCommandOpen(true)}
+            onClick={(event) => {
+              event.currentTarget.focus({ preventScroll: true });
+              setCommandOpen(true);
+            }}
             aria-label="Open portfolio shortcuts"
+            title={`Search portfolio (${shortcut})`}
+            aria-keyshortcuts={isApple ? "Meta+K" : "Control+K"}
           >
-            <Command size={14} />
-            <span>K</span>
+            <kbd className="sig-shortcut-key">{shortcut}</kbd>
+            <Search
+              className="sig-shortcut-search"
+              size={16}
+              aria-hidden="true"
+            />
           </button>
           <button
             className="sig-motion"
@@ -419,26 +437,23 @@ export default function Signature() {
             </span>
             <span className="sig-name-second">
               <KineticName text="GOYAL" />
-              <span className="sig-name-star" aria-hidden="true">
-                ✳
-              </span>
             </span>
           </h1>
           <div className="sig-hero-note">
             <span className="sig-note-rule" />
             <p>
-              Serious about craft.
-              <br /> Always up for
-              <br /> <em>a little wonder.</em>
+              Software, hackathons,
+              <br /> and a few
+              <br /> <em>side quests.</em>
             </p>
             <span className="sig-mono">MOVE A LITTLE. LOOK CLOSER.</span>
           </div>
           <div className="sig-hero-bottom">
             <div className="sig-hero-intro">
               <p>
-                A developer with a builder’s mindset.
+                I build software and bring people together.
                 <br />
-                <span>Turning curious ideas into useful things.</span>
+                <span>Developer at Shopify. Student at York.</span>
               </p>
               <Magnetic>
                 <a className="sig-round-link" href="#sig-work">
@@ -471,7 +486,7 @@ export default function Signature() {
               <>
                 <span className="sig-mono">YOU FOUND MY SIGNATURE.</span>
                 <p>
-                  Two letters. <em>Endless possibilities.</em>
+                  My initials. <em>A few thousand particles.</em>
                 </p>
                 <span className="sig-mono">
                   RG, WRITTEN IN LIGHT. MOVE YOUR POINTER.
@@ -484,7 +499,9 @@ export default function Signature() {
             onClick={() => setPlayground((value) => !value)}
             aria-pressed={playground}
           >
-            <Sparkles size={15} />
+            <span className="sig-play-monogram" aria-hidden="true">
+              rg.
+            </span>
             <ScrambleText
               text={playground ? "Put it back together" : "Break the pattern"}
             />
@@ -762,7 +779,7 @@ export default function Signature() {
           Ritvik Goyal<span>STILL FOLLOWING THE CURIOSITY.</span>
         </a>
         <span className="sig-mono">
-          PERSONALLY MADE. TORONTO, CANADA.
+          RITVIK GOYAL · TORONTO, CANADA.
           <br />© {new Date().getFullYear()}
         </span>
         <a href="#sig-top" className="sig-footer-top">
@@ -801,11 +818,20 @@ export default function Signature() {
         </a>
         <a href="/resume">Resume</a>
         <button
-          onClick={() => setCommandOpen(true)}
+          onClick={(event) => {
+            event.currentTarget.focus({ preventScroll: true });
+            setCommandOpen(true);
+          }}
           aria-label="Search portfolio"
+          title={`Search portfolio (${shortcut})`}
+          aria-keyshortcuts={isApple ? "Meta+K" : "Control+K"}
         >
-          <Command size={14} />
-          <span>K</span>
+          <kbd className="sig-shortcut-key">{shortcut}</kbd>
+          <Search
+            className="sig-shortcut-search"
+            size={16}
+            aria-hidden="true"
+          />
         </button>
       </nav>
       <div className="sig-chapter-indicator" aria-hidden="true">

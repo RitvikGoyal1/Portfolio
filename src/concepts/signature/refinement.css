@@ -766,3 +766,27 @@
     transition: none;
   }
 }
+
+/* Platform-aware keyboard hint; touch layouts use a familiar search icon. */
+.sig-shortcut-key {
+  font:
+    11px/1 ui-monospace,
+    monospace;
+  white-space: nowrap;
+}
+.sig-shortcut-search {
+  display: none;
+}
+.sig-play-monogram {
+  font:
+    italic 21px/1 "Instrument Serif",
+    serif;
+}
+@media (max-width: 760px) {
+  .sig-shortcut-key {
+    display: none;
+  }
+  .sig-shortcut-search {
+    display: block;
+  }
+}

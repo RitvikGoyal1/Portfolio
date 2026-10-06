@@ -189,7 +189,6 @@ export default function WorkGallery() {
 
   useEffect(() => {
     if (notesOpen) {
-      opener.current = document.activeElement as HTMLElement;
       dialog.current?.showModal();
     } else if (dialog.current?.open) {
       dialog.current.close();
@@ -343,9 +342,9 @@ export default function WorkGallery() {
           </a>
           <div className="sg-cover-bottom">
             <span>
-              BUILT TO BE USED.
+              SELECTED PROJECT
               <br />
-              MADE TO BE EXPLORED.
+              {project.year}
             </span>
             <span className="sg-stack-label">
               {project.stack[0]}
@@ -404,7 +403,12 @@ export default function WorkGallery() {
                   Devpost <ArrowUpRight size={15} />
                 </a>
               )}
-              <button onClick={() => setNotesOpen(true)}>
+              <button
+                onClick={(event) => {
+                  opener.current = event.currentTarget;
+                  setNotesOpen(true);
+                }}
+              >
                 Build notes <Plus size={16} />
               </button>
             </div>
@@ -463,11 +467,41 @@ export default function WorkGallery() {
           Explore on the App Store <ArrowUpRight size={18} />
         </span>
       </a>
+      <details className="sg-directory">
+        <summary>All project links</summary>
+        <div className="sg-directory-grid">
+          {projects.map((item) => (
+            <article key={item.id}>
+              <h3>
+                <a href={item.url} target="_blank" rel="noreferrer">
+                  {item.title} <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </h3>
+              <p>{item.detail}</p>
+              <div className="sg-directory-links">
+                {item.source && (
+                  <a href={item.source} target="_blank" rel="noreferrer">
+                    Source code
+                  </a>
+                )}
+                {item.devpost && (
+                  <a href={item.devpost} target="_blank" rel="noreferrer">
+                    Devpost
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </details>
       <dialog
         ref={dialog}
         className="sg-notes"
         aria-label={`${project.title} build notes`}
-        onCancel={() => setNotesOpen(false)}
+        onCancel={(event) => {
+          event.preventDefault();
+          setNotesOpen(false);
+        }}
         onClick={(event) => {
           if (event.target === event.currentTarget) setNotesOpen(false);
         }}

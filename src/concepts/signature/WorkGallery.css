@@ -482,6 +482,61 @@
   gap: 20px;
   font-size: 12px;
 }
+.sg-directory {
+  margin-top: 24px;
+  border-top: 1px solid #c6d0b12c;
+  border-bottom: 1px solid #c6d0b12c;
+}
+.sg-directory > summary {
+  padding: 20px 0;
+  cursor: pointer;
+  font-size: 12px;
+  color: #c2c7b7;
+}
+.sg-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 56px;
+  padding: 8px 0 32px;
+}
+.sg-directory h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+}
+.sg-directory h3 a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #e4e7db;
+}
+.sg-directory p {
+  margin: 12px 0;
+  color: #b9c0ac;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.sg-directory-links {
+  display: flex;
+  gap: 20px;
+  color: #c6ab77;
+  font-size: 12px;
+}
+.sg-directory a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.sg-directory a:focus-visible,
+.sg-directory > summary:focus-visible {
+  outline: 2px solid #c5dbab;
+  outline-offset: 5px;
+}
+@media (max-width: 760px) {
+  .sg-directory-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
 .sg-notes {
   width: min(780px, calc(100vw - 30px));
   max-height: 88svh;

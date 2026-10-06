@@ -1,1 +1,7 @@
-/*    /index.html   200
+/portfolio /#sig-work 301
+/portfolio/ /#sig-work 301
+/experiences /#sig-story 301
+/experiences/ /#sig-story 301
+/contact /#sig-contact 301
+/contact/ /#sig-contact 301
+/index.html / 301

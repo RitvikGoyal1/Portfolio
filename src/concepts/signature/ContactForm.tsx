@@ -76,7 +76,7 @@ export default function ContactForm() {
   return (
     <div className="sig-message" id="sig-message">
       <div className="sig-message-intro">
-        <span className="sig-mono">A NOTE, NOT A MEETING</span>
+        <span className="sig-mono">SEND A MESSAGE</span>
         <h3>
           Start with <em>hello.</em>
         </h3>
@@ -89,6 +89,8 @@ export default function ContactForm() {
         </span>
       </div>
       <form
+        action="https://formsubmit.co/connect@ritvikgoyal.com"
+        method="POST"
         className="sig-message-form"
         onSubmit={submit}
         aria-label="Send Ritvik a message"

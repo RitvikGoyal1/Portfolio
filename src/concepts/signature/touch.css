@@ -1,0 +1,28 @@
+/* Comfortable targets for fingers, without enlarging desktop controls. */
+@media (pointer: coarse) {
+  .signature button,
+  .sig-nav > a,
+  .sig-floating-nav > a,
+  .sig-round-link,
+  .sig-now > a,
+  .sg-project-actions > a,
+  .sg-archives > a {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .sig-shortcut,
+  .sig-floating-nav > button,
+  .sig-floating-nav > a {
+    justify-content: center;
+  }
+
+  .sig-nav > a {
+    display: flex;
+    align-items: center;
+  }
+
+  .sig-floating-nav {
+    max-width: calc(100vw - 24px);
+  }
+}
