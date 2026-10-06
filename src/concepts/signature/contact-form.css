@@ -1,0 +1,217 @@
+.sig-message {
+  display: grid;
+  grid-template-columns: 0.85fr 1.35fr;
+  gap: clamp(36px, 7vw, 110px);
+  margin-top: 64px;
+  padding: 52px 0 24px;
+  border-top: 1px solid var(--sig-line);
+}
+.sig-message-intro > .sig-mono {
+  color: var(--sig-bronze);
+  font-size: 9px;
+}
+.sig-message-intro h3 {
+  margin: 23px 0 18px;
+  font-size: clamp(32px, 3.4vw, 50px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+}
+.sig-message-intro h3 em {
+  font-family: "Instrument Serif", serif;
+  color: var(--sig-bronze);
+  font-size: 1.2em;
+  font-weight: 400;
+}
+.sig-message-intro > p {
+  max-width: 320px;
+  color: var(--sig-muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.sig-message-route {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  font:
+    8px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.06em;
+  color: var(--sig-muted);
+}
+.sig-message-route i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--sig-accent);
+}
+.sig-message-form {
+  min-width: 0;
+}
+.sig-message-form fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.sig-message-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.sig-message-form label {
+  display: block;
+  color: var(--sig-fg);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.sig-message-form label > span {
+  color: var(--sig-muted);
+  font-size: 10px;
+}
+.sig-message-form input,
+.sig-message-form textarea {
+  width: 100%;
+  display: block;
+  margin: 10px 0 25px;
+  padding: 13px 14px;
+  border: 1px solid #aab59a38;
+  border-radius: 4px;
+  background: #151a13ee;
+  color: var(--sig-fg);
+  font:
+    14px/1.7 "Manrope",
+    sans-serif;
+  transition:
+    border-color 180ms,
+    background 180ms;
+}
+.sig-message-form textarea {
+  resize: vertical;
+  min-height: 132px;
+  max-height: 440px;
+}
+.sig-message-form input::placeholder,
+.sig-message-form textarea::placeholder {
+  color: #929a8a;
+  opacity: 1;
+}
+.sig-message-form input:focus-visible,
+.sig-message-form textarea:focus-visible {
+  outline: 2px solid var(--sig-accent);
+  outline-offset: 3px;
+  border-color: transparent;
+  background: #1c221a;
+}
+.sig-message-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.sig-message-actions > p {
+  max-width: 230px;
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--sig-muted);
+}
+.sig-message-actions a,
+.sig-message-feedback a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.sig-message-actions button {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  min-height: 48px;
+  padding: 14px 21px;
+  border: 1px solid var(--sig-accent);
+  border-radius: 3px;
+  color: #141b11;
+  background: var(--sig-accent);
+  font:
+    500 12px "Manrope",
+    sans-serif;
+  cursor: pointer;
+  transition: background 180ms;
+}
+.sig-message-actions button:hover {
+  background: #e5edcf;
+}
+.sig-message-actions button:focus-visible {
+  outline: 2px solid var(--sig-accent);
+  outline-offset: 5px;
+}
+.sig-message-form fieldset:disabled {
+  opacity: 0.65;
+}
+.sig-message-form fieldset:disabled button {
+  cursor: wait;
+}
+.sig-message-form .sig-message-honey {
+  display: none;
+}
+.sig-message-feedback {
+  min-height: 24px;
+  margin-top: 18px;
+  color: var(--sig-accent);
+  font-size: 12px;
+  line-height: 1.8;
+}
+.sig-message-feedback svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+.sig-message-feedback.is-error {
+  color: #efc09d;
+}
+.sig-message-feedback:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 6px;
+}
+@media (max-width: 900px) {
+  .sig-message {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .sig-message-intro > p {
+    max-width: 450px;
+  }
+  .sig-message-route {
+    display: none;
+  }
+}
+@media (max-width: 520px) {
+  .sig-message {
+    margin-top: 42px;
+    padding-top: 34px;
+  }
+  .sig-message-fields {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .sig-message-form input,
+  .sig-message-form textarea {
+    font-size: 16px;
+  }
+  .sig-message-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .sig-message-actions > p {
+    max-width: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sig-message-form input,
+  .sig-message-form textarea,
+  .sig-message-actions button {
+    transition: none;
+  }
+}

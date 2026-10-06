@@ -58,3 +58,13 @@ Legacy components remain in `src/components` and `src/pages` as reference. The r
 - The second Signature iteration applies [2026 design and motion research](docs/2026-DESIGN-RESEARCH.md).
 
 Production builds include a static `resume/index.html` entry so `/resume` and `/resume/` work on static hosting, as well as the existing `_redirects` fallback. The resume uses the repository's original `public/RG.pdf` without changing its contents. Publishing source to `main` and deploying the live host are separate operations unless hosting is configured to deploy automatically.
+
+## Contact form
+
+Signature includes an optional name, required reply email, and message form alongside the displayed email address. `src/concepts/signature/ContactForm.tsx` submits via [FormSubmit’s AJAX endpoint](https://formsubmit.co/ajax-documentation) to `connect@ritvikgoyal.com`. The visitor’s email is the Reply-To address. No API key or backend is required.
+
+**Activation:** FormSubmit requires the inbox owner to click **Activate Form** in its first setup email before forwarding messages. The owner confirmed activation on October 5, 2026. Actual inbox receipt must still be distinguished from the provider accepting a request. Test using the production site, because form activation is associated with the site. Do not treat mocked browser tests as evidence of inbox delivery.
+
+The form validates fields, includes a honeypot, disables duplicate submissions while sending, and retains drafts on errors or a 20-second timeout. FormSubmit’s spam filtering remains enabled; no CAPTCHA-disabling option is set. Requests are accepted only when both the HTTP response and provider `success` value indicate success. Visitors see a link to the provider’s privacy policy. FormSubmit documents 30-day submission retention; the app does not persist drafts or messages in browser storage.
+
+Run `npx playwright test tests/contact.spec.ts` for isolated browser checks. They intercept all email requests and never send real messages.

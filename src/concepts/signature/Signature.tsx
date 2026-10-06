@@ -20,8 +20,10 @@ import { KineticName, Magnetic, ScrambleText } from "./KineticText";
 import { personalFacts, storyChapters } from "./personalContent";
 import ScrollManifesto from "./ScrollManifesto";
 import WorkGallery from "./WorkGallery";
+import ContactForm from "./ContactForm";
 import "./signature.css";
 import "./refinement.css";
+import "./contact-form.css";
 
 const chapterNames = [
   "An introduction",
@@ -710,6 +712,7 @@ export default function Signature() {
               <span role="status">{copied ? "Copied. Your move ↗" : ""}</span>
             </div>
           </div>
+          <ContactForm />
           <div className="sig-socials">
             <Magnetic>
               <a href="/resume">
