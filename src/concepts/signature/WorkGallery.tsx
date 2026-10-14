@@ -98,7 +98,7 @@ const projects: GalleryProject[] = [
     detail:
       "A stock prediction and trading application connecting machine learning with a focused web experience.",
     stack: ["React", "Python", "Supabase"],
-    url: "https://synapseinvests.com",
+    url: "https://synapse-investments.vercel.app/",
     source: "",
     notes: [
       [
