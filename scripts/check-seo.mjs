@@ -84,7 +84,7 @@ for (const [file, route, title] of [
     }
     for (const url of [
       "https://dealifytest.myshopify.com/",
-      "https://synapseinvests.com",
+      "https://synapse-investments.vercel.app/",
       "https://dazzling-licorice-53acc6.netlify.app/",
       "https://panther-press.pages.dev",
     ])
