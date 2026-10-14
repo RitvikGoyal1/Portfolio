@@ -44,7 +44,7 @@ const projects = [
       "A stock prediction and trading application exploring how machine learning can make financial information more useful.",
     stack: ["React", "Python", "Supabase"],
     image: "/projects/synapse.webp",
-    url: "https://synapseinvests.com",
+    url: "https://synapse-investments.vercel.app/",
     category: "Web",
   },
   {
