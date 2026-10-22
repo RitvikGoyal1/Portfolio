@@ -24,7 +24,7 @@ test("contact form submits only the intended fields and confirms acceptance", as
       email: "visitor@example.com",
       message: "I would love to talk about a project.",
       _replyto: "visitor@example.com",
-      _subject: "New message from ritvikgoyal.com",
+      _subject: "New message from 127.0.0.1",
     });
     await route.fulfill({ json: { success: "true" } });
   });

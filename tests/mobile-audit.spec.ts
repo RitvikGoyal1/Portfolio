@@ -46,7 +46,7 @@ for (const scenario of cases) {
         } as typeof original;
       });
     }
-    await page.goto("http://127.0.0.1:5173/");
+    await page.goto("http://127.0.0.1:5173/?design=signature");
     await expect(page.locator("#sig-name")).toBeVisible();
     for (const name of ["Open portfolio shortcuts", "Pause ambient motion"]) {
       const target = await page
@@ -90,7 +90,7 @@ for (const scenario of cases) {
     await expect(dialog).not.toBeVisible();
     await page.getByRole("button", { name: "Next project", exact: true }).tap();
     await expect(
-      page.getByRole("heading", { name: "Synapse Investments", exact: true }),
+      page.getByRole("heading", { name: "WealthSnaps", exact: true }),
     ).toBeVisible();
     await page.getByRole("tab", { name: "2024", exact: true }).tap();
     await expect(page.getByRole("tabpanel")).toContainText("IgnitionHacks");

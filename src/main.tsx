@@ -1,6 +1,8 @@
+import { defaultDesign } from "./content/site";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { resolvePage } from "./seo";
 import "./index.css";
 
 async function start() {
@@ -9,11 +11,13 @@ async function start() {
     document.documentElement.dataset.prerendered &&
     !new URLSearchParams(location.search).has("design")
   ) {
-    if (
-      location.pathname.replace(/\/+$/, "").replace(/\.html$/, "") === "/resume"
-    )
-      await import("./pages/Resume");
-    else await import("./concepts/signature/Signature");
+    const page = resolvePage(location.pathname);
+    if (page === "resume") await import("./pages/Resume");
+    else if (page !== "home" && page !== "not-found")
+      await import("./pages/Project");
+    else if (defaultDesign === "signature")
+      await import("./concepts/signature/Signature");
+    else await import("./concepts/forma/Forma");
   }
   ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>

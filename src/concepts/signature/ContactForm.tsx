@@ -49,9 +49,9 @@ export default function ContactForm() {
           email,
           message,
           _replyto: email,
-          _subject: "New message from ritvikgoyal.com",
+          _subject: `New message from ${window.location.hostname}`,
           _template: "table",
-          _url: "https://ritvikgoyal.com/#sig-contact",
+          _url: `${window.location.origin}/${window.location.hash || "#contact"}`,
           _honey: "",
         }),
       });

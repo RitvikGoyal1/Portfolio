@@ -1,0 +1,9 @@
+name = "ritvik-playground"
+compatibility_date = "2026-10-14"
+workers_dev = true
+routes = [{ pattern = "app.ritvikgoyal.com", custom_domain = true }]
+
+[assets]
+directory = "./dist"
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"

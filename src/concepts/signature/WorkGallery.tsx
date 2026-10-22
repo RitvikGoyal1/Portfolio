@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { ScrambleText } from "./KineticText";
 import "./WorkGallery.css";
+import { projects as projectRecords } from "../../content/projects";
 
 interface GalleryProject {
   id: string;
@@ -32,152 +33,39 @@ interface GalleryProject {
   stack: string[];
   url: string;
   source: string;
+  sourceNote?: string;
   devpost?: string;
   award?: string;
   notes: string[][];
 }
 
-// Dealify's award, team, architecture, and genuine screenshot are documented at
-// https://devpost.com/software/bazaar-wgv16i (verified 4 October 2026).
-// Devpost's repository link /Maristanez/bazaar redirects to /Maristanez/dealify.
-// Image: Devpost software_photos/005/352/663/datas/original.png, browser chrome cropped.
-// Other descriptions and technologies come from the existing portfolio records.
-const projects: GalleryProject[] = [
-  {
-    id: "dealify",
-    title: "Dealify",
-    word: "let’s deal.",
-    category: "SHOPIFY / AI COMMERCE",
-    year: "2026",
-    image: "/projects/dealify.webp",
-    imageSize: [1800, 997],
-    palette: "#162c29",
-    ink: "#c9d9c6",
-    description: "A shopkeeper that can talk. Rules you can trust.",
-    detail:
-      "An AI shopkeeper for Shopify, with deterministic TypeScript pricing, a React merchant Console, and a Gym that rehearses policies with 300 seeded synthetic shoppers.",
-    stack: ["TypeScript", "Shopify", "React", "Node.js"],
-    url: "https://dealifytest.myshopify.com/",
-    source: "https://github.com/Maristanez/dealify",
-    devpost: "https://devpost.com/software/bazaar-wgv16i",
-    award: "Hack the North 2026 · Shopify: Hack Shopping with AI",
-    notes: [
-      [
-        "The idea",
-        "Help shoppers discover products and negotiate while merchants retain control of pricing.",
-      ],
-      [
-        "The boundary",
-        "A shared TypeScript engine calculates eligible offers. The AI chooses and explains an option; it cannot invent a price.",
-      ],
-      [
-        "The merchant’s view",
-        "A React Console exposes live negotiations, pricing settings, approvals, and pause controls.",
-      ],
-      [
-        "The rehearsal",
-        "The Gym tests the same engine against 300 seeded, rule-based shoppers. It compares policy outcomes, not predicted revenue.",
-      ],
-      [
-        "The team",
-        "Built with Bryan Maristanez and Ricardo Gao at Hack the North 2026.",
-      ],
-    ],
-  },
-  {
-    id: "synapse",
-    title: "Synapse Investments",
-    word: "synapse.",
-    category: "MACHINE LEARNING / FINANCE",
-    year: "2025",
-    image: "/projects/synapse.webp",
-    imageSize: [1600, 737],
-    palette: "#18262f",
-    ink: "#bdcfd8",
-    description: "A clearer view of a complicated market.",
-    detail:
-      "A stock prediction and trading application connecting machine learning with a focused web experience.",
-    stack: ["React", "Python", "Supabase"],
-    url: "https://synapseinvests.com",
-    source: "",
-    notes: [
-      [
-        "The idea",
-        "Bring stock predictions and trading tools into one approachable application.",
-      ],
-      [
-        "The implementation",
-        "A React interface, Python and machine learning, with Supabase in the application stack.",
-      ],
-      [
-        "The experience",
-        "Market information, an AI predictor, and a learning hub give different entry points into financial data.",
-      ],
-    ],
-  },
-  {
-    id: "studyflow",
-    title: "StudyFlow",
-    word: "find flow.",
-    category: "EDUCATION / FOCUS",
-    year: "2026",
-    image: "/projects/studyflow.webp",
-    imageSize: [1600, 732],
-    palette: "#272430",
-    ink: "#d0c9df",
-    description: "Find a rhythm. Make room to learn.",
-    detail:
-      "A study workspace that brings Pomodoro sessions, goals, calendars, and learning analytics together.",
-    stack: ["TypeScript", "Node.js", "Recharts"],
-    url: "https://dazzling-licorice-53acc6.netlify.app/",
-    source: "",
-    notes: [
-      [
-        "The idea",
-        "Keep planning, focused study, and reflection in the same workspace.",
-      ],
-      [
-        "The implementation",
-        "React and TypeScript for the interface, Node.js and Express in the stack, and Recharts for session analytics.",
-      ],
-      [
-        "The experience",
-        "A Pomodoro timer, goal tracking, study sessions, and calendar integration support the rhythm of learning.",
-      ],
-    ],
-  },
-  {
-    id: "panther",
-    title: "Panther Press",
-    word: "our stories.",
-    category: "PUBLISHING / COMMUNITY",
-    year: "2025",
-    image: "/projects/panther.webp",
-    imageSize: [1600, 743],
-    palette: "#30271f",
-    ink: "#dcc7b2",
-    description: "A home for the stories around us.",
-    detail:
-      "A school newsroom made for the people behind the stories, with a publishing system that keeps new voices coming.",
-    stack: ["Astro", "React", "Keystatic"],
-    url: "https://panther-press.pages.dev",
-    source: "https://github.com/vpci-panther-press/panther-press",
-    notes: [
-      [
-        "The idea",
-        "Give a student-run newspaper a dedicated home for articles and issues.",
-      ],
-      [
-        "The implementation",
-        "Astro and React, with MDX and Keystatic for the content workflow.",
-      ],
-      [
-        "The experience",
-        "Readers explore articles and issues, while the content management system supports ongoing publishing.",
-      ],
-    ],
-  },
-];
+const treatments = {
+  dealify: { word: "let’s deal.", palette: "#162c29", ink: "#c9d9c6" },
+  wealthsnaps: { word: "new light.", palette: "#193437", ink: "#c7e0df" },
+  studyflow: { word: "find flow.", palette: "#272430", ink: "#d0c9df" },
+  panther: { word: "the press.", palette: "#30261d", ink: "#e4d1ba" },
+};
+const projects: GalleryProject[] = projectRecords.map((record) => ({
+  ...treatments[record.slug],
+  id: record.slug,
+  title: record.name,
+  category: record.category.toUpperCase(),
+  year: record.year,
+  image: record.image,
+  imageSize: [record.imageWidth, record.imageHeight],
+  description: record.lead,
+  detail: record.summary,
+  stack: record.technologies,
+  url: record.liveUrl,
+  source: record.repository?.url || "",
+  sourceNote: record.repository?.note,
+  devpost: record.sources.find(({ url }) => url.includes("devpost.com"))?.url,
+  award: record.award,
+  notes: record.sections.map(({ title, paragraphs }) => [
+    title,
+    paragraphs.join(" "),
+  ]),
+}));
 
 export default function WorkGallery() {
   const [active, setActive] = useState(0);
@@ -324,7 +212,7 @@ export default function WorkGallery() {
               </div>
               <img
                 src={project.image}
-                alt={`${project.title} application screenshot`}
+                alt={projectRecords[active].imageAlt}
                 loading="lazy"
                 decoding="async"
                 width={project.imageSize[0]}
@@ -347,9 +235,9 @@ export default function WorkGallery() {
               {project.year}
             </span>
             <span className="sg-stack-label">
-              {project.stack[0]}
+              {project.stack[0] || "Receipts"}
               <span>↔</span>
-              {project.stack[1]}
+              {project.stack[1] || "Net worth"}
             </span>
             <span>INTERFACE PREVIEW ↗</span>
           </div>
@@ -379,6 +267,7 @@ export default function WorkGallery() {
           </div>
           <div className="sig-project-copy sg-project-copy">
             <p>{project.detail}</p>
+            {project.sourceNote && <p>{project.sourceNote}</p>}
             <div className="sg-tech">
               {project.stack.map((tech) => (
                 <span key={tech}>{tech}</span>
@@ -403,6 +292,9 @@ export default function WorkGallery() {
                   Devpost <ArrowUpRight size={15} />
                 </a>
               )}
+              <a href={`/projects/${project.id}`}>
+                Project notes <ArrowUpRight size={15} />
+              </a>
               <button
                 onClick={(event) => {
                   opener.current = event.currentTarget;
@@ -449,7 +341,7 @@ export default function WorkGallery() {
       </div>
       <a
         className="sg-mapstem"
-        href="https://apps.apple.com/us/app/mapstem/id6504693720"
+        href="https://github.com/STEM-E-Youth-Career-Development-Program/map-app"
         target="_blank"
         rel="noreferrer"
       >
@@ -464,7 +356,7 @@ export default function WorkGallery() {
           <p>Connecting students with their next STEM opportunity.</p>
         </div>
         <span className="sg-store">
-          Explore on the App Store <ArrowUpRight size={18} />
+          Explore the source <ArrowUpRight size={18} />
         </span>
       </a>
       <details className="sg-directory">
@@ -479,6 +371,7 @@ export default function WorkGallery() {
               </h3>
               <p>{item.detail}</p>
               <div className="sg-directory-links">
+                <a href={`/projects/${item.id}`}>Project notes</a>
                 {item.source && (
                   <a href={item.source} target="_blank" rel="noreferrer">
                     Source code

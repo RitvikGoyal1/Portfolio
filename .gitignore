@@ -27,3 +27,11 @@ dist-ssr
 /artifacts/
 /test-results/
 /playwright-report/
+
+# Local design research
+/work/
+/.taste-skill/
+
+/.wrangler/
+
+/dist-signature/

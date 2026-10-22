@@ -1,8 +1,9 @@
 .sig-work-gallery {
-  --sg-paper: #111511;
-  --sg-ink: #eeece2;
-  --sg-muted: #a6ab99;
-  --sg-line: #d1d8bd26;
+  --sg-paper: #e8e5db;
+  --sg-ink: #242c23;
+  --sg-muted: #586252;
+  --sg-line: #26322233;
+  --sig-accent: #465c36;
   position: relative;
   background: var(--sg-paper);
   color: var(--sg-ink);
@@ -24,7 +25,7 @@
     10px/1.5 ui-monospace,
     monospace;
   letter-spacing: 0.08em;
-  color: #9ba390;
+  color: var(--sg-muted);
 }
 .sg-title-row {
   display: flex;
@@ -41,7 +42,7 @@
 }
 .sg-title-row h2 em {
   font-size: 1.13em;
-  color: #baa98c;
+  color: #54694b;
   letter-spacing: -0.05em;
 }
 .sg-title-row > p {
@@ -53,7 +54,7 @@
 .sg-title-row > p > span {
   display: block;
   font-size: 11px;
-  color: #a0a792;
+  color: var(--sg-muted);
   margin-top: 25px;
 }
 .sg-project-tabs {
@@ -70,7 +71,7 @@
   padding: 24px 14px;
   border-top: 2px solid transparent;
   margin-top: -1px;
-  color: #9ba58e;
+  color: var(--sg-muted);
   font-size: 13px;
   min-width: 0;
   position: relative;
@@ -96,8 +97,8 @@
     opacity 0.4s;
 }
 .signature .sg-project-tabs > button.is-active {
-  border-top-color: #c4d7a9;
-  color: #e5eddb;
+  border-top-color: #465c36;
+  color: #182d12;
 }
 .sg-project-tabs > button.is-active > svg,
 .sg-project-tabs > button:hover > svg {
@@ -105,9 +106,10 @@
   transform: none;
 }
 .sg-project-tabs > button:hover {
-  background: #c5d7a90a;
+  background: #334d180a;
 }
 .sg-cover {
+  --sig-accent: #d0e1b5;
   height: clamp(410px, 48vw, 700px);
   position: relative;
   overflow: hidden;
@@ -294,7 +296,7 @@
   font:
     italic 41px/1 "Instrument Serif",
     serif;
-  color: #aaab90;
+  color: #5d6f52;
 }
 .sg-project-title h3 {
   font-size: clamp(25px, 2.5vw, 41px);
@@ -305,7 +307,7 @@
 .sg-project-title p {
   font-size: 13px;
   line-height: 1.6;
-  color: #b0b5a5;
+  color: var(--sg-muted);
   margin-top: 13px !important;
 }
 .signature .sg-project-copy {
@@ -317,7 +319,7 @@
   line-height: 1.85;
   letter-spacing: 0;
   max-width: 490px;
-  color: #b5baa9;
+  color: var(--sg-muted);
 }
 .sg-tech {
   display: flex;
@@ -326,13 +328,13 @@
   margin-top: 17px;
 }
 .sg-tech > span {
-  border: 1px solid #c6d2b62c;
+  border: 1px solid var(--sg-line);
   border-radius: 30px;
   padding: 5px 11px;
   font:
     9px ui-monospace,
     monospace;
-  color: #b5baa9;
+  color: var(--sg-muted);
 }
 .sg-project-actions {
   display: flex;
@@ -382,7 +384,7 @@
   align-items: center;
   gap: 10px;
   font-size: 12px;
-  color: #bdc9ad;
+  color: #46563d;
 }
 .sg-gallery-controls {
   display: flex;
@@ -390,7 +392,7 @@
   gap: 22px;
 }
 .signature .sg-gallery-controls > button {
-  border: 1px solid #cad6b040;
+  border: 1px solid var(--sg-line);
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -401,8 +403,8 @@
     background 0.3s;
 }
 .signature .sg-gallery-controls > button:hover {
-  color: #151e12;
-  background: #c4d7a9;
+  color: #f5f2e9;
+  background: #33452c;
 }
 .sg-gallery-controls > span {
   font:
@@ -410,7 +412,7 @@
     monospace;
 }
 .sg-gallery-controls > span > span {
-  color: #8e9b80;
+  color: var(--sg-muted);
 }
 .sg-mapstem {
   display: flex;
@@ -425,7 +427,7 @@
     8px ui-monospace,
     monospace;
   letter-spacing: 0.06em;
-  color: #9eab92;
+  color: var(--sg-muted);
 }
 .sg-mapstem strong {
   display: block;
@@ -436,7 +438,7 @@
 }
 .sg-mapstem p {
   font-size: 12px;
-  color: #a6b39a;
+  color: var(--sg-muted);
   margin-top: 6px !important;
 }
 .sg-map-icon {
@@ -484,14 +486,14 @@
 }
 .sg-directory {
   margin-top: 24px;
-  border-top: 1px solid #c6d0b12c;
-  border-bottom: 1px solid #c6d0b12c;
+  border-top: 1px solid var(--sg-line);
+  border-bottom: 1px solid var(--sg-line);
 }
 .sg-directory > summary {
   padding: 20px 0;
   cursor: pointer;
   font-size: 12px;
-  color: #c2c7b7;
+  color: #46563d;
 }
 .sg-directory-grid {
   display: grid;
@@ -508,18 +510,18 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #e4e7db;
+  color: var(--sg-ink);
 }
 .sg-directory p {
   margin: 12px 0;
-  color: #b9c0ac;
+  color: var(--sg-muted);
   font-size: 13px;
   line-height: 1.8;
 }
 .sg-directory-links {
   display: flex;
   gap: 20px;
-  color: #c6ab77;
+  color: #6a542e;
   font-size: 12px;
 }
 .sg-directory a:hover {
@@ -528,7 +530,7 @@
 }
 .sg-directory a:focus-visible,
 .sg-directory > summary:focus-visible {
-  outline: 2px solid #c5dbab;
+  outline: 2px solid #465c36;
   outline-offset: 5px;
 }
 @media (max-width: 760px) {
@@ -538,6 +540,7 @@
   }
 }
 .sg-notes {
+  --sig-accent: #d0e1b5;
   width: min(780px, calc(100vw - 30px));
   max-height: 88svh;
   padding: 0;
@@ -743,8 +746,8 @@
     margin: 0;
   }
   .signature .sg-project-tabs > button.is-active {
-    border-bottom-color: #c4d7a9;
-    background: #c5cfb310;
+    border-bottom-color: #465c36;
+    background: #334d180a;
   }
   .sg-cover {
     height: clamp(320px, 70vw, 530px);
@@ -970,7 +973,7 @@
   }
 }
 
-/* Shared ink surface; each project retains its own restrained material tint. */
+/* The dark project stage sits within the paper exhibition surface. */
 .sg-cover {
   border: 1px solid #dbe3c414;
 }
@@ -985,7 +988,7 @@
   font-size: clamp(100px, 15vw, 230px);
   opacity: 0.15;
 }
-.sg-cover-synapse .sg-cover-lines {
+.sg-cover-wealthsnaps .sg-cover-lines {
   transform: rotate(-20deg);
 }
 .sg-cover-studyflow .sg-cover-lines {
@@ -1002,7 +1005,7 @@
   margin-top: 22px;
   padding: 11px 14px;
   border: 1px solid #c6ab7742;
-  color: #ddc59d !important;
+  color: #705427 !important;
   background: #c6ab7708;
   border-radius: 3px;
   max-width: 100%;
@@ -1020,7 +1023,7 @@
     8px/1.6 ui-monospace,
     monospace;
   letter-spacing: 0.12em;
-  color: #bca581;
+  color: #705427;
 }
 .sg-award:hover {
   background: #c6ab7712;
@@ -1031,7 +1034,7 @@
   gap: 14px 27px;
 }
 .sg-archives > a:hover {
-  color: #e2ebd6;
+  color: #182d12;
 }
 .sg-notes {
   border: 1px solid #c6d0b12c;
@@ -1039,6 +1042,10 @@
 }
 .sg-notes .sg-award {
   margin-top: 20px;
+  color: #ddc59d !important;
+}
+.sg-notes .sg-award strong {
+  color: #bca581;
 }
 .sg-notes-header > button {
   color: #dce4d0;
@@ -1051,7 +1058,7 @@
 .sg-project-actions > button:focus-visible,
 .sg-archives > a:focus-visible,
 .sg-award:focus-visible {
-  outline: 2px solid #c5dbab;
+  outline: 2px solid var(--sig-accent);
   outline-offset: 5px;
 }
 @media (max-width: 760px) {

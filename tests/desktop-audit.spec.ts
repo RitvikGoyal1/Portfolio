@@ -15,7 +15,7 @@ for (const engine of [chromium, firefox, webkit]) {
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
     try {
-      await page.goto("/");
+      await page.goto("/?design=signature");
       await expect(page.locator("#sig-name")).toBeVisible();
       await page.keyboard.press("Control+k");
       const search = page.getByRole("textbox", {
@@ -105,7 +105,7 @@ for (const engine of [chromium, firefox, webkit]) {
         page.getByRole("heading", { name: "My resume." }),
       ).toBeVisible();
       await page.getByRole("link", { name: "Back to the portfolio" }).click();
-      await expect(page.locator("#sig-name")).toBeVisible();
+      await expect(page.locator("#world-title")).toBeVisible();
       expect(errors).toEqual([]);
     } finally {
       await browser.close();
@@ -118,7 +118,7 @@ for (const platform of ["Win32", "MacIntel"]) {
     await page.addInitScript((value) => {
       Object.defineProperty(navigator, "platform", { get: () => value });
     }, platform);
-    await page.goto("/");
+    await page.goto("/?design=signature");
     const label = platform === "MacIntel" ? "⌘ K" : "Ctrl K";
     const shortcut = platform === "MacIntel" ? "Meta+K" : "Control+K";
     const trigger = page.getByRole("button", {

@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MutableRefObject } from "react";
 import * as THREE from "three";
+import type { CinematicJourney } from "./useCinematicJourney";
 import "./PersonalField.css";
 
 export type PersonalFieldProps = {
@@ -7,6 +8,7 @@ export type PersonalFieldProps = {
   playground: boolean;
   paused: boolean;
   reducedMotion: boolean;
+  journey: MutableRefObject<CinematicJourney>;
 };
 
 const vertexShader = /* glsl */ `
@@ -368,20 +370,21 @@ function buildSurfaceGeometry(columns: number, rows: number) {
  * stops the animation loop entirely; resize and chapter changes still render.
  */
 export default function PersonalField(props: PersonalFieldProps) {
-  const { chapter, playground, paused, reducedMotion } = props;
+  const { chapter, playground, paused, reducedMotion, journey } = props;
   const hostRef = useRef<HTMLDivElement>(null);
   const current = useRef(props);
   const invalidate = useRef<() => void>(() => undefined);
   const [available, setAvailable] = useState(false);
 
   useEffect(() => {
-    current.current = { chapter, playground, paused, reducedMotion };
+    current.current = { chapter, playground, paused, reducedMotion, journey };
     invalidate.current();
-  }, [chapter, playground, paused, reducedMotion]);
+  }, [chapter, playground, paused, reducedMotion, journey]);
 
   useEffect(() => {
     const host = hostRef.current;
     if (!host) return;
+    const journeyState = journey.current;
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({
@@ -500,7 +503,9 @@ export default function PersonalField(props: PersonalFieldProps) {
     surface.renderOrder = 0;
     contours.renderOrder = 1;
     points.renderOrder = 2;
-    scene.add(surface, points, contours);
+    const sculpture = new THREE.Group();
+    sculpture.add(surface, points, contours);
+    scene.add(sculpture);
 
     // A hand-drawn stellar R / G: a second, subtler signature in the story.
     const paths = [
@@ -566,6 +571,7 @@ export default function PersonalField(props: PersonalFieldProps) {
     let lost = false;
     let pointerPresent = false;
     let disposed = false;
+    let baseCameraDistance = 9.2;
     const targetPointer = new THREE.Vector2(0.5, 0.4);
     const pointerVelocity = new THREE.Vector2();
     const nextPointer = new THREE.Vector2();
@@ -573,13 +579,18 @@ export default function PersonalField(props: PersonalFieldProps) {
       frame = null;
       if (disposed || lost || document.hidden) return;
       const settings = current.current;
+      // The paper gallery completely covers the world. Resume from the same
+      // clock as soon as scroll exposes it again instead of drawing offscreen.
+      if (settings.journey.current.occluded) return;
       const moving = !settings.paused && !settings.reducedMotion;
       const delta = Math.min((now - lastTime) / 1000, 0.05);
       lastTime = now;
       if (moving) elapsed += delta;
       sharedUniforms.uTime.value = elapsed;
       const easing = moving ? 1 - Math.exp(-delta * 2.5) : 1;
-      const targetChapter = Math.max(0, Math.min(3, settings.chapter));
+      const targetChapter = settings.reducedMotion
+        ? Math.max(0, Math.min(3, settings.chapter))
+        : settings.journey.current.chapter;
       for (let index = 0; index < 4; index++) {
         const target = Math.max(0, 1 - Math.abs(targetChapter - index));
         const value = chapterWeights.getComponent(index);
@@ -588,6 +599,21 @@ export default function PersonalField(props: PersonalFieldProps) {
       sharedUniforms.uPlayground.value +=
         ((settings.playground ? 1 : 0) - sharedUniforms.uPlayground.value) *
         easing;
+      // The same sculpture survives the opening, turns through the type,
+      // and arrives at the work. Scroll can reverse every part of the move.
+      const passage =
+        settings.journey.current.passage *
+        (1 - sharedUniforms.uPlayground.value);
+      const arc = Math.sin(passage * Math.PI);
+      sculpture.rotation.set(-passage * 0.1, -passage * 0.26, -arc * 0.12);
+      const scale = 1 - passage * 0.18;
+      sculpture.scale.setScalar(scale);
+      camera.position.set(
+        arc * 0.45,
+        arc * 0.12,
+        baseCameraDistance + passage * 1.1,
+      );
+      camera.lookAt(0, 0, 0);
       sharedUniforms.uPointer.value.lerp(
         targetPointer,
         moving ? 1 - Math.exp(-delta * 4) : 1,
@@ -613,12 +639,14 @@ export default function PersonalField(props: PersonalFieldProps) {
       }
     };
     invalidate.current = schedule;
+    journeyState.invalidate = schedule;
     const resize = () => {
       const { width, height } = host.getBoundingClientRect();
       if (!width || !height) return;
       renderer.setSize(width, height);
       camera.aspect = width / height;
-      camera.position.z = camera.aspect < 0.8 ? 10.5 : 9.2;
+      baseCameraDistance = camera.aspect < 0.8 ? 10.5 : 9.2;
+      camera.position.z = baseCameraDistance;
       camera.updateProjectionMatrix();
       sharedUniforms.uAspect.value = camera.aspect;
       const narrowViewport = width < 768;
@@ -689,6 +717,7 @@ export default function PersonalField(props: PersonalFieldProps) {
       disposed = true;
       if (frame !== null) cancelAnimationFrame(frame);
       invalidate.current = () => undefined;
+      journeyState.invalidate = () => undefined;
       observer.disconnect();
       window.removeEventListener("pointermove", pointerMove);
       document.documentElement.removeEventListener(
@@ -718,7 +747,7 @@ export default function PersonalField(props: PersonalFieldProps) {
       renderer.dispose();
       renderer.domElement.remove();
     };
-  }, []);
+  }, [journey]);
 
   return (
     <div

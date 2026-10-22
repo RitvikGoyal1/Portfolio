@@ -1,3 +1,4 @@
+import { xProfile, instagramProfile } from "../../content/social";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
@@ -19,10 +20,12 @@ import { personalFacts, storyChapters } from "./personalContent";
 import ScrollManifesto from "./ScrollManifesto";
 import WorkGallery from "./WorkGallery";
 import ContactForm from "./ContactForm";
+import useCinematicJourney from "./useCinematicJourney";
 import "./signature.css";
 import "./refinement.css";
 import "./contact-form.css";
 import "./touch.css";
+import "./cinematic.css";
 
 const chapterNames = [
   "An introduction",
@@ -222,7 +225,47 @@ export default function Signature() {
   const [time, setTime] = useState(torontoTime);
   const [mobileMenu, setMobileMenu] = useState(false);
   const reducedMotion = useMotionPreference();
+  const journey = useCinematicJourney(root, reducedMotion);
   const closeCommand = useCallback(() => setCommandOpen(false), []);
+
+  useEffect(() => {
+    // Mounting the interactive page replaces its static markup. Restore an
+    // incoming fragment after fonts settle, when its final position is known.
+    const hash = window.location.hash;
+    if (!hash) return;
+    let id: string;
+    try {
+      id = decodeURIComponent(hash.slice(1));
+    } catch {
+      return;
+    }
+    let cancelled = false;
+    let frame = 0;
+    const cancel = () => {
+      cancelled = true;
+    };
+    for (const event of ["wheel", "touchstart", "keydown"]) {
+      window.addEventListener(event, cancel, { once: true, passive: true });
+    }
+    void document.fonts.ready.then(() => {
+      if (cancelled) return;
+      frame = requestAnimationFrame(() => {
+        if (!cancelled && window.location.hash === hash) {
+          const target = document.getElementById(id);
+          if (target && root.current?.contains(target)) {
+            target.scrollIntoView({ behavior: "instant", block: "start" });
+          }
+        }
+      });
+    });
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(frame);
+      for (const event of ["wheel", "touchstart", "keydown"]) {
+        window.removeEventListener(event, cancel);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const interval = window.setInterval(() => setTime(torontoTime()), 15000);
@@ -269,33 +312,9 @@ export default function Signature() {
     root.current
       ?.querySelectorAll("[data-sig-reveal]")
       .forEach((node) => revealObserver.observe(node));
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let frame = 0;
-    const scroll = () => {
-      if (frame) return;
-      frame = requestAnimationFrame(() => {
-        const height = document.documentElement.scrollHeight - innerHeight;
-        const heroProgress = motion.matches
-          ? 0
-          : Math.min(1, Math.max(0, scrollY / innerHeight));
-        root.current?.style.setProperty(
-          "--sig-hero-drift",
-          `${heroProgress * 70}px`,
-        );
-        root.current?.style.setProperty(
-          "--sig-progress",
-          `${height > 0 ? scrollY / height : 0}`,
-        );
-        frame = 0;
-      });
-    };
-    window.addEventListener("scroll", scroll, { passive: true });
-    scroll();
     return () => {
       observer.disconnect();
       revealObserver.disconnect();
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", scroll);
     };
   }, []);
   useEffect(() => {
@@ -332,6 +351,7 @@ export default function Signature() {
           playground={playground}
           paused={paused}
           reducedMotion={reducedMotion}
+          journey={journey}
         />
       </div>
       <div className="sig-grain" aria-hidden="true" />
@@ -428,7 +448,7 @@ export default function Signature() {
               COMMUNITY BUILDER
             </span>
             <span className="sig-mono sig-hero-coordinates">
-              TORONTO, CA <span>43.6532° N</span>
+              TORONTO, CA <span>SELECTED PORTFOLIO / 2026</span>
             </span>
           </div>
           <h1 id="sig-name" className="sig-hero-name">
@@ -447,6 +467,11 @@ export default function Signature() {
               <br /> <em>side quests.</em>
             </p>
             <span className="sig-mono">MOVE A LITTLE. LOOK CLOSER.</span>
+          </div>
+          <div className="sig-art-caption" aria-hidden="true">
+            <span>FIG. 01</span>
+            <i />
+            <span>A THREAD OF CURIOSITY</span>
           </div>
           <div className="sig-hero-bottom">
             <div className="sig-hero-intro">
@@ -513,7 +538,7 @@ export default function Signature() {
             <span className="sig-mono">01 / AN INTRODUCTION</span>
             <span className="sig-mono sig-live-time">{time} IN TORONTO</span>
             <a href="#sig-work" className="sig-mono">
-              THERE’S MORE BELOW <ArrowDown size={12} />
+              FOLLOW THE THREAD <ArrowDown size={12} />
             </a>
           </div>
         </section>
@@ -768,6 +793,28 @@ export default function Signature() {
               >
                 <Layers3 size={18} />
                 <ScrambleText text="Devpost" />
+                <ArrowUpRight size={16} />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href={xProfile.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`X (${xProfile.handle})`}
+              >
+                <ScrambleText text="X" />
+                <ArrowUpRight size={16} />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href={instagramProfile.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Instagram (${instagramProfile.handle})`}
+              >
+                <ScrambleText text="Instagram" />
                 <ArrowUpRight size={16} />
               </a>
             </Magnetic>

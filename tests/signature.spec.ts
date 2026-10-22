@@ -208,7 +208,7 @@ test("Signature gallery exposes build notes and accessible project controls", as
     exact: true,
   });
   await expect(notes).toBeVisible();
-  await expect(notes).toContainText("The boundary");
+  await expect(notes).toContainText("Conversation and pricing have different jobs");
   await expect(notes).toContainText("Shopify: Hack Shopping with AI");
   await expect(
     notes.getByRole("link", { name: "Read the code" }),
@@ -221,7 +221,7 @@ test("Signature gallery exposes build notes and accessible project controls", as
   await page.getByRole("button", { name: "Next project", exact: true }).click();
   await expect(
     page.getByRole("link", {
-      name: /Open Synapse Investments live project/,
+      name: /Open WealthSnaps live project/,
     }),
   ).toBeVisible();
   await page

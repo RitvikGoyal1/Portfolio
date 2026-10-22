@@ -1,45 +1,48 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import ConceptSwitcher, { type ConceptId } from "./components/ConceptSwitcher";
+import { defaultDesign } from "./content/site";
 import ConceptBoundary from "./components/ConceptBoundary";
-import { pageMetadata } from "./seo";
+import { pageMetadata, resolvePage, structuredData } from "./seo";
+import { projectBySlug } from "./content/projects";
 
 const concepts = {
+  forma: lazy(() => import("./concepts/forma/Forma")),
   signature: lazy(() => import("./concepts/signature/Signature")),
-  obsidian: lazy(() => import("./concepts/obsidian/Obsidian")),
-  atelier: lazy(() => import("./concepts/atelier/Atelier")),
-  signal: lazy(() => import("./concepts/signal/Signal")),
 };
 const Resume = lazy(() => import("./pages/Resume"));
-const readIsResume = () =>
-  window.location.pathname.replace(/\/+$/, "").replace(/\.html$/, "") ===
-  "/resume";
+const Project = lazy(() => import("./pages/Project"));
+const readPage = () => resolvePage(window.location.pathname);
 
 function readConcept(): ConceptId {
   const requested = new URLSearchParams(window.location.search).get("design");
-  return requested === "atelier" ||
-    requested === "signal" ||
-    requested === "obsidian"
+  return requested === "forma" || requested === "signature"
     ? requested
-    : "signature";
+    : defaultDesign;
 }
 
 export default function App() {
   const [concept, setConcept] = useState<ConceptId>(readConcept);
-  const [isResume, setIsResume] = useState(readIsResume);
+  const [page, setPage] = useState(readPage);
+  const isResume = page === "resume";
+  const project = projectBySlug(page);
   const Design = concepts[concept];
 
   useEffect(() => {
     const onPopState = () => {
       setConcept(readConcept());
-      setIsResume(readIsResume());
+      setPage(readPage());
     };
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
   }, []);
 
   useEffect(() => {
-    document.documentElement.dataset.design = isResume ? "signature" : concept;
-    const metadata = pageMetadata(isResume);
+    document.documentElement.dataset.design = isResume
+      ? "signature"
+      : project
+        ? "forma"
+        : concept;
+    const metadata = pageMetadata(page);
     for (const selector of [
       'meta[name="description"]',
       'meta[property="og:description"]',
@@ -54,8 +57,8 @@ export default function App() {
       ?.setAttribute("content", metadata.title);
     delete document.documentElement.dataset.prerendered;
 
-    document.title = `Ritvik Goyal — ${isResume ? "Resume" : concept === "signature" ? "Software Developer" : concept.charAt(0).toUpperCase() + concept.slice(1)}`;
-    const canonical = `https://ritvikgoyal.com/${isResume ? "resume" : ""}`;
+    document.title = metadata.title;
+    const canonical = metadata.url;
     document
       .querySelector('link[rel="canonical"]')
       ?.setAttribute("href", canonical);
@@ -66,20 +69,43 @@ export default function App() {
       .querySelector('meta[property="og:title"]')
       ?.setAttribute("content", document.title);
     document
+      .querySelector('meta[name="robots"]')
+      ?.setAttribute("content", metadata.robots);
+    for (const selector of [
+      'meta[property="og:image"]',
+      'meta[name="twitter:image"]',
+    ]) {
+      document.querySelector(selector)?.setAttribute("content", metadata.image);
+    }
+    for (const selector of [
+      'meta[property="og:image:alt"]',
+      'meta[name="twitter:image:alt"]',
+    ]) {
+      document
+        .querySelector(selector)
+        ?.setAttribute("content", metadata.imageAlt);
+    }
+    document
+      .querySelector('meta[property="og:image:width"]')
+      ?.setAttribute("content", String(metadata.imageWidth));
+    document
+      .querySelector('meta[property="og:image:height"]')
+      ?.setAttribute("content", String(metadata.imageHeight));
+    const schema = document.querySelector('script[type="application/ld+json"]');
+    if (schema)
+      schema.textContent = JSON.stringify(structuredData(page)).replace(
+        /</g,
+        "\\u003c",
+      );
+    document
       .querySelector('meta[name="theme-color"]')
       ?.setAttribute(
         "content",
-        isResume
+        isResume || (!project && concept === "signature")
           ? "#111310"
-          : concept === "atelier"
-            ? "#f5f2eb"
-            : concept === "signal"
-              ? "#0b1319"
-              : concept === "signature"
-                ? "#111310"
-                : "#10100f",
+          : "#101115",
       );
-  }, [concept, isResume]);
+  }, [concept, isResume, page, project]);
 
   const selectConcept = (next: ConceptId) => {
     if (next === concept) return;
@@ -94,7 +120,7 @@ export default function App() {
 
   return (
     <>
-      <ConceptBoundary key={isResume ? "resume" : concept}>
+      <ConceptBoundary key={page === "home" ? concept : page}>
         <Suspense
           fallback={
             <div className="concept-loading" role="status">
@@ -105,12 +131,23 @@ export default function App() {
             </div>
           }
         >
-          {isResume ? <Resume /> : <Design />}
+          {isResume ? (
+            <Resume />
+          ) : project ? (
+            <Project project={project} />
+          ) : page === "not-found" ? (
+            <main className="concept-loading">
+              <h1>Page not found</h1>
+              <p>This address doesn’t lead to a project.</p>
+              <a href="/">Return to Ritvik’s portfolio</a>
+            </main>
+          ) : (
+            <Design />
+          )}
         </Suspense>
       </ConceptBoundary>
-      {!isResume &&
-        (import.meta.env.DEV ||
-          new URLSearchParams(window.location.search).has("design")) && (
+      {page === "home" &&
+        new URLSearchParams(window.location.search).has("design") && (
           <ConceptSwitcher current={concept} onSelect={selectConcept} />
         )}
     </>

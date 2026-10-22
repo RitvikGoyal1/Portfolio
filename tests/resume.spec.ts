@@ -14,7 +14,7 @@ for (const width of [320, 1440]) {
     await expect(page).toHaveTitle("Ritvik Goyal — Resume");
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       "href",
-      "https://ritvikgoyal.com/resume",
+      "https://app.ritvikgoyal.com/resume",
     );
     await expect(
       page
@@ -51,34 +51,19 @@ for (const width of [320, 1440]) {
   });
 }
 
-test("Resume is reachable through mobile navigation and keyboard shortcuts", async ({
+test("Resume is reachable through the new mobile navigation", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 320, height: 900 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await page.getByRole("button", { name: "Open navigation" }).click();
-  const nav = page.getByRole("navigation", {
-    name: "Main navigation",
-    exact: true,
-  });
-  await nav.getByRole("link", { name: "Resume", exact: true }).click();
+  await page
+    .getByRole("navigation", { name: "Main navigation" })
+    .getByRole("link", { name: "About", exact: true })
+    .click();
+  await page.getByRole("link", { name: "The story so far" }).click();
   await expect(page).toHaveURL(/\/resume$/);
   await expect(page.getByRole("heading", { name: "My resume." })).toBeVisible();
-  await page.goBack();
-  await expect(page.locator("#sig-name")).toBeVisible();
-  await page.keyboard.press("Control+k");
-  await page
-    .getByRole("textbox", { name: "Search portfolio shortcuts" })
-    .fill("resume");
-  await page.keyboard.press("Enter");
-  await expect(page).toHaveURL(/\/resume$/);
   await page.getByRole("link", { name: "Back to the portfolio" }).click();
-  await expect(page.locator("#sig-name")).toBeVisible();
-  await page.locator("#sig-story").evaluate((node) => node.scrollIntoView());
-  await expect(
-    page
-      .getByRole("navigation", { name: "Quick section navigation" })
-      .getByRole("link", { name: "Resume", exact: true }),
-  ).toBeVisible();
+  await expect(page.locator("#world-title")).toBeVisible();
 });

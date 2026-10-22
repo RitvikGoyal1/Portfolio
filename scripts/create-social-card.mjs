@@ -1,14 +1,15 @@
 import { readFile } from 'node:fs/promises';
 import { chromium } from '@playwright/test';
-const sans = (await readFile('node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2')).toString('base64');
-const serif = (await readFile('node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2')).toString('base64');
+const sans = (await readFile('node_modules/@fontsource/barlow/files/barlow-latin-400-normal.woff2')).toString('base64');
+const display = (await readFile('node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff2')).toString('base64');
+const sculpture = (await readFile('public/forma/playground-poster.svg')).toString('base64');
 const browser = await chromium.launch();
 try {
-  const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
-  await page.setContent(`<!doctype html><html lang="en"><style>
-@font-face{font-family:Manrope;src:url(data:font/woff2;base64,${sans})} @font-face{font-family:PortfolioSerif;src:url(data:font/woff2;base64,${serif})}
-*{box-sizing:border-box}body{margin:0;padding:58px 64px;background:#111310;color:#eeede5;font-family:Manrope}header,footer{display:flex;justify-content:space-between;align-items:center}header{font-size:14px;letter-spacing:2px;color:#c8cabb}header span:last-child{color:#b7a181}main{position:relative;margin:58px 0 38px}h1{font-size:108px;line-height:.97;letter-spacing:-7px;font-weight:400;margin:0}h1 span{display:block;font-family:PortfolioSerif;color:#b7a181;font-weight:400;font-size:122px;letter-spacing:-5px}aside{position:absolute;right:16px;top:25px;width:190px;height:190px;display:grid;place-items:center;border:1px solid #b7a18150;border-radius:50%;font-family:PortfolioSerif;font-size:105px;color:#d0e1b5}aside:before{content:'';position:absolute;inset:27px -14px;border:1px solid #b7a18150;border-radius:50%;transform:rotate(-35deg)}footer{padding-top:30px;border-top:1px solid #dee2cf30;font-size:17px;color:#bdc1b3}footer strong{font-weight:400;color:#eeede5}footer div{line-height:1.7}
-</style><body><header><span>SOFTWARE DEVELOPER</span><span>TORONTO, CANADA</span></header><main><h1>Ritvik<span>Goyal.</span></h1><aside>rg.</aside></main><footer><div><strong>Shopify Dev Degree · York University</strong><br>Projects, experience, and a few side quests.</div><span>ritvikgoyal.com ↗</span></footer></body></html>`);
-  await page.evaluate(() => document.fonts.ready);
-  await page.screenshot({ path: 'public/social-card.png' });
+ const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
+ await page.setContent(`<!doctype html><html lang="en"><style>
+ @font-face{font-family:Barlow;src:url(data:font/woff2;base64,${sans})}@font-face{font-family:Display;src:url(data:font/woff2;base64,${display});font-weight:700}
+ *{box-sizing:border-box}body{margin:0;background:#101115;color:#f1f0e8;font-family:Barlow;padding:38px 50px}header{display:flex;align-items:center;gap:25px;font-size:13px;letter-spacing:1px}header strong{font-size:36px;letter-spacing:-2px}header span{color:#d5ff5f}main{position:relative}h1{font:700 117px/.88 Display;letter-spacing:-2px;margin:50px 0 24px;position:relative;z-index:2}h1 span{color:transparent;-webkit-text-stroke:1px #f1f0e8}img{position:absolute;right:-45px;top:-55px;width:650px;height:550px}footer{position:relative;z-index:3;font-size:16px;color:#b9b9c5}small{display:block;font-size:11px;letter-spacing:1px;margin-top:18px;color:#d5ff5f}
+ </style><body><header><strong>rg<span>✳</span></strong><span>THE WORLD OF RITVIK GOYAL</span></header><main><img src="data:image/svg+xml;base64,${sculpture}" alt=""><h1>MAKE<br>SOMETHING<br><span>MATTER.</span></h1></main><footer>Code is my medium. Curiosity is the whole point.<small>SOFTWARE DEVELOPER · SHOPIFY DEV DEGREE · TORONTO</small></footer></body></html>`);
+ await page.evaluate(() => document.fonts.ready);
+ await page.screenshot({ path: 'public/social-card.png' });
 } finally { await browser.close(); }

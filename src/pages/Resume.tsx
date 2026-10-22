@@ -17,12 +17,12 @@ export default function Resume() {
           rg.
         </a>
         <nav aria-label="Main navigation">
-          <a href="/#sig-work">Work</a>
-          <a href="/#sig-story">About</a>
+          <a href="/#work">Work</a>
+          <a href="/#about">About</a>
           <a href="/resume" aria-current="page">
             Resume
           </a>
-          <a href="/#sig-contact">
+          <a href="/#contact">
             Contact <ArrowUpRight size={13} />
           </a>
         </nav>
@@ -44,6 +44,26 @@ export default function Resume() {
             Download resume <ArrowDownToLine size={17} />
           </a>
         </div>
+        <section
+          className="resume-summary"
+          aria-labelledby="resume-summary-title"
+        >
+          <h2 id="resume-summary-title">Software development, in Toronto.</h2>
+          <p>
+            I’m Ritvik Goyal, a software developer at Shopify through Dev
+            Degree, studying Digital Technologies at York University
+            (2026–2030). My work spans commerce, personal finance, and tools for
+            learning.
+          </p>
+          <p>
+            Selected projects: <a href="/projects/dealify">Dealify</a>, a
+            Shopify negotiation project built with Bryan Maristanez and Ricardo
+            Gao; <a href="/projects/wealthsnaps">WealthSnaps</a>, an
+            expense-tracking product in development; and{" "}
+            <a href="/projects/studyflow">StudyFlow</a>, a workspace for study
+            sessions, goals, and analytics.
+          </p>
+        </section>
         <section
           id="resume-document"
           aria-label="Resume document"

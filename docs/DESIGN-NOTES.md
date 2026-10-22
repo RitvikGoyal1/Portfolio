@@ -1,13 +1,6 @@
-# Signature and three directions for Ritvik Goyal
+# The two maintained portfolio designs
 
-Three independently built Astra concepts, integrated into one React application, followed by Signature: a personal synthesis of Obsidian’s editorial confidence and Signal’s interactive energy. Open the site and use the floating exploration switcher. Each has its own layout, art direction, interaction, and Three.js scene; the inactive designs are lazy-loaded.
-
-- `/` or `/?design=signature`: the default; dark olive, ivory, bronze, and pale mint, with kinetic type and a responsive particle field.
-- `/?design=obsidian`: warm black, bronze, and a sculptural assembly.
-- `/?design=atelier`: ivory, vermilion, editorial typography, and architectural form.
-- `/?design=signal`: ink, mint, and an interactive orbital instrument.
-
-The control panel can be hidden to view each design on its own.
+Signature is the homepage for ritvikgoyal.com; Playground is the homepage for app.ritvikgoyal.com. Both share project records and identity links. Use `?design=signature` or `?design=forma` to compare them. The comparison panel can be hidden.
 
 ## Signature interactions
 
@@ -21,7 +14,7 @@ Reviewed October 3–4, 2026.
 
 - [Current portfolio source](https://github.com/RitvikGoyal1/Portfolio): project descriptions, years, technologies, images, and live links. The original page and component source remains in the repository for reference.
 - [LinkedIn profile, public search index](https://ca.linkedin.com/in/ritvikgoyal1): Toronto, Shopify, Shopify Dev Degree, and York University, 2026–2030. The search index reported a crawl the previous day. LinkedIn's full profile cannot be fetched publicly, so exact job titles and employment dates are intentionally not invented. The profile's 3,800+ hours refer to the program, not completed work experience.
-- [Public GitHub profile](https://github.com/RitvikGoyal1): current Shopify/Toronto affiliation and linked repositories. Signature’s story section uses a custom typographic “rg.” monogram with orbital linework and a Toronto caption. The portrait is no longer displayed; earlier image studies remain archived in the repository.
+- [Public GitHub profile](https://github.com/RitvikGoyal1): current Shopify/Toronto affiliation and linked repositories. Signature’s story section uses a custom typographic “rg.” monogram with orbital linework and a Toronto caption. The portrait is no longer displayed; unused image studies have been removed.
 - [Original experience timeline](https://github.com/RitvikGoyal1/Portfolio/blob/main/src/pages/Experiences.tsx): early Python/web work, TCS goIT competition, STEM·E internship, and AmberHacks. The linked goIT news article was not independently retrievable during this pass.
 - [Ritvik’s Scrapyard post](https://www.linkedin.com/posts/ritvikgoyal1_hackclub-scrapyard-hackathon-activity-7307451545313271808-Mh8j): helped lead Scrapyard Toronto in 2025. Conflicting historical sponsorship amounts were omitted.
 - Public LinkedIn’s index also supplied STEM Camp counseling in summer 2024 and CALICO bronze in December 2024. No private profile information was accessed. Detailed provenance sits beside the copy in `src/concepts/signature/personalContent.ts`.

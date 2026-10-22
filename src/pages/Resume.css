@@ -102,6 +102,27 @@
   background: #1c211b;
   scroll-margin-top: 30px;
 }
+.resume-summary {
+  max-width: 850px;
+  padding: 0 0 42px;
+}
+.resume-summary h2 {
+  margin: 0 0 15px;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+.resume-summary p {
+  color: #b9c5ad;
+  line-height: 1.8;
+  font-size: 15px;
+  margin: 0 0 12px;
+}
+.resume-summary a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: #eeece2;
+}
 .resume-document-bar {
   padding: 17px 24px;
   display: flex;

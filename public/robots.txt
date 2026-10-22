@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ritvikgoyal.com/sitemap.xml
+# Search discovery is independent from model-training controls.
+User-agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://app.ritvikgoyal.com/sitemap.xml
