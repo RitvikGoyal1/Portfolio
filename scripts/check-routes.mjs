@@ -3,9 +3,11 @@ import assert from "node:assert/strict";
 // Use the Cloudflare local runtime or the live deployment; Vite preview does
 // not interpret Cloudflare _redirects and therefore cannot verify this contract.
 const base = new URL(process.argv[2] || "http://127.0.0.1:8788");
-const origin = process.argv[3] || (base.hostname === "ritvikgoyal.com"
-  ? "https://ritvikgoyal.com"
-  : "https://app.ritvikgoyal.com");
+const origin =
+  process.argv[3] ||
+  (base.hostname === "ritvikgoyal.com"
+    ? "https://ritvikgoyal.com"
+    : "https://app.ritvikgoyal.com");
 const pages = [
   "/",
   "/resume",
@@ -15,6 +17,31 @@ const pages = [
   "/projects/panther",
 ];
 const agents = ["Mozilla/5.0", "Googlebot", "bingbot", "OAI-SearchBot"];
+// Root-domain Cloudflare settings inject Rocket Loader and randomly keyed email
+// protection. Normalize only those transport changes, preserving email values
+// and all authored content when comparing browser and crawler responses.
+const decodeEmail = (hex) => {
+  const bytes = Buffer.from(hex, "hex");
+  return Buffer.from(
+    bytes.subarray(1).map((byte) => byte ^ bytes[0]),
+  ).toString();
+};
+const normalizeEdgeMarkup = (html) =>
+  html
+    .replace(/ type="[a-f0-9]+-text\/javascript"/g, "")
+    .replace(/type="[a-f0-9]+-module"/g, 'type="module"')
+    .replace(
+      /<script\b[^>]*src="\/cdn-cgi\/scripts\/[^" ]+\/cloudflare-static\/rocket-loader\.min\.js"[^>]*><\/script>/g,
+      "",
+    )
+    .replace(
+      /(\/cdn-cgi\/l\/email-protection#)([a-f0-9]+)/g,
+      (_, prefix, hex) => prefix + decodeEmail(hex),
+    )
+    .replace(
+      /data-cfemail="([a-f0-9]+)"/g,
+      (_, hex) => `data-cfemail="${decodeEmail(hex)}"`,
+    );
 for (const pathname of pages) {
   let reference;
   for (const agent of agents) {
@@ -35,11 +62,11 @@ for (const pathname of pages) {
     assert.match(html, /<main\b/, `${pathname} static content`);
     if (reference)
       assert.equal(
-        html,
+        normalizeEdgeMarkup(html),
         reference,
         `${pathname}: same content served to visitors and crawler user agents`,
       );
-    reference = html;
+    reference = normalizeEdgeMarkup(html);
   }
   if (pathname !== "/") {
     for (const alias of [`${pathname}/`, `${pathname}.html`]) {
