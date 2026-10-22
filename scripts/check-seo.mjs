@@ -24,27 +24,27 @@ function meta(html, key) {
 }
 
 for (const [file, route, title] of [
-  ["index.html", "/", "Ritvik Goyal — Software Developer"],
-  ["resume.html", "/resume", "Ritvik Goyal — Resume"],
+  ["index.html", "/", "Ritvik Goyal: Software Developer"],
+  ["resume.html", "/resume", "Ritvik Goyal: Resume"],
   [
     "projects/dealify.html",
     "/projects/dealify",
-    "Dealify — AI shopkeeper for Shopify | Ritvik Goyal",
+    "Dealify: AI shopkeeper for Shopify | Ritvik Goyal",
   ],
   [
     "projects/wealthsnaps.html",
     "/projects/wealthsnaps",
-    "WealthSnaps — expense tracking in development | Ritvik Goyal",
+    "WealthSnaps: expense tracking in development | Ritvik Goyal",
   ],
   [
     "projects/studyflow.html",
     "/projects/studyflow",
-    "StudyFlow — study planning and Pomodoro sessions | Ritvik Goyal",
+    "StudyFlow: study planning and Pomodoro sessions | Ritvik Goyal",
   ],
   [
     "projects/panther.html",
     "/projects/panther",
-    "Panther Press — a student newsroom | Ritvik Goyal",
+    "Panther Press: a student newsroom | Ritvik Goyal",
   ],
 ]) {
   const html = await read(file);
@@ -144,7 +144,7 @@ for (const [file, route, title] of [
       );
       assert.equal(
         project.award,
-        "Hack the North 2026 — Shopify: Hack Shopping with AI category winner",
+        "Hack the North 2026: Shopify: Hack Shopping with AI category winner",
       );
       assert.match(html, /300 seeded synthetic shoppers/);
     }

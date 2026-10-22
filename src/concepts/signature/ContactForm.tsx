@@ -173,7 +173,7 @@ export default function ContactForm() {
           {status === "error" && (
             <>
               I couldn’t confirm your message was sent. Your draft is still
-              here—try again, or{" "}
+              here. Try again, or{" "}
               <a href="mailto:connect@ritvikgoyal.com">email me directly</a>.
             </>
           )}

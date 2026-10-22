@@ -633,7 +633,7 @@ export default function Signature() {
                   <span>
                     {item.year.split(" ")[0]}
                     {index === storyChapters.length - 1 && (
-                      <span className="sig-year-suffix"> — NOW</span>
+                      <span className="sig-year-suffix"> to NOW</span>
                     )}
                   </span>
                   {index === storyChapters.length - 1 && (

@@ -47,7 +47,7 @@ export const projects: ProjectRecord[] = [
     summary:
       "The language model handles the conversation. A shared TypeScript engine decides which offers are valid. A merchant Console makes negotiations visible, and a simulation tests policies against 300 seeded synthetic shoppers. Built with Bryan Maristanez and Ricardo Gao.",
     name: "Dealify",
-    title: "Dealify — AI shopkeeper for Shopify | Ritvik Goyal",
+    title: "Dealify: AI shopkeeper for Shopify | Ritvik Goyal",
     description:
       "Dealify is a Shopify negotiation project by Ritvik Goyal, Bryan Maristanez, and Ricardo Gao. Explore its storefront, pricing engine, and merchant simulation.",
     category: "Commerce / Hack the North",
@@ -93,7 +93,7 @@ export const projects: ProjectRecord[] = [
       animatedImage: "/projects/demos/dealify-loop.webp",
     },
     award:
-      "Hack the North 2026 — Shopify: Hack Shopping with AI category winner",
+      "Hack the North 2026: Shopify: Hack Shopping with AI category winner",
     sections: [
       {
         title: "The storefront is the starting point",
@@ -133,7 +133,7 @@ export const projects: ProjectRecord[] = [
     summary:
       "In development. A React Native and Expo app with Gemini receipt extraction, reviewable bank-statement imports, and Supabase-backed transactions. Spending, cash flow, and net worth share the same workspace.",
     name: "WealthSnaps",
-    title: "WealthSnaps — expense tracking in development | Ritvik Goyal",
+    title: "WealthSnaps: expense tracking in development | Ritvik Goyal",
     description:
       "WealthSnaps is Ritvik Goyal’s React Native and Expo finance app in development, with Gemini receipt extraction, PDF statement imports, Supabase, and spending analytics.",
     category: "Mobile / Personal finance",
@@ -201,7 +201,7 @@ export const projects: ProjectRecord[] = [
     summary:
       "Pomodoro sessions, goals, calendars, and learning analytics share one workspace. Built with React and TypeScript, with Node.js, Express, and Recharts in the stack.",
     name: "StudyFlow",
-    title: "StudyFlow — study planning and Pomodoro sessions | Ritvik Goyal",
+    title: "StudyFlow: study planning and Pomodoro sessions | Ritvik Goyal",
     description:
       "StudyFlow is Ritvik Goyal’s study management project: Pomodoro sessions, goals, a calendar, and learning analytics built with React, TypeScript, and Recharts.",
     category: "Learning / Productivity",
@@ -266,7 +266,7 @@ export const projects: ProjectRecord[] = [
     summary:
       "A student newsroom with article search, issue archives, and a publishing workflow built with Astro, React, MDX, and Keystatic.",
     name: "Panther Press",
-    title: "Panther Press — a student newsroom | Ritvik Goyal",
+    title: "Panther Press: a student newsroom | Ritvik Goyal",
     description:
       "Explore Panther Press, Victoria Park Collegiate Institute’s student newspaper: article search, issue archives, and a publishing workflow built with Astro, React, and Keystatic.",
     category: "Student publishing / Editorial",

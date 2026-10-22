@@ -1,4 +1,4 @@
-# Search and AI discovery — 14 October 2026
+# Search and AI discovery: 14 October 2026
 
 The reach problem was structural: a visitor could explore the projects, but each project lived inside the same long, interactive page. Only the homepage and résumé had independent, indexable URLs. The release now gives Dealify, Synapse Investments, and StudyFlow their own static project notes while keeping the cinematic homepage.
 

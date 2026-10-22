@@ -1,4 +1,4 @@
-# Follow the thread — October 14, 2026
+# Follow the thread: October 14, 2026
 
 The site's central idea is curiosity carried from one chapter to the next. The existing bronze and mint sculpture now survives the introduction and the scroll typography as a continuous, reversible camera journey. A brighter paper gallery changes the pace and gives the actual projects more contrast. The story and invitation return to the opening's ink surface.
 

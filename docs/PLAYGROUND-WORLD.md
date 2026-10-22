@@ -1,4 +1,4 @@
-# Playground — a spatial portfolio
+# Playground: a spatial portfolio
 
 ## World contract
 
@@ -56,7 +56,7 @@ Repository stars checked 2026-10-14 (rounded, repository-level popularity rather
 
 Review gates are performed through endpoint captures and live interaction inspection within the user's existing authorization to redesign and deploy.
 
-## Release — 2026-10-14
+## Release: 2026-10-14
 
 Live at **[app.ritvikgoyal.com](https://app.ritvikgoyal.com/)** on Cloudflare Workers static assets. Worker: `ritvik-playground`; deployed version: `cbc1edc2`. The authenticated dashboard uploaded the complete production `dist/` directory and attached the custom domain. Future CLI releases use `npm run build` followed by `npm run deploy` after Wrangler authentication. The existing root-domain Pages project was not changed.
 
@@ -80,7 +80,7 @@ The contact provider was previously activated by the owner. Actual inbox deliver
 
 Evidence in the local repository: `artifacts/playground-live.png`, `artifacts/playground-live-dealify.png`, viewport/chapter captures, `artifacts/playground-tour.webm`, and `artifacts/playground-performance.json`.
 
-## Painted portrait update — 2026-10-14
+## Painted portrait update: 2026-10-14
 
 Integrated the hand-painted portrait supplied by Ritvik into the maker station's 3D frame and the static reading-mode image. The illustration's sage and lavender background fits the world palette. The optimized asset is `public/forma/ritvik-painted.webp`, 1024×1280 pixels, 131,622 bytes. The original photograph remains available for other existing pages.
 
@@ -88,7 +88,7 @@ Checked the framed composition on desktop and at 390×844; the production build,
 
 Ritvik subsequently authorized a tint to suit the website. Applied a subtle split-tone grade to the supplied illustration: violet shadows, warm highlights and 12% lower saturation, with facial detail and painted texture preserved. The 3D frame and static view now use `public/forma/ritvik-painted-graded.webp` (1024×1280, 154,580 bytes). This is a deterministic color adjustment, not a newly generated image. Reviewed the grade within the desktop scene; the build, TypeScript, SEO and whitespace checks passed. Cloudflare version `afa8cc26` is Ready at 100%.
 
-## Integrated reach, editorial design and device QA release — 2026-10-14
+## Integrated reach, editorial design and device QA release: 2026-10-14
 
 All three requested agents completed their work. Their changes and the companion portrait update are live together at `https://app.ritvikgoyal.com/`, Cloudflare version `afa8cc26`, Ready at 100%.
 

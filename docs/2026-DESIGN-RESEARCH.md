@@ -90,7 +90,7 @@ The October 4 finishing pass follows direct user feedback: the work chapter retu
 
 Additional primary 2026 studies used for implementation:
 
-- [R—K ’26, 7 April 2026](https://tympanus.net/codrops/2026/04/07/r-k-26-the-thinking-and-code-behind-a-portfolio-led-by-presence/): coherent page rhythm, stable mobile composition, and controlled visual emphasis. The lead agent also captured and visually inspected the live desktop hero.
+- [R-K ’26, 7 April 2026](https://tympanus.net/codrops/2026/04/07/r-k-26-the-thinking-and-code-behind-a-portfolio-led-by-presence/): coherent page rhythm, stable mobile composition, and controlled visual emphasis. The lead agent also captured and visually inspected the live desktop hero.
 - [Exat, 10 April 2026](https://tympanus.net/codrops/2026/04/10/the-exat-microsite-pushing-a-typography-showcase-to-new-creative-extremes/): reversible type state tied to scroll. Applied through the native sticky “Curiosity becomes possibility” sequence; no external source code or assets copied.
 - [Arnaud Rocca, 31 March 2026](https://tympanus.net/codrops/2026/03/31/arnaud-roccas-portfolio-from-a-gsap-powered-motion-system-to-fluid-webgl/): project-specific palettes and reusable motion. The lead agent also inspected a live desktop capture.
 - [Glass Xylophone, 4 August 2026](https://tympanus.net/codrops/2026/08/04/building-an-endless-interactive-glass-xylophone-with-three-js/): material cues, shader-side motion, damping and mobile budgets. Informed the original silk shader’s sheen and motion response.

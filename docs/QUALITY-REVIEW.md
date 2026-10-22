@@ -1,4 +1,4 @@
-# Portfolio quality review — October 5, 2026
+# Portfolio quality review: October 5, 2026
 
 ## Design and interaction
 

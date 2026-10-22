@@ -11,7 +11,7 @@ for (const width of [320, 1440]) {
     await expect(
       page.getByRole("heading", { name: "My resume." }),
     ).toBeVisible();
-    await expect(page).toHaveTitle("Ritvik Goyal — Resume");
+    await expect(page).toHaveTitle("Ritvik Goyal: Resume");
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       "href",
       "https://app.ritvikgoyal.com/resume",

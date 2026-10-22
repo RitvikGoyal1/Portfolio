@@ -70,7 +70,7 @@ export const storyChapters: readonly StoryChapter[] = [
     url: "https://www.linkedin.com/posts/ritvikgoyal1_hackclub-scrapyard-hackathon-activity-7307451545313271808-Mh8j",
   },
   {
-    year: "2026 — NOW",
+    year: "2026 to NOW",
     title: "Learning by building. At Shopify.",
     description:
       "I’m studying Digital Technologies at York through Shopify’s Dev Degree while building at Shopify. At Hack the North, our team’s Dealify won the 2026 Shopify: Hack Shopping with AI category.",

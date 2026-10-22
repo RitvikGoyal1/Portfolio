@@ -34,7 +34,7 @@ export function pageMetadata(id: PageId, origin = siteUrl) {
   return {
     title:
       project?.title ||
-      `Ritvik Goyal — ${id === "resume" ? "Resume" : id === "not-found" ? "Page not found" : "Software Developer"}`,
+      `Ritvik Goyal: ${id === "resume" ? "Resume" : id === "not-found" ? "Page not found" : "Software Developer"}`,
     description:
       project?.description ||
       (id === "resume" ? resumeDescription : homeDescription),
@@ -44,7 +44,7 @@ export function pageMetadata(id: PageId, origin = siteUrl) {
     imageHeight: project?.imageHeight || 630,
     imageAlt:
       project?.imageAlt ||
-      "Ritvik Goyal — Software Developer. Toronto. Shopify Dev Degree · York University.",
+      "Ritvik Goyal: Software Developer. Toronto. Shopify Dev Degree · York University.",
     robots:
       id === "not-found"
         ? "noindex, follow"

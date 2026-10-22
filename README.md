@@ -1,4 +1,4 @@
-# Ritvik Goyal — Signature & Playground
+# Ritvik Goyal: Signature & Playground
 
 This codebase maintains exactly two designs: **Signature** for [ritvikgoyal.com](https://ritvikgoyal.com/) and **Playground** for [app.ritvikgoyal.com](https://app.ritvikgoyal.com/). Both read the same project records and X/Instagram profiles. Obsidian, Atelier, Signal, and the older portfolio implementations have been removed.
 

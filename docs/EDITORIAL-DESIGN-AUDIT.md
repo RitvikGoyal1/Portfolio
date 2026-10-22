@@ -1,4 +1,4 @@
-# Editorial and visual audit — 14 October 2026
+# Editorial and visual audit: 14 October 2026
 
 ## Aim
 
